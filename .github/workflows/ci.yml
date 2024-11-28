@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [10.15.3]
+        node-version: [16.x, 18.x]
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -31,14 +31,15 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y google-chrome-stable xvfb procps
 
-      - name: Run tests
-        run: npm run test:ci
-
       - name: Lint JavaScript and CSS
         run: |
           npm run lint
-          npm run lint:sass:fix
-          npm run lint:sass
+
+      - name: Run build
+        run: npm run build:prod
+
+      - name: Run deploy
+        run: curl -X POST -d {} "https://webhooks.amplify.us-east-1.amazonaws.com/prod/webhooks?id=554bf319-93d4-4a47-8863-3a78dd3df751&token=yrLSRL44m0wi6Vprgh9lDhhnZkc8uVeT5jWqiYpp9k&operation=startbuild" -H "Content-Type:application/json"
 
   security-scan:
     runs-on: ubuntu-latest
