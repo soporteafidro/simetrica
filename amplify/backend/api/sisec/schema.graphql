@@ -1,0 +1,654 @@
+enum EntityState {
+  PENDING
+  ACTIVE
+  INACTIVE
+  DELETED
+}
+
+enum StudyState {
+  PROPUESTO
+  ENCURSO
+  FINALIZADO
+  SUSPENDIDO
+  ELIMINADO
+}
+
+enum CenterTypeEnum {
+  PUBLICO
+  PRIVADO
+  EXCLUSIVO_INVESTIGACION
+}
+
+enum CommitteeTypeEnum {
+  INSTITUCIONAL
+  EXTERNO
+}
+
+enum InterrupcionReclutamientoTypeEnum {
+  PAIS
+  CENTRO
+}
+
+enum motivoInterrupcionTypeEnum {
+  APROBACION_ENMIENDA
+  TEMAS_LOGISTICOS
+  MEDIDA_SANITARIA
+  CALIDAD
+  OTRA
+}
+
+type TimeRecord {
+  nombre: String
+  dias: Int
+  diasPatrocinador: Int
+  mes: Int
+  anho: Int
+  fechaInicial: String
+  fechaFinal: String
+}
+
+type AuditTrace
+  @model(subscriptions: null, mutations: null)
+  @key(
+    name: "byEntityAndId"
+    fields: ["entity", "relatedEntityId"]
+    queryField: "getAuditInfo"
+  )
+  @auth(
+    rules: [
+      {
+        allow: groups
+        groups: ["Admin", "Supervisor", "Digitador", "Lector", "Medico"]
+        operations: [read]
+      }
+    ]
+  ) {
+  id: ID!
+  relatedEntityId: String!
+  entity: String!
+  eventDateTime: String!
+  eventType: String!
+  author: String!
+  data: String!
+}
+
+type Sponsor
+  @model(subscriptions: null)
+  @versioned
+  @auth(
+    rules: [
+      {
+        allow: groups
+        groups: ["Admin"]
+        operations: [create, read, delete, update]
+      }
+      {
+        allow: groups
+        groups: ["Supervisor", "Digitador", "Lector", "Medico"]
+        operations: [read]
+      }
+    ]
+  ) {
+  studies: [Study] @connection(keyName: "bySponsor", fields: ["id"])
+  id: ID!
+  estado: EntityState!
+  nit: String
+  nombre: String!
+  correo: String
+  logoURL: String
+  user: String!
+  informacionContacto: String
+}
+
+type CRO
+  @model(subscriptions: null)
+  @versioned
+  @auth(
+    rules: [
+      {
+        allow: groups
+        groups: ["Admin"]
+        operations: [create, read, delete, update]
+      }
+      {
+        allow: groups
+        groups: ["Supervisor", "Digitador"]
+        operations: [create, update, read]
+      }
+      { allow: groups, groups: ["Lector", "Medico"], operations: [read] }
+    ]
+  ) {
+  id: ID!
+  estado: EntityState!
+  nit: String
+  nombre: String!
+  informacionContacto: String
+  user: String!
+}
+
+type Center
+  @model(subscriptions: null)
+  @versioned
+  @auth(
+    rules: [
+      {
+        allow: groups
+        groups: ["Admin"]
+        operations: [create, read, delete, update]
+      }
+      {
+        allow: groups
+        groups: ["Supervisor", "Digitador"]
+        operations: [create, update, read]
+      }
+      { allow: groups, groups: ["Lector", "Medico"], operations: [read] }
+    ]
+  ) {
+  studyCenters: [StudyCenter] @connection(keyName: "byCenter", fields: ["id"])
+
+  id: ID!
+  estado: EntityState!
+  nit: String!
+  nombre: String!
+  tipoCentro: CenterTypeEnum
+  nivelAtencion: String
+  numeroEmpleados: Int
+  municipio: String!
+  resolucionCertificacion: String
+  resolucionVigente: String
+  user: String!
+  informacionContacto: String
+}
+
+type Committee
+  @model(subscriptions: null)
+  @versioned
+  @auth(
+    rules: [
+      {
+        allow: groups
+        groups: ["Admin"]
+        operations: [create, read, delete, update]
+      }
+      {
+        allow: groups
+        groups: ["Supervisor", "Digitador"]
+        operations: [create, update, read]
+      }
+      { allow: groups, groups: ["Lector", "Medico"], operations: [read] }
+    ]
+  ) {
+  studyCenters: [StudyCenterCommittee]
+    @connection(keyName: "byCommittee", fields: ["id"])
+
+  id: ID!
+  estado: EntityState!
+  nombre: String!
+  tipoComite: CommitteeTypeEnum
+  periodicidadReunionesCEI: String
+  municipio: String!
+  informacionContacto: String
+  resolucionInvima: String
+  costoEvaluacion: Float
+  user: String!
+}
+
+type InvimaIteration
+  @model(subscriptions: null)
+  @versioned
+  @key(name: "byStudy", fields: ["studyID"], queryField: "iteracionesByStudy")
+  @key(
+    name: "byAddendum"
+    fields: ["addendumID"]
+    queryField: "iteracionesInvimaByAddendum"
+  )
+  @auth(
+    rules: [
+      {
+        allow: groups
+        groups: ["Admin"]
+        operations: [create, read, delete, update]
+      }
+      {
+        allow: groups
+        groups: ["Supervisor", "Digitador"]
+        operations: [create, update, read]
+      }
+      { allow: groups, groups: ["Lector", "Medico"], operations: [read] }
+    ]
+  ) {
+  id: ID!
+  studyID: ID
+  study: Study @connection
+  addendumID: ID
+  addendum: Addendum @connection
+
+  tipoIteracion: String!
+  tipoRequerimiento: [String]
+  otroTipoRequerimiento: String
+  fechaDeSometimiento: String!
+  fechaRespuestaInvima: String!
+  fechaDeNotificacion: String
+  estadoIteracion: String!
+  resolucion: String
+  tiempoInvima: Int
+  tiempoPatrocinador: Int
+  tiempoNotificacion: Int
+  causalRetrasoPatrocinador: String
+  otroCausalRetrasoPatrocinador: String
+  notasDeSeguimiento: String
+  user: String!
+  estado: EntityState!
+}
+
+type StudyCommitteeIteration
+  @model(subscriptions: null)
+  @versioned
+  @key(
+    name: "byStudy"
+    fields: ["studyID"]
+    queryField: "committeeIterationsByStudy"
+  )
+  @key(
+    name: "ByStudyCenterCommittee"
+    fields: ["studyCenterCommitteeID"]
+    queryField: "committeeIterationsByiamCommittee"
+  )
+  @key(
+    name: "byAddendum"
+    fields: ["addendumID"]
+    queryField: "iteracionesCEByAddendum"
+  )
+  @auth(
+    rules: [
+      {
+        allow: groups
+        groups: ["Admin"]
+        operations: [create, read, delete, update]
+      }
+      {
+        allow: groups
+        groups: ["Supervisor", "Digitador"]
+        operations: [create, update, read]
+      }
+      { allow: groups, groups: ["Lector", "Medico"], operations: [read] }
+    ]
+  ) {
+  id: ID!
+  studyID: ID
+  study: Study @connection
+  studyCenterCommitteeID: ID!
+  studyCenterCommittee: StudyCenter
+    @connection(fields: ["studyCenterCommitteeID"])
+  addendumID: ID
+  addendum: Addendum @connection
+
+  tipoIteracion: String!
+  tipoAclaracion: [String]
+  otroTipoAclaracion: String
+  fechaDeSometimientoCE: String!
+  fechaRespuestaCE: String!
+  estadoIteracion: String!
+  informacionCarta: String
+  tiempoComite: Int
+  tiempoPatrocinador: Int
+  causalRetrasoPatrocinador: String
+  otroCausalRetrasoPatrocinador: String
+  notasDeSeguimiento: String
+  user: String!
+  estado: EntityState!
+}
+
+type Study
+  @model(subscriptions: null)
+  @versioned
+  @key(name: "bySponsor", fields: ["sponsorID"], queryField: "studiesBySponsor")
+  @auth(
+    rules: [
+      {
+        allow: groups
+        groups: ["Admin"]
+        operations: [create, read, delete, update]
+      }
+      {
+        allow: groups
+        groups: ["Supervisor"]
+        operations: [create, update, read, delete]
+      }
+      {
+        allow: groups
+        groups: ["Digitador"]
+        operations: [read, create, update]
+      }
+      { allow: groups, groups: ["Lector", "Medico" ], operations: [read] }
+    ]
+  ) {
+  sponsorID: ID!
+  sponsor: Sponsor! @connection(fields: ["sponsorID"])
+  cro: CRO @connection
+  CIE10: String
+  studyCenters: [StudyCenter!] @connection(keyName: "byStudy", fields: ["id"])
+  interruptions: [Interruption!] @connection(keyName: "byStudy", fields: ["id"])
+  invimaIterations: [InvimaIteration!]
+    @connection(keyName: "byStudy", fields: ["id"])
+  studyCenterCommittees: [StudyCenterCommittee!]
+    @connection(keyName: "byStudy", fields: ["id"])
+  addenda: [Addendum!] @connection(keyName: "byStudy", fields: ["id"])
+
+  id: ID!
+  identificador: String!
+  identificadorNCT: String!
+  linkClinical: String
+  titulo: String!
+  areasTerapeuticas: String!
+  tipoPoblacion: String!
+  saludPublica: String
+  enfermedadHuerfana: String
+  tipoEstudio: String!
+  fase: String!
+  fechaAprobacionCasaMatriz: String!
+  fechaFactibilidadColombia: String
+  enColombia: String
+  motivoNoSeleccion: String
+  fechaSeleccionColombia: String
+  fechaRecepcionFilialColombia: String
+  fechaVersionEspaniol: String
+  fechaPropuestaCierreReclutamiento: String
+  alcanceEstudio: String!
+  codigosATC: [String!]
+  tieneCRO: String
+  numeroPaisesParticipantes: Int
+  totalSujetosNivelGlobal: Int
+  fechaLiberacionProtocolo: String
+  fechaPrimerPacienteGlobal: String
+  fechaCierreReclutamientoGlobal: String
+  numeroSujetosPlaneadosColombia: Int
+  porcentajeSujetosColombia: Int
+  fechaRecepcionPaqueteInicialColombia: String
+  fechaPrimerPacienteReclutadoColombia: String
+  fechaCierreReclutamientoColombia: String
+  motivoDeSuspension: String
+  otroMotivoDeSuspension: String
+  linkDePublicacion: String
+  terminadoSatisfactoriamente: String
+  motivoDeTerminacion: String
+  otroMotivoDeTerminacion: String
+  fechaDeLicenciaKit: String
+  fechaDeImportacionEnBodegaKit: String
+  fechaPrimeraImportacionKit: String
+  fechaDeLicenciaMedicamentos: String
+  fechaDeImportacionEnBodegaMedicamentos: String
+  fechaPrimeraImportacionMedicamentos: String
+  estado: StudyState!
+
+  # CAMPOS DE TIEMPO
+  #INVIMA
+  diasAprobacionInvimaInvima: Int
+  diasAprobacionInvimaPatrocinador: Int
+  anhoAprobacionInvima: Int
+  mesAprobacionInvima: Int
+  # timeRecordINVIMA : TimeRecord
+  #POR ESTUDIO
+  diasInicioEstudio: Int
+  anhoInicioEstudio: Int
+  mesInicioEstudio: Int
+  user: String!
+  #ACCESO RAPIDO
+  fechaAprobacionEstudioInvima: String
+  fechaDeSometimientoEstudioInvima: String
+}
+
+type StudyCenter
+  @model(subscriptions: null)
+  @versioned
+  @key(
+    name: "byStudy"
+    fields: ["studyID", "centerID"]
+    queryField: "studyCenterByStudy"
+  )
+  @key(
+    name: "byCenter"
+    fields: ["centerID", "studyID"]
+    queryField: "studyCenterByCenter"
+  )
+  @auth(
+    rules: [
+      {
+        allow: groups
+        groups: ["Admin"]
+        operations: [create, read, delete, update]
+      }
+      {
+        allow: groups
+        groups: ["Supervisor", "Digitador"]
+        operations: [create, update, read]
+      }
+      { allow: groups, groups: ["Lector", "Medico"], operations: [read] }
+    ]
+  ) {
+  committees: [StudyCenterCommittee]
+    @connection(keyName: "byStudyCenter", fields: ["id"])
+  addenda: [AddendumStudyCenter!]
+    @connection(keyName: "byStudyCenter", fields: ["id"])
+
+  id: ID!
+  studyID: ID!
+  centerID: ID!
+  study: Study! @connection(fields: ["studyID"])
+  center: Center! @connection(fields: ["centerID"])
+  user: String!
+  costoPorPaciente: Int
+  fechaRecepcionPaquete: String
+  fechaRecepcionContrato: String
+  fechaFirmaContrato: String
+  fechaFirmaContratoPatrocinador: String
+  fechaAprobacionInvima: String
+  fechaActivacionCentro: String
+  cantidadPacientesPrevistos: Int
+  cantidadPacientesIncluidos: Int
+  fechaPrimerPacienteSeleccionado: String
+  fechaPrimerPacienteAleatorizado: String
+  estado: EntityState!
+}
+
+type StudyCenterCommittee
+  @model(subscriptions: null)
+  @versioned
+  @key(
+    name: "byStudyCenter"
+    fields: ["studyCenterID", "committeeID"]
+    queryField: "studyCenterComiteesByStudyCenter"
+  )
+  @key(
+    name: "byCommittee"
+    fields: ["committeeID", "studyCenterID"]
+    queryField: "studyCenterComiteesByComitee"
+  )
+  @key(
+    name: "byStudy"
+    fields: ["studyID"]
+    queryField: "studyCenterComiteesByStudy"
+  )
+  @auth(
+    rules: [
+      {
+        allow: groups
+        groups: ["Admin"]
+        operations: [create, read, delete, update]
+      }
+      {
+        allow: groups
+        groups: ["Supervisor", "Digitador"]
+        operations: [create, update, read]
+      }
+      { allow: groups, groups: ["Lector", "Medico"], operations: [read] }
+    ]
+  ) {
+  id: ID!
+  studyCenterID: ID!
+  committeeID: ID!
+  studyID: ID!
+  study: Study! @connection(fields: ["studyID"])
+  studyCenter: StudyCenter! @connection(fields: ["studyCenterID"])
+  committee: Committee! @connection(fields: ["committeeID"])
+  ecIterations: [StudyCommitteeIteration!]
+    @connection(keyName: "ByStudyCenterCommittee", fields: ["id"])
+  user: String!
+  estado: EntityState!
+
+  # CAMPOS DE TIEMPO
+  diasAprobacionCentroCentro: Int
+  diasAprobacionCentroPatrocinador: Int
+  anhoAprobacionCentro: Int
+  mesAprobacionCentro: Int
+}
+
+type Interruption
+  @model(subscriptions: null)
+  @versioned
+  @key(name: "byStudy", fields: ["studyID"], queryField: "interruptionByStudy")
+  @auth(
+    rules: [
+      {
+        allow: groups
+        groups: ["Admin"]
+        operations: [create, read, delete, update]
+      }
+      {
+        allow: groups
+        groups: ["Supervisor", "Digitador"]
+        operations: [create, update, read]
+      }
+      { allow: groups, groups: ["Lector", "Medico"], operations: [read] }
+    ]
+  ) {
+  study: Study! @connection(fields: ["studyID"])
+  studyID: ID!
+  id: ID!
+  estado: EntityState!
+  interrupcionReclutamiento: InterrupcionReclutamientoTypeEnum
+  motivoInterrupcion: motivoInterrupcionTypeEnum!
+  otroMotivoInterrupcion: String
+  fechaInicialInterrupcion: String!
+  fechaFinalizacionTnterrupcion: String
+  user: String!
+  informacionContacto: String
+}
+
+type Addendum
+  @model(subscriptions: null)
+  @versioned
+  @key(name: "byStudy", fields: ["studyID"], queryField: "addendaByStudy")
+  @auth(
+    rules: [
+      {
+        allow: groups
+        groups: ["Admin"]
+        operations: [create, read, delete, update]
+      }
+      {
+        allow: groups
+        groups: ["Supervisor", "Digitador"]
+        operations: [create, update, read]
+      }
+      { allow: groups, groups: ["Lector", "Medico"], operations: [read] }
+    ]
+  ) {
+  studyID: ID!
+  study: Study! @connection(fields: ["studyID"])
+  invimaIterations: [InvimaIteration!]
+    @connection(keyName: "byAddendum", fields: ["id"])
+  centers: [AddendumStudyCenter!]
+    @connection(keyName: "byAddendum", fields: ["id"])
+
+  id: ID!
+  descripcion: String!
+  fechaCasaMatriz: String
+  fechaRecepcionPaquete: String
+  fechaVersionEspanol: String
+  primerPaisImplementacion: String
+  fechaImplementacionPais: String
+  estado: EntityState!
+  user: String!
+
+  # CAMPOS DE TIEMPO
+  #INVIMA
+  tiemposInvima: TimeRecord
+  # diasAprobacionInvimaInvima: Int
+  # diasAprobacionInvimaPatrocinador: Int
+  # anhoAprobacionInvima: Int
+  # mesAprobacionInvima: Int
+}
+
+type AddendumStudyCenter
+  @model(subscriptions: null)
+  @versioned
+  @key(
+    name: "byAddendum"
+    fields: ["addendumID"]
+    queryField: "AddendumStudyCenterByAddendum"
+  )
+  @key(
+    name: "byStudyCenter"
+    fields: ["studyCenterID"]
+    queryField: "AddendumStudyCenterByStudyCenter"
+  )
+  @auth(
+    rules: [
+      {
+        allow: groups
+        groups: ["Admin"]
+        operations: [create, read, delete, update]
+      }
+      {
+        allow: groups
+        groups: ["Supervisor", "Digitador"]
+        operations: [create, update, read]
+      }
+      { allow: groups, groups: ["Lector", "Medico"], operations: [read] }
+    ]
+  ) {
+  addendum: Addendum! @connection(fields: ["addendumID"])
+  addendumID: ID!
+  studyCenter: StudyCenter! @connection(fields: ["studyCenterID"])
+  studyCenterID: ID!
+  ecIterations: [StudyCommitteeIteration!]
+    @connection(keyName: "byAddendum", fields: ["id"])
+
+  id: ID!
+  fechaEnvioCentro: String
+  fechaReciboCentro: String
+  fechaImplementacionCentro: String
+  user: String!
+  estado: EntityState!
+
+  # CAMPOS DE TIEMPO
+  tiemposCentro: TimeRecord
+  # diasAprobacionCentroCentro: Int
+  # diasAprobacionCentroPatrocinador: Int
+  # anhoAprobacionCentro: Int
+  # mesAprobacionCentro: Int
+}
+
+input SendNotificationInput {
+  from: String!
+  to: String!
+  subject: String!
+  html: String!
+  icalEvent: String
+  attachment: String
+  attachmentFileName: String
+  sendSMS: Boolean!
+  smsNumber: String
+  smsText: String
+}
+
+type SendNotificationResponse {
+  result: String!
+  error: String
+}
+
+type Query {
+  sendNotification(input: SendNotificationInput): SendNotificationResponse
+    @function(name: "sisecNotifications-${env}")
+}

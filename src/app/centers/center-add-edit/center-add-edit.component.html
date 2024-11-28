@@ -1,0 +1,183 @@
+<div [ngClass]="{ 'container-integra': !isModal }">
+  <h1 *ngIf="!isModal">
+    {{ editMode ? "Actualizar mi centro" : "Crear centro" }}
+  </h1>
+  <form name="form" (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-col-12" *ngIf="!isModal">
+        <h3>Datos básicos</h3>
+      </div>
+
+      <div class="p-col-12 p-md-6 p-field">
+        <label><span class="inputRequired">* </span>Nombre:</label>
+        <input
+          name="nombre"
+          type="text"
+          pInputText
+          [(ngModel)]="center.nombre"
+          required
+          #nombre="ngModel"
+          pTooltip="Ingrese el nombre del centro"
+          tooltipPosition="top"
+        />
+        <small
+          class="form-error"
+          *ngIf="!nombre.valid && (f.submitted || nombre.touched)"
+          >* Campo requerido</small
+        >
+      </div>
+
+      <div class="p-col-12 p-md-6 p-field">
+        <label><span class="inputRequired">* </span>Nit:</label>
+        <input
+          name="nit"
+          type="text"
+          pInputText
+          [(ngModel)]="center.nit"
+          required
+          #nit="ngModel"
+          pTooltip="Identificación del centro"
+          tooltipPosition="top"
+        />
+        <small
+          class="form-error"
+          *ngIf="!nit.valid && (f.submitted || nit.touched)"
+          >* Campo requerido</small
+        >
+      </div>
+
+      <div class="p-col-12 p-md-6 p-field">
+        <label><span class="inputRequired">* </span>Municipio:</label>
+        <p-dropdown
+          [showClear]="true"
+          placeholder="Seleccione"
+          #city="ngModel"
+          name="city"
+          [(ngModel)]="center.municipio"
+          [filter]="true"
+          required
+          [options]="locationOpction"
+          emptyFilterMessage="No se encontraron resultados"
+        ></p-dropdown
+        ><small
+          class="form-error"
+          *ngIf="!nit.valid && (f.submitted || nit.touched)"
+          >* Campo requerido</small
+        >
+      </div>
+
+      <div class="p-col-12 p-md-6 p-field">
+        <label>Tipo de centro:</label>
+        <p-dropdown
+          [showClear]="true"
+          placeholder="Seleccione"
+          #tipoCentro="ngModel"
+          name="tipoCentro"
+          [(ngModel)]="center.tipoCentro"
+          emptyFilterMessage="No se encontraron resultados"
+          [options]="typeCenter"
+          (onChange)="viewLevelatention()"
+        ></p-dropdown>
+      </div>
+
+      <div class="p-col-12 p-md-6 p-field" *ngIf="levelAtentionView">
+        <label>Nivel de atención:</label>
+        <p-dropdown
+          [showClear]="true"
+          placeholder="Seleccione"
+          #nivelAtencion="ngModel"
+          name="nivelAtencion"
+          [(ngModel)]="center.nivelAtencion"
+          [options]="levelAttentionOption"
+          pTooltip="Exclusivo solo para privados"
+          emptyFilterMessage="No se encontraron resultados"
+          tooltipPosition="top"
+        ></p-dropdown>
+      </div>
+
+      <div class="p-col-12 p-md-6 p-field">
+        <label>Número de empleados:</label>
+        <input
+          name="numeroEmpleados"
+          type="number"
+          pInputText
+          [(ngModel)]="center.numeroEmpleados"
+          #numeroEmpleados="ngModel"
+          pTooltip="Número de empleos con los que cuenta el centro"
+          tooltipPosition="top"
+        />
+      </div>
+
+      <div class="p-col-12 p-md-6 p-field">
+        <label>Resolución de certificación:</label>
+        <input
+          name="resolucionCertificacion"
+          type="text"
+          pInputText
+          [(ngModel)]="center.resolucionCertificacion"
+          #resolucionCertificacion="ngModel"
+          pTooltip="Resolución de certificación invima"
+          tooltipPosition="top"
+        />
+      </div>
+
+      <div class="p-col-12 p-md-6 p-field">
+        <label>Resolución vigente:</label>
+        <input
+          name="resolucionVigente"
+          type="text"
+          pInputText
+          [(ngModel)]="center.resolucionVigente"
+          #resolucionVigente="ngModel"
+          pTooltip="Resolución vigente invima"
+          tooltipPosition="top"
+        />
+      </div>
+
+      <div class="p-col-12 p-md-6 p-field">
+        <label><span class="inputRequired">*</span> Información de contacto (teléfono, dirección, e-mail):</label>
+        <textarea
+          pInputTextarea
+          name="informacionContacto"
+          type="text"
+          pInputText
+          [(ngModel)]="center.informacionContacto"
+          #informacionContacto="ngModel"
+          [rows]="5"
+          required
+          autoResize="autoResize"
+        ></textarea>
+        <small
+        class="form-error"
+        *ngIf="!informacionContacto.valid && (f.submitted || informacionContacto.touched)"
+        >* Campo requerido</small
+      >
+      </div>
+
+      <div
+        class="
+          p-field p-col-12 p-sm-6 p-md-3 p-md-offset-6 p-xl-2 p-xl-offset-8
+        "
+        *ngIf="!isModal"
+      >
+        <button
+          class="p-button-outlined p-button-secondary"
+          pButton
+          label="Cancelar"
+          type="button"
+          (click)="onCancelar()"
+        ></button>
+      </div>
+      <div
+        class="p-field p-col-12 p-sm-6 p-md-3"
+        [ngClass]="{ 'p-md-offset-6': isModal, 'p-xl-2': !isModal }"
+      >
+        <button
+          pButton
+          label="{{ editMode ? 'Actualizar' : 'Agregar' }}"
+          type="submit"
+        ></button>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,39 @@
+::ng-deep {
+    .form-consult .p-dropdown, .form-consult input {
+        width: 100%;
+    }
+
+    .form-consult .p-dropdown-panel .p-dropdown-items .p-dropdown-item {
+        white-space: break-spaces;
+    }
+}
+
+.form-consult {
+    max-width: 980px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.title-consult {
+    font-size: 2rem;
+}
+
+.label-consult {
+    font-size: 1rem;
+}
+.p-inputtext, .p-autocomplete {
+    width: 100%;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 1rem;
+    justify-content: center;
+}
+
+@media screen and (max-width: 769px) {
+    .buttons {
+        grid-template-columns: auto;
+    }
+}

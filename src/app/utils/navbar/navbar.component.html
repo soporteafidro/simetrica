@@ -1,0 +1,17 @@
+<p-menubar [model]="items" *ngIf="this.isLoggedIn">
+  <ng-template pTemplate="start">
+    <img
+      (click)="goHome()"
+      src="../../../assets/imgs/logoSHeader.svg"
+      height="40"
+      class="p-mr-2"
+      style="margin-left: 40px; cursor: pointer"
+    />
+  </ng-template>
+  <ng-template pTemplate="end">
+    <div style="margin-right: 20px">
+      <app-study-search style="margin-right: 30px"></app-study-search>
+      <a (click)="logout()" style="cursor: pointer">CERRAR SESIÓN</a>
+    </div>
+  </ng-template>
+</p-menubar>

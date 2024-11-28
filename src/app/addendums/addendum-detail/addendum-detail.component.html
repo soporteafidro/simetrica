@@ -1,0 +1,92 @@
+<div style="margin-bottom: 30px" *ngIf="!isDeleted">
+  <p-card>
+    <p-header>
+      <div style="position: relative">
+        <div *ngIf="!isReader || !isMedico" class="menuDots">
+          <p-menu #menu [popup]="true" [model]="items" appendTo="body"></p-menu>
+          <p class="pi pi-ellipsis-v" (click)="menu.toggle($event)"></p>
+        </div>
+        <h2 style="margin-left: 50px; margin-bottom: -30px">
+          {{ addendum.descripcion }}
+        </h2>
+      </div>
+    </p-header>
+
+    <p-tabView>
+      <p-tabPanel header="Información general">
+        <div class="p-grid">
+          <div class="p-col-6">
+            <div class="p-mt-2">
+              <span
+                ><strong>Fecha de enmienda casa matriz: </strong
+                >{{
+                  sisec.printValue(
+                    dateIITPipe.transform(addendum.fechaCasaMatriz)
+                  )
+                }}</span
+              >
+            </div>
+            <div class="p-mt-2">
+              <span
+                ><strong>Fecha de recepción del paquete: </strong
+                >{{
+                  sisec.printValue(
+                    dateIITPipe.transform(addendum.fechaRecepcionPaquete)
+                  )
+                }}</span
+              >
+            </div>
+          </div>
+          <div class="p-col-6">
+            <div class="p-mt-2">
+              <span
+                ><strong>Fecha versión en Español: </strong
+                >{{
+                  sisec.printValue(
+                    dateIITPipe.transform(addendum.fechaVersionEspanol)
+                  )
+                }}</span
+              >
+            </div>
+            <div class="p-mt-2">
+              <span
+                ><strong>Primer país en implementar enmienda: </strong
+                >{{ sisec.printValue(addendum.primerPaisImplementacion) }}</span
+              >
+            </div>
+            <div class="p-mt-2">
+              <span
+                ><strong>Fecha implementación enmienda en país: </strong
+                >{{
+                  sisec.printValue(
+                    dateIITPipe.transform(addendum.fechaImplementacionPais)
+                  )
+                }}</span
+              >
+            </div>
+          </div>
+        </div>
+      </p-tabPanel>
+      <p-tabPanel header="INVIMA">
+        <app-invima-list
+          [parentId]="addendum.id"
+          [studyId]="studyId"
+          [isEnmienda]="true"
+        ></app-invima-list>
+      </p-tabPanel>
+      <p-tabPanel header="Centros">
+        <app-addendum-centers-list
+          [studyId]="studyId"
+          [addendumId]="addendum.id"
+        ></app-addendum-centers-list>
+      </p-tabPanel>
+      <p-tabPanel header="Comités">
+        <app-committees-list
+          [studyId]="studyId"
+          [parentId]="addendum.id"
+          [isEnmienda]="true"
+        ></app-committees-list>
+      </p-tabPanel>
+    </p-tabView>
+  </p-card>
+</div>

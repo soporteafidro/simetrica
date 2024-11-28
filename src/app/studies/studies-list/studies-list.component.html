@@ -1,0 +1,182 @@
+<div class="container-integra">
+  <div class="p-grid p-fluid p-justify-end">
+    <div *ngIf="!isSponsorUser" class="p-col-12">
+      <h1>Lista de estudios</h1>
+    </div>
+    <div *ngIf="isSponsorUser" class="p-col-12">
+      <h1 class="p-ml-2">Estudios de {{ sponsorUser.nombre }}</h1>
+    </div>
+
+    <div
+      *ngIf="!isHomeView && !isReader && !isMedico"
+      class="p-col-12 p-sm-6 p-md-4 p-xl-3 p-mr-2"
+    >
+      <button
+        pButton
+        label="Crear estudio"
+        type="button"
+        routerLink="/studies/new"
+        icon="pi pi-plus"
+      ></button>
+    </div>
+  </div>
+
+  <div class="p-col-12">
+    <p-table
+      appendTo="body"
+      [value]="studies"
+      selectionMode="single"
+      [paginator]="studies.length > 0"
+      [rows]="10"
+      [showCurrentPageReport]="true"
+      #dt
+      currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} estudios"
+      [rowsPerPageOptions]="[10, 25, 50]"
+      [filterDelay]="0"
+      [globalFilterFields]="[
+        'sponsor.nombre',
+        'identificadorNCT',
+        'titulo',
+        'enColombia',
+        'cro.nombre',
+        'estado'
+      ]"
+      [autoLayout]="true"
+    >
+      <ng-template pTemplate="caption">
+        <div class="table-header">
+          <div class="p-grid">
+            <div class="p-col-5">
+              <p class="p-col-4">Lista de estudios</p>
+            </div>
+            <div class="p-col-7">
+              <span class="p-input-icon-left" style="float: right">
+                <i class="pi pi-search"></i>
+                <input
+                  pInputText
+                  type="text"
+                  (input)="filterGlobal($event.target.value)"
+                  placeholder="Buscar"
+                />
+              </span>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="width: 50px"></th>
+          <th *ngIf="!isSponsorUser" pSortableColumn="sponsor.nombre">
+            Patrocinador
+            <p-sortIcon field="Colombia"></p-sortIcon>
+          </th>
+          <th pSortableColumn="identificadorNCT">
+            Identificador de base internacional
+            <p-sortIcon field="identificadorNCT"></p-sortIcon>
+          </th>
+          <th pSortableColumn="titulo">
+            Título
+            <p-sortIcon field="titulo"></p-sortIcon>
+          </th>
+          <th pSortableColumn="enColombia">
+            ¿En Colombia?
+            <p-sortIcon field="enColombia"></p-sortIcon>
+          </th>
+          <th pSortableColumn="cro.nombre">
+            CRO
+            <p-sortIcon field="cro.nombre"></p-sortIcon>
+          </th>
+          <th>Comité ético</th>
+          <th pSortableColumn="aprobadoINVIMA">
+            Apr. INVIMA
+            <p-sortIcon field="aprobadoINVIMA"></p-sortIcon>
+          </th>
+          <th pSortableColumn="estado">
+            Estado
+            <p-sortIcon field="estado"></p-sortIcon>
+          </th>
+          <th>Centros</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-study>
+        <tr [pSelectableRow]="study">
+          <td style="width: 50px">
+            <p-menu
+              #menu
+              [popup]="true"
+              [model]="items"
+              appendTo="body"
+            ></p-menu>
+            <p
+              class="pi pi-ellipsis-v"
+              (click)="selectStudy(study)"
+              (click)="menu.toggle($event)"
+            ></p>
+          </td>
+          <td *ngIf="!isSponsorUser" (click)="openDetails(study.id)">
+            {{ study.sponsor.nombre }}
+          </td>
+          <td (click)="openDetails(study.id)">{{ study.identificadorNCT }}</td>
+          <td (click)="openDetails(study.id)" style="max-width: 300px">
+            {{ study.titulo }}
+          </td>
+          <td (click)="openDetails(study.id)">{{ study.enColombia }}</td>
+          <td (click)="openDetails(study.id)">{{ study.cro?.nombre }}</td>
+          <td (click)="openDetails(study.id)" style="max-width: 300px">
+            <ul>
+              <li
+                *ngFor="
+                  let scc of study.studyCenterCommittees.items;
+                  index as i
+                "
+              >
+                <span>{{ scc.committee.nombre }}</span>
+              </li>
+            </ul>
+          </td>
+          <td (click)="openDetails(study.id)">
+            <span>{{ dateIITPipe.transform(study.aprobadoINVIMA) }}</span>
+          </td>
+          <td (click)="openDetails(study.id)">
+            <span
+              class="p-tag p-tag-info"
+              *ngIf="study.estado === 'PROPUESTO'"
+              >{{ studiesService.getEstadoToString(study.estado) }}</span
+            >
+            <span
+              class="p-tag p-tag-danger"
+              *ngIf="study.estado === 'SUSPENDIDO'"
+              >{{ studiesService.getEstadoToString(study.estado) }}</span
+            >
+            <span
+              class="p-tag p-tag-success"
+              *ngIf="study.estado === 'ENCURSO'"
+              >{{ studiesService.getEstadoToString(study.estado) }}</span
+            >
+            <span
+              class="p-tag p-tag-warning"
+              *ngIf="study.estado === 'FINALIZADO'"
+              >{{ studiesService.getEstadoToString(study.estado) }}</span
+            >
+            <span
+              class="p-tag p-tag-danger"
+              *ngIf="study.estado === 'ELIMINADO'"
+              >{{ studiesService.getEstadoToString(study.estado) }}</span
+            >
+          </td>
+          <td (click)="openDetails(study.id)" style="max-width: 300px">
+            <ul>
+              <li *ngFor="let stc of study.studyCenters.items; index as i">
+                <span>{{ stc.center.nombre }}</span>
+              </li>
+            </ul>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+    <p-messages
+      *ngIf="studies.length == 0 && !loading"
+      [(value)]="msgs"
+    ></p-messages>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<div class="p-grid p-fluid p-justify-end">
+  <div *ngIf="!isReader || !isMedico" class="p-col-12 p-md-6 p-xl-4">
+    <button
+      (click)="openAddAddendum()"
+      pButton
+      label="Crear enmienda"
+      type="button"
+      icon="pi pi-plus"
+    ></button>
+  </div>
+</div>
+<div class="p-col-12">
+  <ng-template ngFor let-addendum [ngForOf]="addendums" let-i="index">
+    <app-addendum-detail
+      [addendum]="addendum"
+      [studyId]="studyId"
+      (onUpdate)="loadAddendumsForThisStudy()"
+    >
+    </app-addendum-detail>
+  </ng-template>
+
+  <warning-message
+    [ifCondition]="addendums.length === 0"
+    [message]="'No se encontraron enmiendas asociadas.'"
+  ></warning-message>
+</div>

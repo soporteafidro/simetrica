@@ -1,0 +1,331 @@
+<div
+  class="p-col-12 p-md-12 p-fluid"
+  [ngClass]="{ pad: !editMode }"
+  *ngIf="study"
+>
+  <div class="card p-p-1">
+    <form name="form" (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <div class="p-grid">
+        <div class="p-col-12 p-md-4 p-lg-4 p-xl-4">
+          <label
+            ><span class="inputRequired">* </span>Alcance del estudio</label
+          >
+          <div class="p-mt-2">
+            <p-dropdown
+              [showClear]="true"
+              name="alcance"
+              [(ngModel)]="study.alcanceEstudio"
+              [options]="alcanceEstudio"
+              placeholder="- Seleccione -"
+              appendTo="body"
+              #alcance="ngModel"
+              required
+            ></p-dropdown>
+            <small class="form-error" *ngIf="!alcance.valid && f.submitted"
+              >* Campo requerido</small
+            >
+          </div>
+        </div>
+
+        <div class="p-col-12 p-md-8 p-lg-8 p-xl-8">
+          <label>Códigos ATC</label>
+          <input
+            class="p-mt-2"
+            name="codigosATC"
+            [(ngModel)]="study.codigosATC"
+            placeholder="Escriba aquí los codigos separados por comas..."
+            type="text"
+            pInputText
+            #codigosATC="ngModel"
+          />
+          <small class="form-error" *ngIf="!codigosATC.valid && f.submitted"
+            >* Error en formato de código ATC</small
+          >
+        </div>
+      </div>
+
+      <div class="p-grid p-mt-2">
+        <div class="p-d-flex p-ai-start p-col-12 p-md-4 p-lg-4 p-xl-4">
+          <label class="p-col-3 p-p-0">¿Tiene CRO?</label>
+          <div
+            *ngFor="let siNo of siNoRespuesta"
+            class="p-field-radiobutton p-mx-4 p-p-0 iText"
+          >
+            <p-radioButton
+              [(ngModel)]="study.tieneCRO"
+              inpudIt="siNo.key"
+              name="tieneCRO"
+              [value]="siNo.key"
+            >
+            </p-radioButton>
+            <label [for]="siNo.key">{{ siNo.name }}</label>
+          </div>
+        </div>
+        <div
+          *ngIf="study.tieneCRO === 'Si'"
+          class="p-col-12 p-md-8 p-lg-8 p-xl-8 p-p-0 p-d-flex p-ai-center"
+        >
+          <div class="p-col-11">
+            <label><span class="inputRequired">* </span>CRO</label>
+            <div class="p-mt-2">
+              <p-dropdown
+                [showClear]="true"
+                name="cro"
+                [(ngModel)]="study.studyCroId"
+                [options]="cros"
+                placeholder="- Seleccione un CRO -"
+                appendTo="body"
+                required
+                #cro="ngModel"
+              ></p-dropdown>
+              <small
+                class="form-error"
+                *ngIf="!cro.valid && f.submitted && study.tieneCRO === 'Si'"
+                >* Campo requerido</small
+              >
+            </div>
+          </div>
+          <button
+            pButton
+            pRipple
+            type="button"
+            icon="pi pi-plus"
+            class="p-button-rounded p-col-1 p-ml-2"
+            [ngClass]="{
+              'p-mt-4': !(!cro.valid && f.submitted && study.tieneCRO === 'Si')
+            }"
+            (click)="openCreateCROModal()"
+          ></button>
+        </div>
+      </div>
+
+      <h3>Datos de importación de medicamentos</h3>
+
+      <div class="p-grid p-mt-2">
+        <div class="p-col-12 p-md-4">
+          <label for="fechaDeLicenciaMedicamentos"
+            >Fecha de la licencia de los medicamentos</label
+          >
+          <div class="p-mt-2">
+            <p-calendar
+              tooltipPosition="top"
+              pTooltip="Fecha de la Licencia de importación. será igual o posterior a la fecha de  aprobación del INVIMA."
+              [(ngModel)]="fechaDeLicenciaMedicamentos"
+              name="fechaDeLicenciaMedicamentos"
+              [maxDate]="currentDate"
+              [showIcon]="true"
+              inputId="fechaDeLicenciaMedicamentos"
+              appendTo="body"
+              placeholder="DD/MM/YYYY"
+              dateFormat="dd/mm/yy"
+              [locale]="es"
+              #fLM="ngModel"
+            ></p-calendar>
+            <small
+              class="form-error"
+              *ngIf="
+                !fLM.valid &&
+                f.submitted &&
+                fLM.errors &&
+                fLM.errors['errorFecha']
+              "
+              >* {{ fLM.errors["errorFecha"] }}</small
+            >
+          </div>
+        </div>
+
+        <div class="p-col-12 p-md-4">
+          <label for="fechaPrimeraImportacionMedicamentos"
+            >Fecha de la primera importación de medicamentos</label
+          >
+          <div class="p-mt-2">
+            <p-calendar
+              tooltipPosition="top"
+              pTooltip="Fecha primera importación kits y otros insumos en bodega/sites."
+              [(ngModel)]="fechaPrimeraImportacionMedicamentos"
+              name="fechaPrimeraImportacionMedicamentos"
+              [maxDate]="currentDate"
+              [showIcon]="true"
+              inputId="fechaPrimeraImportacionMedicamentos"
+              appendTo="body"
+              placeholder="DD/MM/YYYY"
+              dateFormat="dd/mm/yy"
+              [locale]="es"
+              #fPPIM="ngModel"
+            ></p-calendar>
+            <small
+              class="form-error"
+              *ngIf="
+                !fPPIM.valid &&
+                f.submitted &&
+                fPPIM.errors &&
+                fPPIM.errors['errorFecha']
+              "
+              >* {{ fPPIM.errors["errorFecha"] }}</small
+            >
+          </div>
+        </div>
+
+        <div class="p-col-12 p-md-4">
+          <label for="fechaDeImportacionEnBodegaMedicamentos"
+            >Fecha de la importación en bodega de los medicamentos</label
+          >
+          <div class="p-mt-2">
+            <p-calendar
+              tooltipPosition="top"
+              pTooltip="Fecha primera importación de medicación en bodega/sites"
+              [(ngModel)]="fechaDeImportacionEnBodegaMedicamentos"
+              name="fechaDeImportacionEnBodegaMedicamentos"
+              [maxDate]="currentDate"
+              [showIcon]="true"
+              inputId="fechaDeImportacionEnBodegaMedicamentos"
+              appendTo="body"
+              placeholder="DD/MM/YYYY"
+              dateFormat="dd/mm/yy"
+              [locale]="es"
+              #fIBM="ngModel"
+            ></p-calendar>
+            <small
+              class="form-error"
+              *ngIf="
+                !fIBM.valid &&
+                f.submitted &&
+                fIBM.errors &&
+                fIBM.errors['errorFecha']
+              "
+              >* {{ fIBM.errors["errorFecha"] }}</small
+            >
+          </div>
+        </div>
+
+        <h3 style="width: 100%">Datos de importación de los Kits / Insumos</h3>
+
+        <div class="p-col-12 p-md-4">
+          <label for="fechaDeLicenciaKit"
+            >Fecha de la licencia de los Kits / Insumos</label
+          >
+          <div class="p-mt-2">
+            <p-calendar
+              tooltipPosition="top"
+              pTooltip="Fecha de la Licencia de importación. será igual o posterior a la fecha de  aprobación del INVIMA."
+              [(ngModel)]="fechaDeLicenciaKit"
+              name="fechaDeLicenciaKit"
+              [maxDate]="currentDate"
+              [showIcon]="true"
+              inputId="fechaDeLicenciaKit"
+              appendTo="body"
+              placeholder="DD/MM/YYYY"
+              dateFormat="dd/mm/yy"
+              [locale]="es"
+              #fLK="ngModel"
+            ></p-calendar>
+            <small
+              class="form-error"
+              *ngIf="
+                !fLK.valid &&
+                f.submitted &&
+                fLK.errors &&
+                fLK.errors['errorFecha']
+              "
+              >* {{ fL.errors["errorFecha"] }}</small
+            >
+          </div>
+        </div>
+
+        <div class="p-col-12 p-md-4">
+          <label for="fechaPrimeraImportacionKit"
+            >Fecha de la primera importación de los Kits / Insumos</label
+          >
+          <div class="p-mt-2">
+            <p-calendar
+              tooltipPosition="top"
+              pTooltip="Fecha primera importación kits y otros insumos en bodega/sites."
+              [(ngModel)]="fechaPrimeraImportacionKit"
+              name="fechaPrimeraImportacionKit"
+              [maxDate]="currentDate"
+              [showIcon]="true"
+              inputId="fechaPrimeraImportacionKit"
+              appendTo="body"
+              placeholder="DD/MM/YYYY"
+              dateFormat="dd/mm/yy"
+              [locale]="es"
+              #fPPIK="ngModel"
+            ></p-calendar>
+            <small
+              class="form-error"
+              *ngIf="
+                !fPPIK.valid &&
+                f.submitted &&
+                fPPIK.errors &&
+                fPPIK.errors['errorFecha']
+              "
+              >* {{ fPPIK.errors["errorFecha"] }}</small
+            >
+          </div>
+        </div>
+
+        <div class="p-col-12 p-md-4">
+          <label for="fechaDeImportacionEnBodegaKit"
+            >Fecha de la importación en bodega de los Kits / Insumos</label
+          >
+          <div class="p-mt-2">
+            <p-calendar
+              tooltipPosition="top"
+              pTooltip="Fecha primera importación de medicación en bodega/sites"
+              [(ngModel)]="fechaDeImportacionEnBodegaKit"
+              name="fechaDeImportacionEnBodegaKit"
+              [maxDate]="currentDate"
+              [showIcon]="true"
+              inputId="fechaDeImportacionEnBodegaKit"
+              appendTo="body"
+              placeholder="DD/MM/YYYY"
+              dateFormat="dd/mm/yy"
+              [locale]="es"
+              #fIBK="ngModel"
+            ></p-calendar>
+            <small
+              class="form-error"
+              *ngIf="
+                !fIBK.valid &&
+                f.submitted &&
+                fIBK.errors &&
+                fIBK.errors['errorFecha']
+              "
+              >* {{ fIBK.errors["errorFecha"] }}</small
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="p-grid p-mt-2" *ngIf="editMode">
+        <div class="p-col-6">
+          <button
+            class="p-button-outlined p-button-secondary"
+            pButton
+            label="Cancelar"
+            type="button"
+            (click)="onCancelar()"
+          ></button>
+        </div>
+        <div class="p-col-6 p-field">
+          <button pButton label="Guardar" type="submit"></button>
+        </div>
+      </div>
+
+      <div class="p-grid p-mt-2" *ngIf="!editMode">
+        <div class="p-col-12 p-mt-5">
+          <p-button
+            label="Anterior"
+            (click)="prevStep()"
+            style="float: left"
+          ></p-button>
+          <p-button
+            label="Siguiente"
+            type="submit"
+            style="float: right"
+          ></p-button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

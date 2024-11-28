@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "storage": {
+      "AuditTrace:@model(appsync)": [
+        "create"
+      ]
+    }
+  },
+  "lambdaLayers": []
+}

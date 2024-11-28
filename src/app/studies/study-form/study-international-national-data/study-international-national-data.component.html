@@ -1,0 +1,115 @@
+<div class="p-col-12 p-md-12 p-fluid" [ngClass]="{'pad' : !editMode}" *ngIf="study">
+    <div class="card p-p-1">
+        <form name="form" (ngSubmit)="onSubmit(f)" #f="ngForm">
+
+            <div class="p-grid">
+                <div class="p-d-flex p-flex-column p-col-12 p-md-5 p-lg-5 p-xl-5">
+                    <h2>Datos internacionales</h2>
+                    <div class="p-col-12">
+                        <label>Número de países participantes</label>
+                        <div class="p-mt-2">
+                            <p-inputNumber :min="0" [(ngModel)]="study.numeroPaisesParticipantes" name="numeroPaisesParticipantes" mode="decimal" placeholder="Número de países participantes"></p-inputNumber>
+                        </div>
+                    </div>
+                    <div class="p-col-12">
+                        <label>Total de sujetos a nivel global</label>
+                        <div class="p-mt-2">
+                            <p-inputNumber :min="0" [(ngModel)]="study.totalSujetosNivelGlobal" name="totalSujetosNivelGlobal" mode="decimal" placeholder="Número total de sujetos a nivel global" (onBlur)="calculatePercentage('totalSujetosNivelGlobal','numeroSujetosPlaneadosColombia', 'porcentajeSujetos')"></p-inputNumber>
+                        </div>
+                    </div>
+                    <div class="p-col-12">
+                        <label for="fechaLiberacionProtocolo">Fecha de liberación del protocolo</label>
+                        <div class="p-mt-2">
+                            <p-calendar tooltipPosition="top" pTooltip="Fecha de liberación del protocolo por casa matriz." [(ngModel)]="fechaLiberacionProtocolo" name="fechaLiberacionProtocolo" [maxDate]="currentDate" [showIcon]="true" inputId="fechaLiberacionProtocolo" appendTo="body"
+                                placeholder="DD/MM/YYYY" dateFormat="dd/mm/yy" [locale]="es" (onClose)="calculateDifferenceOfDays('fechaRecepcionPaqueteInicialColombia','fechaLiberacionProtocolo','diferenciaDiasRecepcionPaquete')"></p-calendar>
+                        </div>
+                    </div>
+                    <div class="p-col-12">
+                        <label for="fechaPrimerPacienteGlobal">Fecha del primer paciente global</label>
+                        <div class="p-mt-2">
+                            <p-calendar tooltipPosition="top" pTooltip="Fecha de reclutamiento del primer paciente a nivel global." [(ngModel)]="fechaPrimerPacienteGlobal" name="fechaPrimerPacienteGlobal" [maxDate]="currentDate" [showIcon]="true " inputId="fechaPrimerPacienteGlobal"
+                                [maxDate]="currentDate" appendTo="body" placeholder="DD/MM/YYYY" dateFormat="dd/mm/yy" [locale]="es" (onClose)="calculateDifferenceOfDays('fechaPrimerPacienteReclutadoColombia','fechaPrimerPacienteGlobal', 'diferenciaDiasPaciente')"></p-calendar>
+                        </div>
+                    </div>
+                    <div class="p-col-12">
+                        <label for="fechaCierreReclutamientoGlobal">Fecha último paciente enrolado a nivel global</label>
+                        <div class="p-mt-2">
+                            <p-calendar tooltipPosition="top" [(ngModel)]="fechaCierreReclutamientoGlobal" name="fechaCierreReclutamientoGlobal" [showIcon]="true " inputId="fechaCierreReclutamientoGlobal" appendTo="body" placeholder="DD/MM/YYYY" dateFormat="dd/mm/yy" [locale]="es"
+                                (onClose)="calculateDifferenceOfDays('fechaCierreReclutamientoColombia','fechaCierreReclutamientoGlobal', 'fechaCierreReclutamiento')"></p-calendar>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-d-flex p-flex-column p-col-12 p-md-7 p-lg-7 p-xl-7">
+                    <h2>Colombia</h2>
+                    <div class="p-col-12 p-mb-4"></div>
+                    <div class="p-d-flex p-mt-6">
+                        <div class="p-col-10">
+                            <label>Número de sujetos planeados</label>
+                            <div class="p-mt-2">
+                                <p-inputNumber :min="0" [(ngModel)]="study.numeroSujetosPlaneadosColombia" name="numeroSujetosPlaneadosColombia" mode="decimal" placeholder="Número de sujetos planeados para Colombia" (onChange)="validateSubjects(f)" (onBlur)="calculatePercentage('totalSujetosNivelGlobal','numeroSujetosPlaneadosColombia', 'porcentajeSujetos')"
+                                    #fNSPC="ngModel"></p-inputNumber>
+                                <small class="form-error" *ngIf="!fNSPC.valid && f.submitted && fNSPC.errors && fNSPC.errors['errorSujetos']">* {{fNSPC.errors['errorSujetos']}}</small>
+                            </div>
+                        </div>
+                        <div *ngIf="!fNSPC.errors" class="p-col-2 p-mt-5 p-as-center" id="porcentajeSujetos"></div>
+                    </div>
+                    <div class="p-d-flex">
+                        <div class="p-col-10">
+                            <label for="fechaRecepcionPaqueteInicialColombia">Fecha de recepción paquete inicial</label>
+                            <div class="p-mt-2">
+                                <p-calendar tooltipPosition="top" pTooltip="Fecha de recepción del paquete del estudio, por el centro." [(ngModel)]="fechaRecepcionPaqueteInicialColombia" [disabled]="!fechaLiberacionProtocolo" [minDate]="fechaLiberacionProtocolo" [maxDate]="currentDate"
+                                    name="fechaRecepcionPaqueteInicialColombia" [showIcon]="true" inputId="fechaRecepcionPaqueteInicialColombia" appendTo="body" placeholder="DD/MM/YYYY" dateFormat="dd/mm/yy" [locale]="es" (onClose)="calculateDifferenceOfDays('fechaRecepcionPaqueteInicialColombia','fechaLiberacionProtocolo', 'diferenciaDiasRecepcionPaquete')"
+                                    #fRPIC="ngModel"></p-calendar>
+                                <small class="form-error" *ngIf="!fRPIC.valid && f.submitted && fRPIC.errors && fRPIC.errors['errorFecha']">* {{fRPIC.errors['errorFecha']}}</small>
+
+                            </div>
+                        </div>
+                        <div *ngIf="fRPIC.valid" class="p-col-2 p-mt-5 p-as-center" id="diferenciaDiasRecepcionPaquete"></div>
+                    </div>
+                    <div class="p-d-flex">
+                        <div class="p-col-10">
+                            <label for="fechaPrimerPacienteReclutadoColombia">Fecha del primer paciente reclutado</label>
+                            <div class="p-mt-2">
+                                <p-calendar tooltipPosition="top" pTooltip="Fecha del primer paciente reclutado en Colombia." [(ngModel)]="fechaPrimerPacienteReclutadoColombia" [disabled]="!fechaPrimerPacienteGlobal" [minDate]="fechaPrimerPacienteGlobal" [maxDate]="currentDate" name="fechaPrimerPacienteReclutadoColombia"
+                                    [showIcon]="true" inputId="fechaPrimerPacienteReclutadoColombia" appendTo="body" placeholder="DD/MM/YYYY" dateFormat="dd/mm/yy" [locale]="es" (onClose)="calculateDifferenceOfDays('fechaPrimerPacienteReclutadoColombia','fechaPrimerPacienteGlobal', 'diferenciaDiasPaciente')"
+                                    #fPPR="ngModel"></p-calendar>
+                                <small class="form-error" *ngIf="!fPPR.valid && f.submitted && fPPR.errors && fPPR.errors['errorFecha']">* {{fPPR.errors['errorFecha']}}</small>
+                            </div>
+                        </div>
+                        <div *ngIf="fPPR.valid" class="p-col-2 p-mt-5 p-as-center" id="diferenciaDiasPaciente"></div>
+                    </div>
+                    <div class="p-d-flex">
+                        <div class="p-col-10">
+                            <label for="fechaCierreReclutamientoColombia ">Fecha último paciente enrolado Colombia</label>
+                            <div class="p-mt-2">
+                                <p-calendar tooltipPosition="top" pTooltip="Fecha planeada de cierre del reclutamiento en Colombia." [(ngModel)]="fechaCierreReclutamientoColombia" [disabled]="!fechaCierreReclutamientoGlobal" [minDate]="fechaCierreReclutamientoGlobal" name="fechaCierreReclutamientoColombia"
+                                    [showIcon]="true" inputId="fechaCierreReclutamientoColombia" appendTo="body" placeholder="DD/MM/YYYY" dateFormat="dd/mm/yy" [locale]="es" (onClose)="calculateDifferenceOfDays('fechaCierreReclutamientoColombia','fechaCierreReclutamientoGlobal', 'fechaCierreReclutamiento')"
+                                    #fCR="ngModel"></p-calendar>
+                                <small class="form-error" *ngIf="!fCR.valid && f.submitted && fCR.errors && fCR.errors['errorFecha']">* {{fCR.errors['errorFecha']}}</small>
+
+                            </div>
+                        </div>
+                        <div *ngIf="fCR.valid" class="p-col-2 p-mt-5 p-as-center" id="fechaCierreReclutamiento">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-grid p-mt-2" *ngIf="editMode">
+                <div class="p-col-6">
+                    <button class="p-button-outlined p-button-secondary" pButton label="Cancelar" type="button" (click)="onCancelar()"></button>
+                </div>
+                <div class="p-col-6 p-field">
+                    <button pButton label="Guardar" type="submit"></button>
+                </div>
+            </div>
+            <div class="p-grid p-mt-2" *ngIf="!editMode">
+                <div class="p-col-12 p-mt-5">
+                    <p-button label="Anterior" (click)="prevStep()" style="float:left"></p-button>
+                    <p-button label="Crear Estudio" type="submit" style="float:right"></p-button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

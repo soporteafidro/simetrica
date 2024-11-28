@@ -1,0 +1,576 @@
+<div
+  class="p-col-12 p-md-12 p-fluid"
+  [ngClass]="{ pad: !editMode }"
+  *ngIf="study"
+>
+  <div class="card p-p-1">
+    <form name="form" class="form-study" (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <div class="p-grid">
+        <div *ngIf="!isSponsorUser" class="p-col-12 p-lg-3 p-md-6">
+          <label><span class="inputRequired">* </span>Patrocinador</label>
+          <div class="p-mt-2">
+            <p-dropdown
+              [showClear]="true"
+              class="iText"
+              name="sponsorID"
+              [(ngModel)]="study.sponsorID"
+              [options]="sponsors"
+              [filter]="true"
+              required
+              placeholder="Seleccione un patrocinador..."
+              #sponsorID="ngModel"
+            ></p-dropdown>
+            <small
+              class="form-error"
+              *ngIf="!sponsorID.valid && f.submitted && !isSponsorUser"
+              >* Campo requerido</small
+            >
+          </div>
+        </div>
+
+        <div class="p-col-12 p-lg-2 p-md-6">
+          <label><span class="inputRequired">* </span>Identificador</label>
+          <input
+            class="p-mt-2 iText"
+            name="identificador"
+            [(ngModel)]="study.identificador"
+            placeholder="Número / código"
+            type="text"
+            pInputText
+            required
+            #id="ngModel"
+          />
+          <small class="form-error" *ngIf="!id.valid && f.submitted"
+            >* Campo requerido</small
+          >
+        </div>
+        <div class="p-col-12 p-lg-3 p-md-6">
+          <label
+            ><span class="inputRequired">* </span>Identificador de base
+            internacional</label
+          >
+          <input
+            class="p-mt-2 iText"
+            name="identificadorNCT"
+            [(ngModel)]="study.identificadorNCT"
+            placeholder="Identificador NTC/EUDRA/ENCP y otras"
+            type="text"
+            required
+            #nct="ngModel"
+            pInputText
+          />
+          <small class="form-error" *ngIf="!nct.valid && f.submitted"
+            >* Campo requerido</small
+          >
+        </div>
+        <div
+          class="p-col-7"
+          [ngClass]="{ 'p-col-12 p-lg-4 p-md-6': !isSponsorUser }"
+        >
+          <label>Link de base internacional</label>
+          <input
+            class="p-mt-2 iText"
+            name="linkClinical"
+            [(ngModel)]="study.linkClinical"
+            placeholder="Link de base internacional"
+            type="text"
+            pInputText
+          />
+        </div>
+      </div>
+
+      <div class="p-grid p-mt-2">
+        <div class="p-col-12">
+          <label><span class="inputRequired">* </span>Título en español</label>
+          <textarea
+            class="p-mt-2 iText"
+            name="titulo"
+            [(ngModel)]="study.titulo"
+            placeholder="Escriba aquí el nombre del estudio..."
+            [rows]="3"
+            [cols]="30"
+            style="resize: none"
+            required
+            #titulo="ngModel"
+            pInputTextarea
+          ></textarea>
+          <small class="form-error" *ngIf="!titulo.valid && f.submitted"
+            >* Campo requerido</small
+          >
+        </div>
+      </div>
+
+      <div class="p-grid p-mt-2">
+        <div class="p-col-12 p-lg-5 p-md-8">
+          <label><span class="inputRequired">* </span>Áreas terapéuticas</label>
+          <div class="p-mt-2">
+            <p-multiSelect
+              [showClear]="true"
+              class="p-mt-2 iText"
+              name="areasTerapeuticas"
+              [(ngModel)]="areasTerapeuticasSelected"
+              [options]="areasTerapeuticas"
+              emptyFilterMessage="No se han encontrado resultados"
+              [filter]="true"
+              required
+              placeholder="- Seleccione -"
+              #areasT="ngModel"
+            ></p-multiSelect>
+            <small class="form-error" *ngIf="!areasT.valid && f.submitted"
+              >* Campo requerido</small
+            >
+          </div>
+        </div>
+        <div class="p-col-12 p-lg-2 p-md-4">
+          <label><span class="inputRequired">* </span>Tipo de población</label>
+          <div class="p-mt-2">
+            <p-dropdown
+              [showClear]="true"
+              class="p-mt-2 iText"
+              name="tipoPoblacion"
+              [(ngModel)]="study.tipoPoblacion"
+              [options]="tipoPoblacion"
+              placeholder="- Seleccione -"
+              required
+              #tipoP="ngModel"
+            ></p-dropdown>
+            <small class="form-error" *ngIf="!tipoP.valid && f.submitted"
+              >* Campo requerido</small
+            >
+          </div>
+        </div>
+        <div class="row p-col-12 p-lg-4 p-md-8 p-md-mt-4">
+          <div class="p-d-flex p-ai-start p-mb-2">
+            <label class="p-col-5 p-p-0"
+              >¿En salud pública?
+              <i
+                (click)="showDialoghelpPublicealth()"
+                style="cursor: pointer"
+                tooltipPosition="top"
+                pTooltip="Ver condiciones"
+                class="pi pi-question-circle"
+              ></i
+            ></label>
+            <div
+              *ngFor="let siNo of siNoRespuesta"
+              class="p-field-radiobutton p-mx-4 p-p-0 iText"
+            >
+              <p-radioButton
+                name="saludPublica"
+                [(ngModel)]="study.saludPublica"
+                inpudIt="sino.key"
+                name="saludPublica"
+                [value]="siNo.key"
+              ></p-radioButton>
+              <label [for]="siNo.key">{{ siNo.name }}</label>
+            </div>
+          </div>
+          <div class="p-d-flex p-ai-start">
+            <label class="p-col-5 p-p-0">¿De enfermedad huérfana?</label>
+            <div
+              *ngFor="let siNo of siNoRespuesta"
+              class="p-field-radiobutton p-mx-4 p-p-0 iText"
+            >
+              <p-radioButton
+                name="enfermedadHuerfana"
+                [(ngModel)]="study.enfermedadHuerfana"
+                inpudIt="siNo.key"
+                name="enfermedadHuerfana"
+                [value]="siNo.key"
+              ></p-radioButton>
+              <label [for]="siNo.key">{{ siNo.name }}</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="p-grid">
+        <div class="p-col-12">
+          <label><span class="inputRequired">* </span>CIE-10</label>
+          <div class="p-mt-2">
+            <p-autoComplete
+              name="cie10"
+              appendTo="body"
+              [(ngModel)]="study.CIE10"
+              [suggestions]="cie10s"
+              [minLength]="2"
+              [emptyMessage]="'No se han encontrado resultados'"
+              (completeMethod)="searchCIE10($event)"
+              [forceSelection]="true"
+              [required]="true"
+              #cie="ngModel"
+              placeholder="Ingrese el código o una palabra clave para buscar"
+            >
+            </p-autoComplete>
+            <small class="form-error" *ngIf="!cie.valid && f.submitted"
+              >* Campo requerido</small
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="p-grid p-mt-2">
+        <div class="p-col-12 p-md-6 p-xl-3 p-lg-3">
+          <label><span class="inputRequired">* </span>Tipo de estudio</label>
+          <div class="p-mt-2">
+            <p-dropdown
+              [showClear]="true"
+              [styleClass]="'iText'"
+              name="tipoEstudio"
+              [(ngModel)]="study.tipoEstudio"
+              [options]="tipoEstudio"
+              placeholder="- Seleccione -"
+              required
+              #tipoE="ngModel"
+            ></p-dropdown>
+            <small class="form-error" *ngIf="!tipoE.valid && f.submitted"
+              >* Campo requerido</small
+            >
+          </div>
+        </div>
+        <div class="p-col-12 p-md-6 p-xl-3 p-lg-3">
+          <label><span class="inputRequired">* </span>Fase</label>
+          <div class="p-mt-2">
+            <p-dropdown
+              [showClear]="true"
+              [styleClass]="'iText'"
+              name="fase"
+              [(ngModel)]="study.fase"
+              [options]="faseEstudio"
+              placeholder="- Seleccione -"
+              required
+              #fase="ngModel"
+            ></p-dropdown>
+            <small class="form-error" *ngIf="!fase.valid && f.submitted"
+              >* Campo requerido</small
+            >
+          </div>
+        </div>
+        <div class="p-col-12 p-md-6 p-xl-3 p-lg-3">
+          <label for="fechaAprobacionCasaMatriz" class="elipsis p-mt-1"
+            ><span class="inputRequired">* </span>Fecha de aprobación protocolo
+            casa matriz</label
+          >
+          <div class="p-mt-2">
+            <p-calendar
+              tooltipPosition="top"
+              pTooltip="Fecha de aprobación del protocolo en ingles por casa matriz - fecha de la versión."
+              inputStyleClass="iText"
+              name="fechaAprobacionCasaMatriz"
+              [defaultDate]="currentDate"
+              [(ngModel)]="fechaDeAprobacionCasaMatriz"
+              [showIcon]="true"
+              inputId="fechaAprobacionCasaMatriz"
+              [maxDate]="currentDate"
+              appendTo="body"
+              placeholder="DD/MM/YYYY"
+              dateFormat="dd/mm/yy"
+              [locale]="es"
+              required
+              #fAppCM="ngModel"
+            ></p-calendar>
+            <small class="form-error" *ngIf="!fAppCM.valid && f.submitted"
+              >* Campo requerido</small
+            >
+          </div>
+        </div>
+        <div class="p-col-12 p-md-6 p-xl-3 p-lg-3">
+          <label for="fechaFactibilidadColombia" class="elipsis p-mt-1"
+            >Fecha de factibilidad en Colombia</label
+          >
+          <div class="p-mt-2 p-p-0">
+            <p-calendar
+              tooltipPosition="top"
+              tooltipPosition="top"
+              pTooltip="Fecha en que se considera factibilidad del estudio en Colombia."
+              [defaultDate]="currentDate"
+              inputStyleClass="iText"
+              name="fechaFactibilidadColombia"
+              [(ngModel)]="fechaDeFactibilidadEnColombia"
+              [showIcon]="true"
+              inputId="fechaFactibilidadColombia"
+              [maxDate]="currentDate"
+              appendTo="body"
+              placeholder="DD/MM/YYYY"
+              dateFormat="dd/mm/yy"
+              [locale]="es"
+              #fFC="ngModel"
+            ></p-calendar>
+            <small
+              class="form-error"
+              *ngIf="
+                !fFC.valid &&
+                f.submitted &&
+                fFC.errors &&
+                fFC.errors['errorFecha']
+              "
+              >* {{ fFC.errors["errorFecha"] }}</small
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="p-grid p-mt-3">
+        <p-fieldset class="p-col-12 fieldset">
+          <p-header>
+            <div class="p-d-flex p-ai-center">
+              <label class="p-mx-2 p-p-0">¿En Colombia?</label>
+              <div
+                *ngFor="let siNo of siNoRespuesta"
+                class="p-field-radiobutton p-p-0 p-mx-4 p-my-0 iText"
+              >
+                <p-radioButton
+                  name="colombia"
+                  [(ngModel)]="study.enColombia"
+                  inpudIt="siNo.key"
+                  name="colombia"
+                  [value]="siNo.key"
+                  (checked)="(siNo.key === study.enColombia)"
+                >
+                </p-radioButton>
+                <label [for]="siNo.key">{{ siNo.name }}</label>
+              </div>
+              <button
+                pButton
+                pRipple
+                type="button"
+                icon="pi pi-info-circle"
+                class="p-button-rounded p-button-help p-button-text"
+                (click)="showDialog()"
+              ></button>
+              <p-dialog
+                header="Ayuda"
+                [(visible)]="displayDialog"
+                [style]="{ width: '40vw' }"
+                [baseZIndex]="10000"
+              >
+                <p style="text-align: center">
+                  Este campo hace referencia a la selección de Colombia para
+                  participar en el estudio.
+                </p>
+                <ng-template pTemplate="footer">
+                  <p-button
+                    icon="pi pi-check"
+                    (click)="displayDialog = false"
+                    label="Ok"
+                    styleClass="p-button-text"
+                  >
+                  </p-button>
+                </ng-template>
+              </p-dialog>
+            </div>
+          </p-header>
+          <div *ngIf="study.enColombia === 'No'" class="p-col-12">
+            <label
+              ><span class="inputRequired">* </span>Motivo de No
+              selección</label
+            >
+            <textarea
+              class="p-mt-2 iText"
+              name="motivoNoSeleccion"
+              [(ngModel)]="study.motivoNoSeleccion"
+              placeholder="Escriba aquí su respuesta..."
+              [rows]="3"
+              [cols]="30"
+              pInputTextarea
+              autoResize="autoResize"
+              required
+              #motivoNS="ngModel"
+            ></textarea>
+            <small
+              class="form-error"
+              *ngIf="
+                !motivoNS.valid && f.submitted && study.enColombia === 'No'
+              "
+              >* Campo requerido</small
+            >
+          </div>
+          <div *ngIf="study.enColombia === 'Si'" class="p-grid p-col-12">
+            <div class="p-col-12 p-md-4 p-xl-3 p-lg-4">
+              <label for="fechaSeleccionColombia" class="elipsis p-mt-1"
+                >Fecha de selección de Colombia</label
+              >
+              <div class="p-mt-2">
+                <p-calendar
+                  tooltipPosition="top"
+                  pTooltip="Fecha de selección de Colombia para participar en el estudio."
+                  inputStyleClass="iText"
+                  name="fechaSeleccionColombia"
+                  [(ngModel)]="fechaSeleccionColombia"
+                  [showIcon]="true"
+                  inputId="fechaSeleccionColombia"
+                  [maxDate]="currentDate"
+                  appendTo="body"
+                  placeholder="DD/MM/YYYY"
+                  dateFormat="dd/mm/yy"
+                  [locale]="es"
+                  #fSC="ngModel"
+                ></p-calendar>
+                <small
+                  class="form-error"
+                  *ngIf="
+                    !fSC.valid &&
+                    f.submitted &&
+                    fSC.errors &&
+                    fSC.errors['errorFecha']
+                  "
+                  >* {{ fSC.errors["errorFecha"] }}</small
+                >
+              </div>
+            </div>
+            <div class="p-col-12 p-md-4 p-xl-3 p-lg-4">
+              <label for="fechaRecepcionFilialColombia" class="elipsis p-mt-1"
+                >Fecha de recepción protocolo filial Colombia</label
+              >
+              <div class="p-mt-2">
+                <p-calendar
+                  tooltipPosition="top"
+                  pTooltip="Fecha de recepción del protocolo en inglés por la filial colombiana o CRO."
+                  inputStyleClass="iText"
+                  name="fechaRecepcionFilialColombia"
+                  [(ngModel)]="fechaRecepcionFilialColombia"
+                  [showIcon]="true"
+                  inputId="fechaRecepcionFilialColombia"
+                  [maxDate]="currentDate"
+                  appendTo="body"
+                  placeholder="DD/MM/YYYY"
+                  dateFormat="dd/mm/yy"
+                  [locale]="es"
+                  #fRFC="ngModel"
+                ></p-calendar>
+                <small
+                  class="form-error"
+                  *ngIf="
+                    !fRFC.valid &&
+                    f.submitted &&
+                    fRFC.errors &&
+                    fRFC.errors['errorFecha']
+                  "
+                  >* {{ fRFC.errors["errorFecha"] }}</small
+                >
+              </div>
+            </div>
+            <div class="p-col-12 p-md-4 p-xl-3 p-lg-4">
+              <label for="fechaVersionEspaniol" class="elipsis p-mt-1"
+                >Fecha de versión en español</label
+              >
+              <div class="p-mt-2">
+                <p-calendar
+                  tooltipPosition="top"
+                  pTooltip="Fecha de traducción del protocolo al Español"
+                  inputStyleClass="iText"
+                  name="fechaVersionEspaniol"
+                  [(ngModel)]="fechaVersionEspaniol"
+                  [showIcon]="true"
+                  inputId="fechaVersionEspaniol"
+                  [maxDate]="currentDate"
+                  appendTo="body"
+                  placeholder="DD/MM/YYYY"
+                  dateFormat="dd/mm/yy"
+                  [locale]="es"
+                  #fVE="ngModel"
+                ></p-calendar>
+                <small
+                  class="form-error"
+                  *ngIf="
+                    !fVE.valid &&
+                    f.submitted &&
+                    fVE.errors &&
+                    fVE.errors['errorFecha']
+                  "
+                  >* {{ fVE.errors["errorFecha"] }}</small
+                >
+              </div>
+            </div>
+            <div class="p-col-12 p-md-12 p-xl-3 p-lg-12">
+              <label
+                for="fechaPropuestaCierreReclutamiento"
+                class="elipsis p-mt-1"
+                >Fecha propuesta de cierre del reclutamiento</label
+              >
+              <div class="p-mt-2">
+                <p-calendar
+                  tooltipPosition="top"
+                  pTooltip="Fecha planeada de cierre del reclutamiento a nivel global."
+                  inputStyleClass="iText"
+                  name="fechaPropuestaCierreReclutamiento"
+                  [(ngModel)]="fechaPropuestaCierreReclutamiento"
+                  [showIcon]="true"
+                  inputId="fechaPropuestaCierreReclutamiento"
+                  appendTo="body"
+                  placeholder="DD/MM/YYYY"
+                  dateFormat="dd/mm/yy"
+                  [locale]="es"
+                  #fPCR="ngModel"
+                ></p-calendar>
+                <small
+                  class="form-error"
+                  *ngIf="
+                    !fPCR.valid &&
+                    f.submitted &&
+                    fPCR.errors &&
+                    fPCR.errors['errorFecha']
+                  "
+                  >* {{ fPCR.errors["errorFecha"] }}</small
+                >
+              </div>
+            </div>
+          </div>
+        </p-fieldset>
+      </div>
+
+      <div class="p-grid p-mt-2">
+        <div class="p-col-6" *ngIf="editMode">
+          <button
+            class="p-button-outlined p-button-secondary"
+            pButton
+            label="Cancelar"
+            type="button"
+            (click)="onCancelar()"
+          ></button>
+        </div>
+        <div class="p-col-6 p-field" *ngIf="editMode">
+          <button pButton label="Guardar" type="submit"></button>
+        </div>
+        <div class="p-col-12 p-mt-5" *ngIf="!editMode">
+          <p-button
+            label="Siguiente"
+            type="submit"
+            style="float: right"
+          ></p-button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<p-dialog
+  modal="true"
+  header="CONSEJO NACIONAL DE SEGURIDAD SOCIAL EN SALUD - ACUERDO NUMERO 117"
+  [(visible)]="displayDialoghelpPublicHealth"
+  [style]="{ width: '50vw' }"
+>
+  <p>
+    Enfermedades de Interés en Salud Pública: Son aquellas enfermedades que
+    presentan un alto impacto en la salud colectiva y ameritan una atención y
+    seguimiento especial.
+  </p>
+  <p>Estas enfermedades responden a los siguientes criterios:</p>
+  <p>
+    Enfermedades infecciosas cuyo tratamiento requiere seguimiento de manera
+    estricta y secuencial en el manejo de quimioterapia, para evitar el
+    desarrollo de quimio resistencias, con grave impacto sobre la colectividad.
+  </p>
+  <p>
+    Enfermedades de alta prevalencia que de no recibir control y seguimiento
+    constante y adecuado constituyen un factor de riesgo para el desarrollo de
+    enfermedades de mayor gravedad, secuelas irreversibles, invalidez y muerte
+    prematura.
+  </p>
+  <p>
+    Enfermedades de alta transmisibilidad y poder epidémico que requieren de una
+    atención eficaz para su control. Son enfermedades que exceden en frecuencia
+    o gravedad el comportamiento regular y requieren de atención inmediata para
+    evitar su propagación, disminuir su avance, reducir las secuelas y evitar la
+    mortalidad.
+  </p>
+</p-dialog>

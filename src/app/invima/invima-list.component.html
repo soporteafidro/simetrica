@@ -1,0 +1,129 @@
+<div class="p-col-12">
+  <div class="p-grid p-fluid">
+    <div class="p-col-7">
+      <p-chart
+        *ngIf="iteraciones.length > 0"
+        type="doughnut"
+        [data]="data"
+        [options]="options"
+        height="140px"
+      >
+      </p-chart>
+    </div>
+    <div *ngIf="!isReader && !isMedico" class="p-col-12 p-md-6 p-xl-4">
+      <button
+        pButton
+        label="Crear Interacción"
+        type="button"
+        (click)="openIterationForm()"
+        icon="pi pi-plus"
+      ></button>
+    </div>
+  </div>
+
+  <p-table
+    *ngIf="iteraciones.length > 0"
+    #dt
+    [value]="iteraciones"
+    [autoLayout]="true"
+    sortMode="multiple"
+  >
+    <ng-template pTemplate="caption">
+      <div class="table-header p-grid p-jc-between">
+        <span>Lista de interacciones</span>
+      </div>
+    </ng-template>
+
+    <ng-template pTemplate="header" let-columns>
+      <tr>
+        <th *ngIf="!isReader"></th>
+        <th>Tipo de interacción</th>
+        <th>Tipo de requerimiento</th>
+        <th>Fecha de radicación</th>
+        <th>Fecha de resolución INVIMA</th>
+        <th>Fecha de notificación INVIMA</th>
+        <th>Estado</th>
+        <th>Resolución</th>
+        <th>Causal retraso</th>
+        <th>Notas de seguimiento</th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-rowData>
+      <tr>
+        <td *ngIf="!isReader">
+          <div *ngIf="!rowData.editable">
+            <p-menu
+              #menu
+              [popup]="true"
+              [model]="itemsSinEdit"
+              appendTo="body"
+            ></p-menu>
+            <p
+              class="pi pi-ellipsis-v"
+              (click)="selectIteration(rowData)"
+              (click)="menu.toggle($event)"
+            ></p>
+          </div>
+
+          <div *ngIf="rowData.editable">
+            <p-menu
+              #menuAux
+              [popup]="true"
+              [model]="items"
+              appendTo="body"
+            ></p-menu>
+            <p
+              class="pi pi-ellipsis-v"
+              (click)="selectIteration(rowData)"
+              (click)="menuAux.toggle($event)"
+            ></p>
+          </div>
+        </td>
+        <td>{{ sisec.printValue(rowData.tipoIteracion) }}</td>
+        <td>
+          {{
+            sisec.printValue(
+              getTipoRequerimientos(
+                rowData.tipoRequerimiento,
+                rowData.otroTipoRequerimiento
+              )
+            )
+          }}
+        </td>
+        <td>
+          {{
+            sisec.printValue(dateIITPipe.transform(rowData.fechaDeSometimiento))
+          }}
+        </td>
+        <td>
+          {{
+            sisec.printValue(
+              dateIITPipe.transform(rowData.fechaRespuestaInvima)
+            )
+          }}
+        </td>
+        <td>
+          {{
+            sisec.printValue(dateIITPipe.transform(rowData.fechaDeNotificacion))
+          }}
+        </td>
+        <td>{{ sisec.printValue(rowData.estadoIteracion) }}</td>
+        <td>{{ sisec.printValue(rowData.resolucion) }}</td>
+        <td>
+          <span *ngIf="rowData.causalRetrasoPatrocinador !== 'Otro'">{{
+            sisec.printValue(rowData.causalRetrasoPatrocinador)
+          }}</span>
+          <span *ngIf="rowData.causalRetrasoPatrocinador === 'Otro'">{{
+            sisec.printValue(rowData.otroCausalRetrasoPatrocinador)
+          }}</span>
+        </td>
+        <td>{{ sisec.printValue(rowData.notasDeSeguimiento) }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <warning-message
+    [ifCondition]="iteraciones.length === 0"
+    [message]="'No se encontraron interacciones INVIMA.'"
+  ></warning-message>
+</div>

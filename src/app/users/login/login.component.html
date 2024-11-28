@@ -1,0 +1,79 @@
+<div class="login">
+  <div class="form_container">
+    <div class="logo_container">
+      <img src="../../../assets/imgs/logoCompleto.png" width="100%" />
+    </div>
+    <form name="form" (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <div class="p-fluid">
+        <div class="p-field">
+          <label for="usuario">Usuario</label>
+          <input
+            id="usuario"
+            name="usuario"
+            id="float-input"
+            type="text"
+            pInputText
+            [(ngModel)]="username"
+            required
+            #usuario="ngModel"
+          />
+          <small
+            class="form-error"
+            *ngIf="!usuario.valid && (f.submitted || usuario.touched)"
+            >* Campo requerido</small
+          >
+        </div>
+        <div class="p-field">
+          <label for="contra">Contraseña</label>
+          <div id="contra" class="p-inputgroup password-container">
+            <input
+              name="clave"
+              type="password"
+              pPassword
+              [(ngModel)]="password"
+              [showPassword]="isPasswordShown"
+              [feedback]="false"
+              #clave="ngModel"
+              required
+              style="border: none"
+            />
+            <button
+              pButton
+              type="button"
+              icon="pi pi-eye"
+              (click)="showPasswords()"
+              *ngIf="!isPasswordShown"
+              class="rounded-left"
+            ></button>
+            <button
+              pButton
+              type="button"
+              icon="pi pi-eye-slash"
+              (click)="showPasswords()"
+              *ngIf="isPasswordShown"
+              class="rounded-left"
+            ></button>
+          </div>
+          <small
+            class="form-error"
+            *ngIf="!clave.valid && (f.submitted || clave.touched)"
+            >* Campo requerido</small
+          >
+        </div>
+        <div class="p-field p-mt-4">
+          <div style="text-align: right">
+            <a
+              class="orange-label-link"
+              routerLink="/resetPassword"
+              routerLinkActive="active"
+              >¿Olvidó su contraseña?</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="p-field p-mt-6" style="text-align: right">
+        <button pButton type="submit" label="Ingresar"></button>
+      </div>
+    </form>
+  </div>
+</div>

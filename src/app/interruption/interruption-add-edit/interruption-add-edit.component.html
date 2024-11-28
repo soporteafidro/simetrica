@@ -1,0 +1,54 @@
+<div class="p-grid">
+    <form name="form" (ngSubmit)="onSubmit(f)" #f="ngForm">
+        <div class="p-fluid p-formgrid p-grid">
+            <div class="p-col-12">
+                <h3>Datos básicos</h3>
+            </div>
+
+            <div class="p-col-12 p-md-6 p-field">
+                <label><span class="inputRequired">* </span>Interrupción reclutamiento:</label>
+                <p-dropdown [showClear]="true" placeholder="Seleccione" #interrupcionReclutamiento="ngModel" name="interrupcionReclutamiento" [(ngModel)]="interruption.interrupcionReclutamiento" required [options]="typeInterrupcionReclutamiento"></p-dropdown>
+                <small class="form-error" *ngIf="!interrupcionReclutamiento.valid && (f.submitted || interrupcionReclutamiento.touched)">* Campo
+                    requerido</small>
+            </div>
+
+            <div class="p-col-12 p-md-6 p-field">
+                <label><span class="inputRequired">* </span>Motivo de interrupción:</label>
+                <p-dropdown [showClear]="true" placeholder="Seleccione" #motivoInterrupcion="ngModel" name="motivoInterrupcion" [(ngModel)]="interruption.motivoInterrupcion" required [options]="typemotivoInterrupcion" (onChange)="interrupcionSelect()"></p-dropdown>
+                <small class="form-error" *ngIf="!motivoInterrupcion.valid && (f.submitted || motivoInterrupcion.touched)">* Campo
+              requerido</small>
+            </div>
+
+            <div class="p-col-12 p-md-6 p-field" *ngIf="inputMotiveInterruptionVisibility">
+                <label>Otro motivo de interrupción:</label>
+                <textarea pInputTextarea name="otroMotivoInterrupcion" type="text" pInputText [(ngModel)]="interruption.otroMotivoInterrupcion" #otroMotivoInterrupcion="ngModel" [rows]="5" autoResize="autoResize"></textarea>
+            </div>
+
+            <div class="p-col-12 p-md-6 p-field">
+                <label><span class="inputRequired">* </span>Fecha inicial de interrupción</label>
+                <p-calendar tooltipPosition="top" pTooltip="Fecha de inicio de la interrupción del reclutamiento" [(ngModel)]="fechaInicio" name="fechaInicialInterrupcion" inputStyleClass="iText" [maxDate]="currentDate" [showIcon]="true" inputId="icon" placeholder="DD/MM/YYYY"
+                    dateFormat="dd/mm/yy" [locale]="es" required #fII="ngModel"
+                    (onSelect)="setminFechaFinalizacionInterrupcion()" appendTo="body"></p-calendar>
+                <small class="form-error" *ngIf="!fII.valid && (f.submitted || fII.touched) && fII.errors && !fII.errors['errorFecha']">* Campo
+                requerido</small>
+                <small class="form-error" *ngIf="!fII.valid && f.submitted && fII.errors && fII.errors['errorFecha']">* {{fII.errors['errorFecha']}}</small>
+
+            </div>
+
+            <div class="p-col-12 p-md-6 p-field">
+                <label>Fecha de finalización de interrupción</label>
+                <p-calendar tooltipPosition="top" pTooltip="Fecha de finalización de la interrupción del reclutamiento" [(ngModel)]="fechaFin" name="fechaFinalizacionInterrupcion" [disabled]="!fechaInicio" [minDate]="minFechaFinalizacionInterrupcion" [maxDate]="currentDate"
+                    [showIcon]="true" inputId="icon" placeholder="DD/MM/YYYY" dateFormat="dd/mm/yy" [locale]="es"
+                    #fechaFinalizacionTnterrupcion="ngModel" #fFI="ngModel" appendTo="body"></p-calendar>
+                <small class="form-error" *ngIf="!fFI.valid && f.submitted && fFI.errors && fFI.errors['errorFecha']">* {{fFI.errors['errorFecha']}}</small>
+            </div>
+
+            <div class="p-field p-col-12 p-md-4 p-md-offset-4 p-xl-3 p-xl-offset-6">
+                <button class="p-button-outlined p-button-secondary" pButton label="Cancelar" type="button" (click)="close(interruptionOriginal)"></button>
+            </div>
+            <div class="p-field p-col-12 p-md-4 p-xl-3">
+                <button pButton label="{{editMode ? 'Actualizar' : 'Agregar'}}" type="submit"></button>
+            </div>
+        </div>
+    </form>
+</div>

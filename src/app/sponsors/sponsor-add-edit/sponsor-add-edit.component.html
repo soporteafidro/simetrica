@@ -1,0 +1,62 @@
+<div class="container-integra">
+  <h1>{{editMode?'Actualizar mi patrocinador':'Crear patrocinador'}}</h1>
+  <form name="form" (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-col-12">
+        <h3>Datos básicos</h3>
+      </div>
+      <div class="p-col-12 p-md-6 p-field">
+        <label><span class="inputRequired">* </span>Nombres:</label>
+        <input name="nombre" type="text" pInputText [(ngModel)]="sponsor.nombre" required #nombre="ngModel">
+        <small class="form-error" *ngIf="!nombre.valid && (f.submitted || nombre.touched)">* Campo
+          requerido</small>
+      </div>
+      <div class="p-col-12 p-md-6 p-field">
+        <label><span class="inputRequired">* </span>Nit:</label>
+        <input name="nit" type="text" pInputText [(ngModel)]="sponsor.nit" #nit="ngModel" required>
+        <small class="form-error" *ngIf="!nit.valid && (f.submitted || nit.touched)">* Campo
+          requerido</small>
+      </div>
+      <div class="p-col-12 p-md-6 p-field">
+        <label>Correo de contacto:</label>
+        <input name="email" type="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" pInputText [(ngModel)]="sponsor.correo" #email="ngModel">
+        <small class="form-error" *ngIf="email.errors && email.errors.pattern && (f.submitted || email.touched)">* Email
+          inválido, no cumple el patrón.</small>
+      </div>
+      <div class="p-col-12 p-md-6 p-field">
+        <label>Información de contacto:</label>
+          <textarea 
+          pInputTextarea
+          name="informacionContacto"
+          type="text"
+          pInputText
+          [(ngModel)]="sponsor.informacionContacto"
+          #informacionContacto="ngModel"
+          [rows]="5"
+          autoResize="autoResize"
+          ></textarea>
+      </div>
+      <div class="p-col-12 p-field">
+        <label>LOGO patrocinador: </label>
+        <input name="sponsor_logo" accept="image/*" type="file" (change)="fileSelected($event)"
+          #sponsor_logo />
+      </div>
+      <div *ngIf="editMode && logoURL" class="p-col-12 p-md-6">
+        <label>Logo Actual: </label><br>
+        <img *ngIf="sponsor.logoURL" [src]="logoURL" class="text-center" height="60px">
+        <img *ngIf="!sponsor.logoURL" src="/assets/sponsor-logo-placeholder.svg" class="text-center" height="60px">
+      </div>
+      
+      <div *ngIf="!editMode && logoURL" class="p-col-12 p-md-6">
+        <label>Logo patrocinador: </label><br>
+        <img *ngIf="sponsor.logoURL || logoURL" [src]="logoURL" class="text-center" height="60px">
+      </div>
+      <div class="p-field p-col-12 p-sm-6 p-md-3 p-md-offset-6 p-xl-2 p-xl-offset-8">
+        <button class="p-button-outlined p-button-secondary" pButton label="Cancelar" type="button" (click)="onCancelar()"></button>
+      </div>
+      <div class="p-field p-col-12 p-sm-6 p-md-3 p-xl-2">
+        <button pButton label="{{editMode ? 'Actualizar' : 'Agregar'}}" type="submit"></button>
+      </div>
+    </div>
+  </form>
+</div>

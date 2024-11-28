@@ -1,0 +1,22 @@
+<div class="p-grid">
+  <div class="p-col-12 p-pb-0">
+    <div class="logo_container" *ngIf="sponsor">
+      <img *ngIf="sponsor.logoURL" [src]="logo" height="100px" />
+    </div>
+  </div>
+  <div class="p-col-12 p-p-0">
+    <studies-list [isHomeView]="true"></studies-list>
+  </div>
+</div>
+
+<p-dialog
+  (onHide)="closeModal()"
+  modal="true"
+  [header]="sisecService.MessageHelpHome.title"
+  [(visible)]="display"
+  [style]="{ width: '80vw' }"
+>
+  <p style="text-align: justify">
+    {{ sisecService.MessageHelpHome.content }}
+  </p>
+</p-dialog>

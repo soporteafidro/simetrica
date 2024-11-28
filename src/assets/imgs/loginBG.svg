@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1518" height="1080" viewBox="0 0 1518 1080">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+        stroke: #707070;
+      }
+
+      .cls-2 {
+        clip-path: url(#clip-path);
+      }
+
+      .cls-3 {
+        fill: url(#linear-gradient);
+      }
+
+      .cls-4 {
+        fill: url(#linear-gradient-2);
+      }
+
+      .cls-5 {
+        filter: url(#Rectángulo_2048);
+      }
+
+      .cls-6 {
+        filter: url(#Trazado_41);
+      }
+    </style>
+    <clipPath id="clip-path">
+      <rect id="Rectángulo_2097" data-name="Rectángulo 2097" class="cls-1" width="1518" height="1080"/>
+    </clipPath>
+    <linearGradient id="linear-gradient" y1="1" x2="0.822" y2="0.709" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#2d327e"/>
+      <stop offset="1" stop-color="#f3704b"/>
+    </linearGradient>
+    <filter id="Trazado_41" x="-55" y="-66" width="1366" height="1218" filterUnits="userSpaceOnUse">
+      <feOffset dx="14" dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="23" result="blur"/>
+      <feFlood flood-color="#2d327e" flood-opacity="0.188"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="linear-gradient-2" x1="0.348" y1="2.346" x2="0.651" y2="-0.002" xlink:href="#linear-gradient"/>
+    <filter id="Rectángulo_2048" x="-275.886" y="56.973" width="1753.436" height="1427.562" filterUnits="userSpaceOnUse">
+      <feOffset dy="46" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="17.5" result="blur-2"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Enmascarar_grupo_2" data-name="Enmascarar grupo 2" class="cls-2">
+    <g class="cls-6" transform="matrix(1, 0, 0, 1, 0, 0)">
+      <path id="Trazado_41-2" data-name="Trazado 41" class="cls-3" d="M0,0H1228L864.86,1080H0Z"/>
+    </g>
+    <g class="cls-5" transform="matrix(1, 0, 0, 1, 0, 0)">
+      <rect id="Rectángulo_2048-2" data-name="Rectángulo 2048" class="cls-4" width="1800" height="327" transform="matrix(0.81, 0.59, -0.59, 0.81, -31.18, 63.47)"/>
+    </g>
+  </g>
+</svg>

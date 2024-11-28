@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "storage": {
+      "Center:@model(appsync)": [
+        "read"
+      ]
+    }
+  },
+  "lambdaLayers": []
+}

@@ -1,0 +1,29 @@
+<p-table [value]="studies" [paginator]="studies.length" [rows]="10" [showCurrentPageReport]="true"
+  currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} estudios" [rowsPerPageOptions]="[10, 25, 50]"
+  [autoLayout]="true" sortMode="multiple" [scrollable]="false">
+  <ng-template pTemplate="header">
+    <tr>
+      <th class="p-text-center" id="titulo" pSortableColumn="titulo">Nombre estudio <p-sortIcon field="titulo"></p-sortIcon></th>
+      <th class="p-text-center" id="CIE10" pSortableColumn="CIE10">Enfermedad <p-sortIcon field="CIE10"></p-sortIcon></th>
+      <th class="p-text-center" id="tipoPoblacion" pSortableColumn="tipoPoblacion">Tipo población <p-sortIcon field="tipoPoblacion"></p-sortIcon></th>
+      <th class="p-text-center" id="ciudad" pSortableColumn="ciudad">Ciudad <p-sortIcon field="ciudad"></p-sortIcon></th>
+      <th class="p-text-center" id="nombre" pSortableColumn="nombre">Centro <p-sortIcon field="nombre"></p-sortIcon></th>
+      <th class="p-text-center" id="contacto" pSortableColumn="contacto">Información de contacto <p-sortIcon field="contacto"></p-sortIcon></th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-study>
+    <tr>
+      <td class="p-text-center">{{ study.titulo }}</td>
+      <td class="p-text-center">{{ study.CIE10 }}</td>
+      <td class="p-text-center">{{ study.tipoPoblacion }}</td>
+      <td class="p-text-center">{{ location.getMunicipioName(study.ciudad) }}</td>
+      <td class="p-text-center">{{ study.nombre }}</td>
+      <td class="p-text-center">{{ study.contacto }}</td>
+    </tr>
+  </ng-template>
+</p-table>
+<p-messages severity="warn" *ngIf="studies.length === 0">
+  <ng-template pTemplate>
+      <p>No se encontraron estudios con los criterios de búsquedas ingresados.</p>
+  </ng-template>
+</p-messages>

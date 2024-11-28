@@ -1,0 +1,140 @@
+<div class="p-grid p-fluid p-justify-end">
+  <div *ngIf="!isReader && !isMedico" class="p-col-12 p-md-6 p-xl-4">
+    <button
+      pButton
+      label="Asignar Centro"
+      type="button"
+      (click)="openAssignCenterModal()"
+      icon="pi pi-plus"
+    ></button>
+  </div>
+</div>
+<div class="p-col-12">
+  <ng-template ngFor let-studyCenter [ngForOf]="studyCenters" let-i="index">
+    <p-card>
+      <p-header>
+        <div style="position: relative">
+          <div *ngIf="!isReader" class="menuDots">
+            <p-menu
+              #menu
+              [popup]="true"
+              [model]="items"
+              appendTo="body"
+            ></p-menu>
+            <p
+              class="pi pi-ellipsis-v"
+              (click)="onStudyCenterSelected(studyCenter)"
+              (click)="menu.toggle($event)"
+            ></p>
+          </div>
+          <h2 style="margin-left: 50px; margin-bottom: -30px">
+            {{ studyCenter.center.nombre }}
+          </h2>
+        </div>
+      </p-header>
+      <div class="p-grid">
+        <div class="p-col-4">
+          <div class="p-mt-2">
+            <span
+              ><strong>Costo por paciente: </strong
+              >{{ sisec.printValue(studyCenter.costoPorPaciente) }}</span
+            >
+          </div>
+          <div class="p-mt-2">
+            <span
+              ><strong>Cantidad de pacientes previstos: </strong
+              >{{
+                sisec.printValue(studyCenter.cantidadPacientesPrevistos)
+              }}</span
+            >
+          </div>
+          <div class="p-mt-2">
+            <span
+              ><strong>Cantidad de pacientes incluidos: </strong
+              >{{
+                sisec.printValue(studyCenter.cantidadPacientesIncluidos)
+              }}</span
+            >
+          </div>
+        </div>
+        <div class="p-col-4">
+          <div class="p-mt-2">
+            <span
+              ><strong>Fecha de envió del paquete: </strong
+              >{{
+                dateIITPipe.transform(studyCenter.fechaRecepcionPaquete)
+              }}</span
+            >
+          </div>
+          <div class="p-mt-2">
+            <span
+              ><strong>Fecha de recepción de contrato: </strong
+              >{{
+                dateIITPipe.transform(studyCenter.fechaRecepcionContrato)
+              }}</span
+            >
+          </div>
+          <div class="p-mt-2">
+            <span
+              ><strong>Fecha de firma de contrato: </strong
+              >{{ dateIITPipe.transform(studyCenter.fechaFirmaContrato) }}</span
+            >
+          </div>
+          <div class="p-mt-2">
+            <span
+              ><strong>Fecha de firma de contrato del patrocinador: </strong
+              >{{
+                dateIITPipe.transform(
+                  studyCenter.fechaFirmaContratoPatrocinador
+                )
+              }}</span
+            >
+          </div>
+        </div>
+        <div class="p-col-4">
+          <div class="p-mt-2">
+            <span
+              ><strong>Fecha aprobación INVIMA: </strong
+              >{{
+                dateIITPipe.transform(studyCenter.fechaAprobacionInvima)
+              }}</span
+            >
+          </div>
+          <div class="p-mt-2">
+            <span
+              ><strong>Fecha de activación del centro: </strong
+              >{{
+                dateIITPipe.transform(studyCenter.fechaActivacionCentro)
+              }}</span
+            >
+          </div>
+          <div class="p-mt-2">
+            <span
+              ><strong>Fecha primer paciente seleccionado: </strong
+              >{{
+                dateIITPipe.transform(
+                  studyCenter.fechaPrimerPacienteSeleccionado
+                )
+              }}</span
+            >
+          </div>
+          <div class="p-mt-2">
+            <span
+              ><strong>Fecha primer paciente aleatorizado: </strong
+              >{{
+                dateIITPipe.transform(
+                  studyCenter.fechaPrimerPacienteAleatorizado
+                )
+              }}</span
+            >
+          </div>
+        </div>
+      </div>
+    </p-card>
+  </ng-template>
+  <warning-message
+    [ifCondition]="studyCenters.length === 0"
+    [message]="'No se encontraron centros asociados.'"
+  >
+  </warning-message>
+</div>

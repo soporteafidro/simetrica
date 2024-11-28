@@ -1,0 +1,31 @@
+<form name="form" (ngSubmit)="onSubmit(f)" #f="ngForm" class="form-style">
+  <div class="p-grid p-fluid">
+    <div class="p-offset-1 p-col-11" style="margin-top: 1rem;">
+      <a routerLink="/login">
+        <i class="pi pi-chevron-left"> </i> Login
+      </a>
+    </div>
+    <div class="p-offset-1 p-col-11">
+      <h2>Activación de usuario</h2>
+      <h4>Por favor ingrese el código que recibió en el email.</h4>
+    </div>
+    <div class="p-col-10 p-offset-1 p-lg-4">
+      <h4>Cédula</h4>
+      <input name="cedula" type="text" pInputText [(ngModel)]="userId" required #cedula="ngModel">
+      <small class="form-error" *ngIf="!cedula.valid && (f.submitted || cedula.touched)">* Campo
+        requerido</small>
+    </div>
+    <div class="p-col-10 p-offset-1 p-lg-4">
+      <h4>Código de activación</h4>
+      <input name="code" type="text" pInputText [(ngModel)]="codigo" required #code="ngModel">
+      <small class="form-error" *ngIf="!code.valid && (f.submitted || code.touched)">* Campo
+        requerido</small>
+    </div>
+    <div class="p-col-10 p-offset-1 p-lg-4" style="text-align: center;">
+      <a class="forgot" (click)=" sendAgain()">Reenviar código</a>
+    </div>
+    <div class="p-col-10 p-offset-1 p-lg-2 p-lg-offset-8">
+      <button pButton label="Activar Usuario" type="submit" class="p-button-secondary"></button>
+    </div>
+  </div>
+</form>

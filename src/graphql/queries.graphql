@@ -1,0 +1,5013 @@
+# this is an auto generated file. This will be overwritten
+
+query SendNotification($input: SendNotificationInput) {
+  sendNotification(input: $input) {
+    result
+    error
+    __typename
+  }
+}
+
+query GetAuditTrace($id: ID!) {
+  getAuditTrace(id: $id) {
+    id
+    relatedEntityId
+    entity
+    eventDateTime
+    eventType
+    author
+    data
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+
+query ListAuditTraces(
+  $filter: ModelAuditTraceFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listAuditTraces(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      relatedEntityId
+      entity
+      eventDateTime
+      eventType
+      author
+      data
+      createdAt
+      updatedAt
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+
+query GetSponsor($id: ID!) {
+  getSponsor(id: $id) {
+    studies {
+      items {
+        sponsorID
+        CIE10
+        id
+        identificador
+        identificadorNCT
+        linkClinical
+        titulo
+        areasTerapeuticas
+        tipoPoblacion
+        saludPublica
+        enfermedadHuerfana
+        tipoEstudio
+        fase
+        fechaAprobacionCasaMatriz
+        fechaFactibilidadColombia
+        enColombia
+        motivoNoSeleccion
+        fechaSeleccionColombia
+        fechaRecepcionFilialColombia
+        fechaVersionEspaniol
+        fechaPropuestaCierreReclutamiento
+        alcanceEstudio
+        codigosATC
+        tieneCRO
+        numeroPaisesParticipantes
+        totalSujetosNivelGlobal
+        fechaLiberacionProtocolo
+        fechaPrimerPacienteGlobal
+        fechaCierreReclutamientoGlobal
+        numeroSujetosPlaneadosColombia
+        porcentajeSujetosColombia
+        fechaRecepcionPaqueteInicialColombia
+        fechaPrimerPacienteReclutadoColombia
+        fechaCierreReclutamientoColombia
+        motivoDeSuspension
+        otroMotivoDeSuspension
+        linkDePublicacion
+        terminadoSatisfactoriamente
+        motivoDeTerminacion
+        otroMotivoDeTerminacion
+        fechaDeLicenciaKit
+        fechaDeImportacionEnBodegaKit
+        fechaPrimeraImportacionKit
+        fechaDeLicenciaMedicamentos
+        fechaDeImportacionEnBodegaMedicamentos
+        fechaPrimeraImportacionMedicamentos
+        estado
+        diasAprobacionInvimaInvima
+        diasAprobacionInvimaPatrocinador
+        anhoAprobacionInvima
+        mesAprobacionInvima
+        diasInicioEstudio
+        anhoInicioEstudio
+        mesInicioEstudio
+        user
+        fechaAprobacionEstudioInvima
+        fechaDeSometimientoEstudioInvima
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      nextToken
+      __typename
+    }
+    id
+    estado
+    nit
+    nombre
+    correo
+    logoURL
+    user
+    informacionContacto
+    createdAt
+    updatedAt
+    version
+    __typename
+  }
+}
+
+query ListSponsors(
+  $filter: ModelSponsorFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listSponsors(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      studies {
+        nextToken
+        __typename
+      }
+      id
+      estado
+      nit
+      nombre
+      correo
+      logoURL
+      user
+      informacionContacto
+      createdAt
+      updatedAt
+      version
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+
+query GetCRO($id: ID!) {
+  getCRO(id: $id) {
+    id
+    estado
+    nit
+    nombre
+    informacionContacto
+    user
+    createdAt
+    updatedAt
+    version
+    __typename
+  }
+}
+
+query ListCROs($filter: ModelCROFilterInput, $limit: Int, $nextToken: String) {
+  listCROs(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      estado
+      nit
+      nombre
+      informacionContacto
+      user
+      createdAt
+      updatedAt
+      version
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+
+query GetCenter($id: ID!) {
+  getCenter(id: $id) {
+    studyCenters {
+      items {
+        id
+        studyID
+        centerID
+        user
+        costoPorPaciente
+        fechaRecepcionPaquete
+        fechaRecepcionContrato
+        fechaFirmaContrato
+        fechaFirmaContratoPatrocinador
+        fechaAprobacionInvima
+        fechaActivacionCentro
+        cantidadPacientesPrevistos
+        cantidadPacientesIncluidos
+        fechaPrimerPacienteSeleccionado
+        fechaPrimerPacienteAleatorizado
+        estado
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      nextToken
+      __typename
+    }
+    id
+    estado
+    nit
+    nombre
+    tipoCentro
+    nivelAtencion
+    numeroEmpleados
+    municipio
+    resolucionCertificacion
+    resolucionVigente
+    user
+    informacionContacto
+    createdAt
+    updatedAt
+    version
+    __typename
+  }
+}
+
+query ListCenters(
+  $filter: ModelCenterFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listCenters(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      studyCenters {
+        nextToken
+        __typename
+      }
+      id
+      estado
+      nit
+      nombre
+      tipoCentro
+      nivelAtencion
+      numeroEmpleados
+      municipio
+      resolucionCertificacion
+      resolucionVigente
+      user
+      informacionContacto
+      createdAt
+      updatedAt
+      version
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+
+query GetCommittee($id: ID!) {
+  getCommittee(id: $id) {
+    studyCenters {
+      items {
+        id
+        studyCenterID
+        committeeID
+        studyID
+        user
+        estado
+        diasAprobacionCentroCentro
+        diasAprobacionCentroPatrocinador
+        anhoAprobacionCentro
+        mesAprobacionCentro
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      nextToken
+      __typename
+    }
+    id
+    estado
+    nombre
+    tipoComite
+    periodicidadReunionesCEI
+    municipio
+    informacionContacto
+    resolucionInvima
+    costoEvaluacion
+    user
+    createdAt
+    updatedAt
+    version
+    __typename
+  }
+}
+
+query ListCommittees(
+  $filter: ModelCommitteeFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listCommittees(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      studyCenters {
+        nextToken
+        __typename
+      }
+      id
+      estado
+      nombre
+      tipoComite
+      periodicidadReunionesCEI
+      municipio
+      informacionContacto
+      resolucionInvima
+      costoEvaluacion
+      user
+      createdAt
+      updatedAt
+      version
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+
+query GetInvimaIteration($id: ID!) {
+  getInvimaIteration(id: $id) {
+    id
+    studyID
+    study {
+      sponsorID
+      sponsor {
+        id
+        estado
+        nit
+        nombre
+        correo
+        logoURL
+        user
+        informacionContacto
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      cro {
+        id
+        estado
+        nit
+        nombre
+        informacionContacto
+        user
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      CIE10
+      studyCenters {
+        nextToken
+        __typename
+      }
+      interruptions {
+        nextToken
+        __typename
+      }
+      invimaIterations {
+        nextToken
+        __typename
+      }
+      studyCenterCommittees {
+        nextToken
+        __typename
+      }
+      addenda {
+        nextToken
+        __typename
+      }
+      id
+      identificador
+      identificadorNCT
+      linkClinical
+      titulo
+      areasTerapeuticas
+      tipoPoblacion
+      saludPublica
+      enfermedadHuerfana
+      tipoEstudio
+      fase
+      fechaAprobacionCasaMatriz
+      fechaFactibilidadColombia
+      enColombia
+      motivoNoSeleccion
+      fechaSeleccionColombia
+      fechaRecepcionFilialColombia
+      fechaVersionEspaniol
+      fechaPropuestaCierreReclutamiento
+      alcanceEstudio
+      codigosATC
+      tieneCRO
+      numeroPaisesParticipantes
+      totalSujetosNivelGlobal
+      fechaLiberacionProtocolo
+      fechaPrimerPacienteGlobal
+      fechaCierreReclutamientoGlobal
+      numeroSujetosPlaneadosColombia
+      porcentajeSujetosColombia
+      fechaRecepcionPaqueteInicialColombia
+      fechaPrimerPacienteReclutadoColombia
+      fechaCierreReclutamientoColombia
+      motivoDeSuspension
+      otroMotivoDeSuspension
+      linkDePublicacion
+      terminadoSatisfactoriamente
+      motivoDeTerminacion
+      otroMotivoDeTerminacion
+      fechaDeLicenciaKit
+      fechaDeImportacionEnBodegaKit
+      fechaPrimeraImportacionKit
+      fechaDeLicenciaMedicamentos
+      fechaDeImportacionEnBodegaMedicamentos
+      fechaPrimeraImportacionMedicamentos
+      estado
+      diasAprobacionInvimaInvima
+      diasAprobacionInvimaPatrocinador
+      anhoAprobacionInvima
+      mesAprobacionInvima
+      diasInicioEstudio
+      anhoInicioEstudio
+      mesInicioEstudio
+      user
+      fechaAprobacionEstudioInvima
+      fechaDeSometimientoEstudioInvima
+      createdAt
+      updatedAt
+      version
+      __typename
+    }
+    addendumID
+    addendum {
+      studyID
+      study {
+        sponsorID
+        CIE10
+        id
+        identificador
+        identificadorNCT
+        linkClinical
+        titulo
+        areasTerapeuticas
+        tipoPoblacion
+        saludPublica
+        enfermedadHuerfana
+        tipoEstudio
+        fase
+        fechaAprobacionCasaMatriz
+        fechaFactibilidadColombia
+        enColombia
+        motivoNoSeleccion
+        fechaSeleccionColombia
+        fechaRecepcionFilialColombia
+        fechaVersionEspaniol
+        fechaPropuestaCierreReclutamiento
+        alcanceEstudio
+        codigosATC
+        tieneCRO
+        numeroPaisesParticipantes
+        totalSujetosNivelGlobal
+        fechaLiberacionProtocolo
+        fechaPrimerPacienteGlobal
+        fechaCierreReclutamientoGlobal
+        numeroSujetosPlaneadosColombia
+        porcentajeSujetosColombia
+        fechaRecepcionPaqueteInicialColombia
+        fechaPrimerPacienteReclutadoColombia
+        fechaCierreReclutamientoColombia
+        motivoDeSuspension
+        otroMotivoDeSuspension
+        linkDePublicacion
+        terminadoSatisfactoriamente
+        motivoDeTerminacion
+        otroMotivoDeTerminacion
+        fechaDeLicenciaKit
+        fechaDeImportacionEnBodegaKit
+        fechaPrimeraImportacionKit
+        fechaDeLicenciaMedicamentos
+        fechaDeImportacionEnBodegaMedicamentos
+        fechaPrimeraImportacionMedicamentos
+        estado
+        diasAprobacionInvimaInvima
+        diasAprobacionInvimaPatrocinador
+        anhoAprobacionInvima
+        mesAprobacionInvima
+        diasInicioEstudio
+        anhoInicioEstudio
+        mesInicioEstudio
+        user
+        fechaAprobacionEstudioInvima
+        fechaDeSometimientoEstudioInvima
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      invimaIterations {
+        nextToken
+        __typename
+      }
+      centers {
+        nextToken
+        __typename
+      }
+      id
+      descripcion
+      fechaCasaMatriz
+      fechaRecepcionPaquete
+      fechaVersionEspanol
+      primerPaisImplementacion
+      fechaImplementacionPais
+      estado
+      user
+      tiemposInvima {
+        nombre
+        dias
+        diasPatrocinador
+        mes
+        anho
+        fechaInicial
+        fechaFinal
+        __typename
+      }
+      createdAt
+      updatedAt
+      version
+      __typename
+    }
+    tipoIteracion
+    tipoRequerimiento
+    otroTipoRequerimiento
+    fechaDeSometimiento
+    fechaRespuestaInvima
+    fechaDeNotificacion
+    estadoIteracion
+    resolucion
+    tiempoInvima
+    tiempoPatrocinador
+    tiempoNotificacion
+    causalRetrasoPatrocinador
+    otroCausalRetrasoPatrocinador
+    notasDeSeguimiento
+    user
+    estado
+    createdAt
+    updatedAt
+    version
+    __typename
+  }
+}
+
+query ListInvimaIterations(
+  $filter: ModelInvimaIterationFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listInvimaIterations(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      studyID
+      study {
+        sponsorID
+        CIE10
+        id
+        identificador
+        identificadorNCT
+        linkClinical
+        titulo
+        areasTerapeuticas
+        tipoPoblacion
+        saludPublica
+        enfermedadHuerfana
+        tipoEstudio
+        fase
+        fechaAprobacionCasaMatriz
+        fechaFactibilidadColombia
+        enColombia
+        motivoNoSeleccion
+        fechaSeleccionColombia
+        fechaRecepcionFilialColombia
+        fechaVersionEspaniol
+        fechaPropuestaCierreReclutamiento
+        alcanceEstudio
+        codigosATC
+        tieneCRO
+        numeroPaisesParticipantes
+        totalSujetosNivelGlobal
+        fechaLiberacionProtocolo
+        fechaPrimerPacienteGlobal
+        fechaCierreReclutamientoGlobal
+        numeroSujetosPlaneadosColombia
+        porcentajeSujetosColombia
+        fechaRecepcionPaqueteInicialColombia
+        fechaPrimerPacienteReclutadoColombia
+        fechaCierreReclutamientoColombia
+        motivoDeSuspension
+        otroMotivoDeSuspension
+        linkDePublicacion
+        terminadoSatisfactoriamente
+        motivoDeTerminacion
+        otroMotivoDeTerminacion
+        fechaDeLicenciaKit
+        fechaDeImportacionEnBodegaKit
+        fechaPrimeraImportacionKit
+        fechaDeLicenciaMedicamentos
+        fechaDeImportacionEnBodegaMedicamentos
+        fechaPrimeraImportacionMedicamentos
+        estado
+        diasAprobacionInvimaInvima
+        diasAprobacionInvimaPatrocinador
+        anhoAprobacionInvima
+        mesAprobacionInvima
+        diasInicioEstudio
+        anhoInicioEstudio
+        mesInicioEstudio
+        user
+        fechaAprobacionEstudioInvima
+        fechaDeSometimientoEstudioInvima
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      addendumID
+      addendum {
+        studyID
+        id
+        descripcion
+        fechaCasaMatriz
+        fechaRecepcionPaquete
+        fechaVersionEspanol
+        primerPaisImplementacion
+        fechaImplementacionPais
+        estado
+        user
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      tipoIteracion
+      tipoRequerimiento
+      otroTipoRequerimiento
+      fechaDeSometimiento
+      fechaRespuestaInvima
+      fechaDeNotificacion
+      estadoIteracion
+      resolucion
+      tiempoInvima
+      tiempoPatrocinador
+      tiempoNotificacion
+      causalRetrasoPatrocinador
+      otroCausalRetrasoPatrocinador
+      notasDeSeguimiento
+      user
+      estado
+      createdAt
+      updatedAt
+      version
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+
+query GetStudyCommitteeIteration($id: ID!) {
+  getStudyCommitteeIteration(id: $id) {
+    id
+    studyID
+    study {
+      sponsorID
+      sponsor {
+        id
+        estado
+        nit
+        nombre
+        correo
+        logoURL
+        user
+        informacionContacto
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      cro {
+        id
+        estado
+        nit
+        nombre
+        informacionContacto
+        user
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      CIE10
+      studyCenters {
+        nextToken
+        __typename
+      }
+      interruptions {
+        nextToken
+        __typename
+      }
+      invimaIterations {
+        nextToken
+        __typename
+      }
+      studyCenterCommittees {
+        nextToken
+        __typename
+      }
+      addenda {
+        nextToken
+        __typename
+      }
+      id
+      identificador
+      identificadorNCT
+      linkClinical
+      titulo
+      areasTerapeuticas
+      tipoPoblacion
+      saludPublica
+      enfermedadHuerfana
+      tipoEstudio
+      fase
+      fechaAprobacionCasaMatriz
+      fechaFactibilidadColombia
+      enColombia
+      motivoNoSeleccion
+      fechaSeleccionColombia
+      fechaRecepcionFilialColombia
+      fechaVersionEspaniol
+      fechaPropuestaCierreReclutamiento
+      alcanceEstudio
+      codigosATC
+      tieneCRO
+      numeroPaisesParticipantes
+      totalSujetosNivelGlobal
+      fechaLiberacionProtocolo
+      fechaPrimerPacienteGlobal
+      fechaCierreReclutamientoGlobal
+      numeroSujetosPlaneadosColombia
+      porcentajeSujetosColombia
+      fechaRecepcionPaqueteInicialColombia
+      fechaPrimerPacienteReclutadoColombia
+      fechaCierreReclutamientoColombia
+      motivoDeSuspension
+      otroMotivoDeSuspension
+      linkDePublicacion
+      terminadoSatisfactoriamente
+      motivoDeTerminacion
+      otroMotivoDeTerminacion
+      fechaDeLicenciaKit
+      fechaDeImportacionEnBodegaKit
+      fechaPrimeraImportacionKit
+      fechaDeLicenciaMedicamentos
+      fechaDeImportacionEnBodegaMedicamentos
+      fechaPrimeraImportacionMedicamentos
+      estado
+      diasAprobacionInvimaInvima
+      diasAprobacionInvimaPatrocinador
+      anhoAprobacionInvima
+      mesAprobacionInvima
+      diasInicioEstudio
+      anhoInicioEstudio
+      mesInicioEstudio
+      user
+      fechaAprobacionEstudioInvima
+      fechaDeSometimientoEstudioInvima
+      createdAt
+      updatedAt
+      version
+      __typename
+    }
+    studyCenterCommitteeID
+    studyCenterCommittee {
+      committees {
+        nextToken
+        __typename
+      }
+      addenda {
+        nextToken
+        __typename
+      }
+      id
+      studyID
+      centerID
+      study {
+        sponsorID
+        CIE10
+        id
+        identificador
+        identificadorNCT
+        linkClinical
+        titulo
+        areasTerapeuticas
+        tipoPoblacion
+        saludPublica
+        enfermedadHuerfana
+        tipoEstudio
+        fase
+        fechaAprobacionCasaMatriz
+        fechaFactibilidadColombia
+        enColombia
+        motivoNoSeleccion
+        fechaSeleccionColombia
+        fechaRecepcionFilialColombia
+        fechaVersionEspaniol
+        fechaPropuestaCierreReclutamiento
+        alcanceEstudio
+        codigosATC
+        tieneCRO
+        numeroPaisesParticipantes
+        totalSujetosNivelGlobal
+        fechaLiberacionProtocolo
+        fechaPrimerPacienteGlobal
+        fechaCierreReclutamientoGlobal
+        numeroSujetosPlaneadosColombia
+        porcentajeSujetosColombia
+        fechaRecepcionPaqueteInicialColombia
+        fechaPrimerPacienteReclutadoColombia
+        fechaCierreReclutamientoColombia
+        motivoDeSuspension
+        otroMotivoDeSuspension
+        linkDePublicacion
+        terminadoSatisfactoriamente
+        motivoDeTerminacion
+        otroMotivoDeTerminacion
+        fechaDeLicenciaKit
+        fechaDeImportacionEnBodegaKit
+        fechaPrimeraImportacionKit
+        fechaDeLicenciaMedicamentos
+        fechaDeImportacionEnBodegaMedicamentos
+        fechaPrimeraImportacionMedicamentos
+        estado
+        diasAprobacionInvimaInvima
+        diasAprobacionInvimaPatrocinador
+        anhoAprobacionInvima
+        mesAprobacionInvima
+        diasInicioEstudio
+        anhoInicioEstudio
+        mesInicioEstudio
+        user
+        fechaAprobacionEstudioInvima
+        fechaDeSometimientoEstudioInvima
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      center {
+        id
+        estado
+        nit
+        nombre
+        tipoCentro
+        nivelAtencion
+        numeroEmpleados
+        municipio
+        resolucionCertificacion
+        resolucionVigente
+        user
+        informacionContacto
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      user
+      costoPorPaciente
+      fechaRecepcionPaquete
+      fechaRecepcionContrato
+      fechaFirmaContrato
+      fechaFirmaContratoPatrocinador
+      fechaAprobacionInvima
+      fechaActivacionCentro
+      cantidadPacientesPrevistos
+      cantidadPacientesIncluidos
+      fechaPrimerPacienteSeleccionado
+      fechaPrimerPacienteAleatorizado
+      estado
+      createdAt
+      updatedAt
+      version
+      __typename
+    }
+    addendumID
+    addendum {
+      studyID
+      study {
+        sponsorID
+        CIE10
+        id
+        identificador
+        identificadorNCT
+        linkClinical
+        titulo
+        areasTerapeuticas
+        tipoPoblacion
+        saludPublica
+        enfermedadHuerfana
+        tipoEstudio
+        fase
+        fechaAprobacionCasaMatriz
+        fechaFactibilidadColombia
+        enColombia
+        motivoNoSeleccion
+        fechaSeleccionColombia
+        fechaRecepcionFilialColombia
+        fechaVersionEspaniol
+        fechaPropuestaCierreReclutamiento
+        alcanceEstudio
+        codigosATC
+        tieneCRO
+        numeroPaisesParticipantes
+        totalSujetosNivelGlobal
+        fechaLiberacionProtocolo
+        fechaPrimerPacienteGlobal
+        fechaCierreReclutamientoGlobal
+        numeroSujetosPlaneadosColombia
+        porcentajeSujetosColombia
+        fechaRecepcionPaqueteInicialColombia
+        fechaPrimerPacienteReclutadoColombia
+        fechaCierreReclutamientoColombia
+        motivoDeSuspension
+        otroMotivoDeSuspension
+        linkDePublicacion
+        terminadoSatisfactoriamente
+        motivoDeTerminacion
+        otroMotivoDeTerminacion
+        fechaDeLicenciaKit
+        fechaDeImportacionEnBodegaKit
+        fechaPrimeraImportacionKit
+        fechaDeLicenciaMedicamentos
+        fechaDeImportacionEnBodegaMedicamentos
+        fechaPrimeraImportacionMedicamentos
+        estado
+        diasAprobacionInvimaInvima
+        diasAprobacionInvimaPatrocinador
+        anhoAprobacionInvima
+        mesAprobacionInvima
+        diasInicioEstudio
+        anhoInicioEstudio
+        mesInicioEstudio
+        user
+        fechaAprobacionEstudioInvima
+        fechaDeSometimientoEstudioInvima
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      invimaIterations {
+        nextToken
+        __typename
+      }
+      centers {
+        nextToken
+        __typename
+      }
+      id
+      descripcion
+      fechaCasaMatriz
+      fechaRecepcionPaquete
+      fechaVersionEspanol
+      primerPaisImplementacion
+      fechaImplementacionPais
+      estado
+      user
+      tiemposInvima {
+        nombre
+        dias
+        diasPatrocinador
+        mes
+        anho
+        fechaInicial
+        fechaFinal
+        __typename
+      }
+      createdAt
+      updatedAt
+      version
+      __typename
+    }
+    tipoIteracion
+    tipoAclaracion
+    otroTipoAclaracion
+    fechaDeSometimientoCE
+    fechaRespuestaCE
+    estadoIteracion
+    informacionCarta
+    tiempoComite
+    tiempoPatrocinador
+    causalRetrasoPatrocinador
+    otroCausalRetrasoPatrocinador
+    notasDeSeguimiento
+    user
+    estado
+    createdAt
+    updatedAt
+    version
+    __typename
+  }
+}
+
+query ListStudyCommitteeIterations(
+  $filter: ModelStudyCommitteeIterationFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listStudyCommitteeIterations(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      studyID
+      study {
+        sponsorID
+        CIE10
+        id
+        identificador
+        identificadorNCT
+        linkClinical
+        titulo
+        areasTerapeuticas
+        tipoPoblacion
+        saludPublica
+        enfermedadHuerfana
+        tipoEstudio
+        fase
+        fechaAprobacionCasaMatriz
+        fechaFactibilidadColombia
+        enColombia
+        motivoNoSeleccion
+        fechaSeleccionColombia
+        fechaRecepcionFilialColombia
+        fechaVersionEspaniol
+        fechaPropuestaCierreReclutamiento
+        alcanceEstudio
+        codigosATC
+        tieneCRO
+        numeroPaisesParticipantes
+        totalSujetosNivelGlobal
+        fechaLiberacionProtocolo
+        fechaPrimerPacienteGlobal
+        fechaCierreReclutamientoGlobal
+        numeroSujetosPlaneadosColombia
+        porcentajeSujetosColombia
+        fechaRecepcionPaqueteInicialColombia
+        fechaPrimerPacienteReclutadoColombia
+        fechaCierreReclutamientoColombia
+        motivoDeSuspension
+        otroMotivoDeSuspension
+        linkDePublicacion
+        terminadoSatisfactoriamente
+        motivoDeTerminacion
+        otroMotivoDeTerminacion
+        fechaDeLicenciaKit
+        fechaDeImportacionEnBodegaKit
+        fechaPrimeraImportacionKit
+        fechaDeLicenciaMedicamentos
+        fechaDeImportacionEnBodegaMedicamentos
+        fechaPrimeraImportacionMedicamentos
+        estado
+        diasAprobacionInvimaInvima
+        diasAprobacionInvimaPatrocinador
+        anhoAprobacionInvima
+        mesAprobacionInvima
+        diasInicioEstudio
+        anhoInicioEstudio
+        mesInicioEstudio
+        user
+        fechaAprobacionEstudioInvima
+        fechaDeSometimientoEstudioInvima
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      studyCenterCommitteeID
+      studyCenterCommittee {
+        id
+        studyID
+        centerID
+        user
+        costoPorPaciente
+        fechaRecepcionPaquete
+        fechaRecepcionContrato
+        fechaFirmaContrato
+        fechaFirmaContratoPatrocinador
+        fechaAprobacionInvima
+        fechaActivacionCentro
+        cantidadPacientesPrevistos
+        cantidadPacientesIncluidos
+        fechaPrimerPacienteSeleccionado
+        fechaPrimerPacienteAleatorizado
+        estado
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      addendumID
+      addendum {
+        studyID
+        id
+        descripcion
+        fechaCasaMatriz
+        fechaRecepcionPaquete
+        fechaVersionEspanol
+        primerPaisImplementacion
+        fechaImplementacionPais
+        estado
+        user
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      tipoIteracion
+      tipoAclaracion
+      otroTipoAclaracion
+      fechaDeSometimientoCE
+      fechaRespuestaCE
+      estadoIteracion
+      informacionCarta
+      tiempoComite
+      tiempoPatrocinador
+      causalRetrasoPatrocinador
+      otroCausalRetrasoPatrocinador
+      notasDeSeguimiento
+      user
+      estado
+      createdAt
+      updatedAt
+      version
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+
+query GetStudy($id: ID!) {
+  getStudy(id: $id) {
+    sponsorID
+    sponsor {
+      studies {
+        nextToken
+        __typename
+      }
+      id
+      estado
+      nit
+      nombre
+      correo
+      logoURL
+      user
+      informacionContacto
+      createdAt
+      updatedAt
+      version
+      __typename
+    }
+    cro {
+      id
+      estado
+      nit
+      nombre
+      informacionContacto
+      user
+      createdAt
+      updatedAt
+      version
+      __typename
+    }
+    CIE10
+    studyCenters {
+      items {
+        id
+        studyID
+        centerID
+        user
+        costoPorPaciente
+        fechaRecepcionPaquete
+        fechaRecepcionContrato
+        fechaFirmaContrato
+        fechaFirmaContratoPatrocinador
+        fechaAprobacionInvima
+        fechaActivacionCentro
+        cantidadPacientesPrevistos
+        cantidadPacientesIncluidos
+        fechaPrimerPacienteSeleccionado
+        fechaPrimerPacienteAleatorizado
+        estado
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      nextToken
+      __typename
+    }
+    interruptions {
+      items {
+        studyID
+        id
+        estado
+        interrupcionReclutamiento
+        motivoInterrupcion
+        otroMotivoInterrupcion
+        fechaInicialInterrupcion
+        fechaFinalizacionTnterrupcion
+        user
+        informacionContacto
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      nextToken
+      __typename
+    }
+    invimaIterations {
+      items {
+        id
+        studyID
+        addendumID
+        tipoIteracion
+        tipoRequerimiento
+        otroTipoRequerimiento
+        fechaDeSometimiento
+        fechaRespuestaInvima
+        fechaDeNotificacion
+        estadoIteracion
+        resolucion
+        tiempoInvima
+        tiempoPatrocinador
+        tiempoNotificacion
+        causalRetrasoPatrocinador
+        otroCausalRetrasoPatrocinador
+        notasDeSeguimiento
+        user
+        estado
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      nextToken
+      __typename
+    }
+    studyCenterCommittees {
+      items {
+        id
+        studyCenterID
+        committeeID
+        studyID
+        user
+        estado
+        diasAprobacionCentroCentro
+        diasAprobacionCentroPatrocinador
+        anhoAprobacionCentro
+        mesAprobacionCentro
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      nextToken
+      __typename
+    }
+    addenda {
+      items {
+        studyID
+        id
+        descripcion
+        fechaCasaMatriz
+        fechaRecepcionPaquete
+        fechaVersionEspanol
+        primerPaisImplementacion
+        fechaImplementacionPais
+        estado
+        user
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      nextToken
+      __typename
+    }
+    id
+    identificador
+    identificadorNCT
+    linkClinical
+    titulo
+    areasTerapeuticas
+    tipoPoblacion
+    saludPublica
+    enfermedadHuerfana
+    tipoEstudio
+    fase
+    fechaAprobacionCasaMatriz
+    fechaFactibilidadColombia
+    enColombia
+    motivoNoSeleccion
+    fechaSeleccionColombia
+    fechaRecepcionFilialColombia
+    fechaVersionEspaniol
+    fechaPropuestaCierreReclutamiento
+    alcanceEstudio
+    codigosATC
+    tieneCRO
+    numeroPaisesParticipantes
+    totalSujetosNivelGlobal
+    fechaLiberacionProtocolo
+    fechaPrimerPacienteGlobal
+    fechaCierreReclutamientoGlobal
+    numeroSujetosPlaneadosColombia
+    porcentajeSujetosColombia
+    fechaRecepcionPaqueteInicialColombia
+    fechaPrimerPacienteReclutadoColombia
+    fechaCierreReclutamientoColombia
+    motivoDeSuspension
+    otroMotivoDeSuspension
+    linkDePublicacion
+    terminadoSatisfactoriamente
+    motivoDeTerminacion
+    otroMotivoDeTerminacion
+    fechaDeLicenciaKit
+    fechaDeImportacionEnBodegaKit
+    fechaPrimeraImportacionKit
+    fechaDeLicenciaMedicamentos
+    fechaDeImportacionEnBodegaMedicamentos
+    fechaPrimeraImportacionMedicamentos
+    estado
+    diasAprobacionInvimaInvima
+    diasAprobacionInvimaPatrocinador
+    anhoAprobacionInvima
+    mesAprobacionInvima
+    diasInicioEstudio
+    anhoInicioEstudio
+    mesInicioEstudio
+    user
+    fechaAprobacionEstudioInvima
+    fechaDeSometimientoEstudioInvima
+    createdAt
+    updatedAt
+    version
+    __typename
+  }
+}
+
+query ListStudys(
+  $filter: ModelStudyFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listStudys(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      sponsorID
+      sponsor {
+        id
+        estado
+        nit
+        nombre
+        correo
+        logoURL
+        user
+        informacionContacto
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      cro {
+        id
+        estado
+        nit
+        nombre
+        informacionContacto
+        user
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      CIE10
+      studyCenters {
+        nextToken
+        __typename
+      }
+      interruptions {
+        nextToken
+        __typename
+      }
+      invimaIterations {
+        nextToken
+        __typename
+      }
+      studyCenterCommittees {
+        nextToken
+        __typename
+      }
+      addenda {
+        nextToken
+        __typename
+      }
+      id
+      identificador
+      identificadorNCT
+      linkClinical
+      titulo
+      areasTerapeuticas
+      tipoPoblacion
+      saludPublica
+      enfermedadHuerfana
+      tipoEstudio
+      fase
+      fechaAprobacionCasaMatriz
+      fechaFactibilidadColombia
+      enColombia
+      motivoNoSeleccion
+      fechaSeleccionColombia
+      fechaRecepcionFilialColombia
+      fechaVersionEspaniol
+      fechaPropuestaCierreReclutamiento
+      alcanceEstudio
+      codigosATC
+      tieneCRO
+      numeroPaisesParticipantes
+      totalSujetosNivelGlobal
+      fechaLiberacionProtocolo
+      fechaPrimerPacienteGlobal
+      fechaCierreReclutamientoGlobal
+      numeroSujetosPlaneadosColombia
+      porcentajeSujetosColombia
+      fechaRecepcionPaqueteInicialColombia
+      fechaPrimerPacienteReclutadoColombia
+      fechaCierreReclutamientoColombia
+      motivoDeSuspension
+      otroMotivoDeSuspension
+      linkDePublicacion
+      terminadoSatisfactoriamente
+      motivoDeTerminacion
+      otroMotivoDeTerminacion
+      fechaDeLicenciaKit
+      fechaDeImportacionEnBodegaKit
+      fechaPrimeraImportacionKit
+      fechaDeLicenciaMedicamentos
+      fechaDeImportacionEnBodegaMedicamentos
+      fechaPrimeraImportacionMedicamentos
+      estado
+      diasAprobacionInvimaInvima
+      diasAprobacionInvimaPatrocinador
+      anhoAprobacionInvima
+      mesAprobacionInvima
+      diasInicioEstudio
+      anhoInicioEstudio
+      mesInicioEstudio
+      user
+      fechaAprobacionEstudioInvima
+      fechaDeSometimientoEstudioInvima
+      createdAt
+      updatedAt
+      version
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+
+query GetStudyCenter($id: ID!) {
+  getStudyCenter(id: $id) {
+    committees {
+      items {
+        id
+        studyCenterID
+        committeeID
+        studyID
+        user
+        estado
+        diasAprobacionCentroCentro
+        diasAprobacionCentroPatrocinador
+        anhoAprobacionCentro
+        mesAprobacionCentro
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      nextToken
+      __typename
+    }
+    addenda {
+      items {
+        addendumID
+        studyCenterID
+        id
+        fechaEnvioCentro
+        fechaReciboCentro
+        fechaImplementacionCentro
+        user
+        estado
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      nextToken
+      __typename
+    }
+    id
+    studyID
+    centerID
+    study {
+      sponsorID
+      sponsor {
+        id
+        estado
+        nit
+        nombre
+        correo
+        logoURL
+        user
+        informacionContacto
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      cro {
+        id
+        estado
+        nit
+        nombre
+        informacionContacto
+        user
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      CIE10
+      studyCenters {
+        nextToken
+        __typename
+      }
+      interruptions {
+        nextToken
+        __typename
+      }
+      invimaIterations {
+        nextToken
+        __typename
+      }
+      studyCenterCommittees {
+        nextToken
+        __typename
+      }
+      addenda {
+        nextToken
+        __typename
+      }
+      id
+      identificador
+      identificadorNCT
+      linkClinical
+      titulo
+      areasTerapeuticas
+      tipoPoblacion
+      saludPublica
+      enfermedadHuerfana
+      tipoEstudio
+      fase
+      fechaAprobacionCasaMatriz
+      fechaFactibilidadColombia
+      enColombia
+      motivoNoSeleccion
+      fechaSeleccionColombia
+      fechaRecepcionFilialColombia
+      fechaVersionEspaniol
+      fechaPropuestaCierreReclutamiento
+      alcanceEstudio
+      codigosATC
+      tieneCRO
+      numeroPaisesParticipantes
+      totalSujetosNivelGlobal
+      fechaLiberacionProtocolo
+      fechaPrimerPacienteGlobal
+      fechaCierreReclutamientoGlobal
+      numeroSujetosPlaneadosColombia
+      porcentajeSujetosColombia
+      fechaRecepcionPaqueteInicialColombia
+      fechaPrimerPacienteReclutadoColombia
+      fechaCierreReclutamientoColombia
+      motivoDeSuspension
+      otroMotivoDeSuspension
+      linkDePublicacion
+      terminadoSatisfactoriamente
+      motivoDeTerminacion
+      otroMotivoDeTerminacion
+      fechaDeLicenciaKit
+      fechaDeImportacionEnBodegaKit
+      fechaPrimeraImportacionKit
+      fechaDeLicenciaMedicamentos
+      fechaDeImportacionEnBodegaMedicamentos
+      fechaPrimeraImportacionMedicamentos
+      estado
+      diasAprobacionInvimaInvima
+      diasAprobacionInvimaPatrocinador
+      anhoAprobacionInvima
+      mesAprobacionInvima
+      diasInicioEstudio
+      anhoInicioEstudio
+      mesInicioEstudio
+      user
+      fechaAprobacionEstudioInvima
+      fechaDeSometimientoEstudioInvima
+      createdAt
+      updatedAt
+      version
+      __typename
+    }
+    center {
+      studyCenters {
+        nextToken
+        __typename
+      }
+      id
+      estado
+      nit
+      nombre
+      tipoCentro
+      nivelAtencion
+      numeroEmpleados
+      municipio
+      resolucionCertificacion
+      resolucionVigente
+      user
+      informacionContacto
+      createdAt
+      updatedAt
+      version
+      __typename
+    }
+    user
+    costoPorPaciente
+    fechaRecepcionPaquete
+    fechaRecepcionContrato
+    fechaFirmaContrato
+    fechaFirmaContratoPatrocinador
+    fechaAprobacionInvima
+    fechaActivacionCentro
+    cantidadPacientesPrevistos
+    cantidadPacientesIncluidos
+    fechaPrimerPacienteSeleccionado
+    fechaPrimerPacienteAleatorizado
+    estado
+    createdAt
+    updatedAt
+    version
+    __typename
+  }
+}
+
+query ListStudyCenters(
+  $filter: ModelStudyCenterFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listStudyCenters(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      committees {
+        nextToken
+        __typename
+      }
+      addenda {
+        nextToken
+        __typename
+      }
+      id
+      studyID
+      centerID
+      study {
+        sponsorID
+        CIE10
+        id
+        identificador
+        identificadorNCT
+        linkClinical
+        titulo
+        areasTerapeuticas
+        tipoPoblacion
+        saludPublica
+        enfermedadHuerfana
+        tipoEstudio
+        fase
+        fechaAprobacionCasaMatriz
+        fechaFactibilidadColombia
+        enColombia
+        motivoNoSeleccion
+        fechaSeleccionColombia
+        fechaRecepcionFilialColombia
+        fechaVersionEspaniol
+        fechaPropuestaCierreReclutamiento
+        alcanceEstudio
+        codigosATC
+        tieneCRO
+        numeroPaisesParticipantes
+        totalSujetosNivelGlobal
+        fechaLiberacionProtocolo
+        fechaPrimerPacienteGlobal
+        fechaCierreReclutamientoGlobal
+        numeroSujetosPlaneadosColombia
+        porcentajeSujetosColombia
+        fechaRecepcionPaqueteInicialColombia
+        fechaPrimerPacienteReclutadoColombia
+        fechaCierreReclutamientoColombia
+        motivoDeSuspension
+        otroMotivoDeSuspension
+        linkDePublicacion
+        terminadoSatisfactoriamente
+        motivoDeTerminacion
+        otroMotivoDeTerminacion
+        fechaDeLicenciaKit
+        fechaDeImportacionEnBodegaKit
+        fechaPrimeraImportacionKit
+        fechaDeLicenciaMedicamentos
+        fechaDeImportacionEnBodegaMedicamentos
+        fechaPrimeraImportacionMedicamentos
+        estado
+        diasAprobacionInvimaInvima
+        diasAprobacionInvimaPatrocinador
+        anhoAprobacionInvima
+        mesAprobacionInvima
+        diasInicioEstudio
+        anhoInicioEstudio
+        mesInicioEstudio
+        user
+        fechaAprobacionEstudioInvima
+        fechaDeSometimientoEstudioInvima
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      center {
+        id
+        estado
+        nit
+        nombre
+        tipoCentro
+        nivelAtencion
+        numeroEmpleados
+        municipio
+        resolucionCertificacion
+        resolucionVigente
+        user
+        informacionContacto
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      user
+      costoPorPaciente
+      fechaRecepcionPaquete
+      fechaRecepcionContrato
+      fechaFirmaContrato
+      fechaFirmaContratoPatrocinador
+      fechaAprobacionInvima
+      fechaActivacionCentro
+      cantidadPacientesPrevistos
+      cantidadPacientesIncluidos
+      fechaPrimerPacienteSeleccionado
+      fechaPrimerPacienteAleatorizado
+      estado
+      createdAt
+      updatedAt
+      version
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+
+query GetStudyCenterCommittee($id: ID!) {
+  getStudyCenterCommittee(id: $id) {
+    id
+    studyCenterID
+    committeeID
+    studyID
+    study {
+      sponsorID
+      sponsor {
+        id
+        estado
+        nit
+        nombre
+        correo
+        logoURL
+        user
+        informacionContacto
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      cro {
+        id
+        estado
+        nit
+        nombre
+        informacionContacto
+        user
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      CIE10
+      studyCenters {
+        nextToken
+        __typename
+      }
+      interruptions {
+        nextToken
+        __typename
+      }
+      invimaIterations {
+        nextToken
+        __typename
+      }
+      studyCenterCommittees {
+        nextToken
+        __typename
+      }
+      addenda {
+        nextToken
+        __typename
+      }
+      id
+      identificador
+      identificadorNCT
+      linkClinical
+      titulo
+      areasTerapeuticas
+      tipoPoblacion
+      saludPublica
+      enfermedadHuerfana
+      tipoEstudio
+      fase
+      fechaAprobacionCasaMatriz
+      fechaFactibilidadColombia
+      enColombia
+      motivoNoSeleccion
+      fechaSeleccionColombia
+      fechaRecepcionFilialColombia
+      fechaVersionEspaniol
+      fechaPropuestaCierreReclutamiento
+      alcanceEstudio
+      codigosATC
+      tieneCRO
+      numeroPaisesParticipantes
+      totalSujetosNivelGlobal
+      fechaLiberacionProtocolo
+      fechaPrimerPacienteGlobal
+      fechaCierreReclutamientoGlobal
+      numeroSujetosPlaneadosColombia
+      porcentajeSujetosColombia
+      fechaRecepcionPaqueteInicialColombia
+      fechaPrimerPacienteReclutadoColombia
+      fechaCierreReclutamientoColombia
+      motivoDeSuspension
+      otroMotivoDeSuspension
+      linkDePublicacion
+      terminadoSatisfactoriamente
+      motivoDeTerminacion
+      otroMotivoDeTerminacion
+      fechaDeLicenciaKit
+      fechaDeImportacionEnBodegaKit
+      fechaPrimeraImportacionKit
+      fechaDeLicenciaMedicamentos
+      fechaDeImportacionEnBodegaMedicamentos
+      fechaPrimeraImportacionMedicamentos
+      estado
+      diasAprobacionInvimaInvima
+      diasAprobacionInvimaPatrocinador
+      anhoAprobacionInvima
+      mesAprobacionInvima
+      diasInicioEstudio
+      anhoInicioEstudio
+      mesInicioEstudio
+      user
+      fechaAprobacionEstudioInvima
+      fechaDeSometimientoEstudioInvima
+      createdAt
+      updatedAt
+      version
+      __typename
+    }
+    studyCenter {
+      committees {
+        nextToken
+        __typename
+      }
+      addenda {
+        nextToken
+        __typename
+      }
+      id
+      studyID
+      centerID
+      study {
+        sponsorID
+        CIE10
+        id
+        identificador
+        identificadorNCT
+        linkClinical
+        titulo
+        areasTerapeuticas
+        tipoPoblacion
+        saludPublica
+        enfermedadHuerfana
+        tipoEstudio
+        fase
+        fechaAprobacionCasaMatriz
+        fechaFactibilidadColombia
+        enColombia
+        motivoNoSeleccion
+        fechaSeleccionColombia
+        fechaRecepcionFilialColombia
+        fechaVersionEspaniol
+        fechaPropuestaCierreReclutamiento
+        alcanceEstudio
+        codigosATC
+        tieneCRO
+        numeroPaisesParticipantes
+        totalSujetosNivelGlobal
+        fechaLiberacionProtocolo
+        fechaPrimerPacienteGlobal
+        fechaCierreReclutamientoGlobal
+        numeroSujetosPlaneadosColombia
+        porcentajeSujetosColombia
+        fechaRecepcionPaqueteInicialColombia
+        fechaPrimerPacienteReclutadoColombia
+        fechaCierreReclutamientoColombia
+        motivoDeSuspension
+        otroMotivoDeSuspension
+        linkDePublicacion
+        terminadoSatisfactoriamente
+        motivoDeTerminacion
+        otroMotivoDeTerminacion
+        fechaDeLicenciaKit
+        fechaDeImportacionEnBodegaKit
+        fechaPrimeraImportacionKit
+        fechaDeLicenciaMedicamentos
+        fechaDeImportacionEnBodegaMedicamentos
+        fechaPrimeraImportacionMedicamentos
+        estado
+        diasAprobacionInvimaInvima
+        diasAprobacionInvimaPatrocinador
+        anhoAprobacionInvima
+        mesAprobacionInvima
+        diasInicioEstudio
+        anhoInicioEstudio
+        mesInicioEstudio
+        user
+        fechaAprobacionEstudioInvima
+        fechaDeSometimientoEstudioInvima
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      center {
+        id
+        estado
+        nit
+        nombre
+        tipoCentro
+        nivelAtencion
+        numeroEmpleados
+        municipio
+        resolucionCertificacion
+        resolucionVigente
+        user
+        informacionContacto
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      user
+      costoPorPaciente
+      fechaRecepcionPaquete
+      fechaRecepcionContrato
+      fechaFirmaContrato
+      fechaFirmaContratoPatrocinador
+      fechaAprobacionInvima
+      fechaActivacionCentro
+      cantidadPacientesPrevistos
+      cantidadPacientesIncluidos
+      fechaPrimerPacienteSeleccionado
+      fechaPrimerPacienteAleatorizado
+      estado
+      createdAt
+      updatedAt
+      version
+      __typename
+    }
+    committee {
+      studyCenters {
+        nextToken
+        __typename
+      }
+      id
+      estado
+      nombre
+      tipoComite
+      periodicidadReunionesCEI
+      municipio
+      informacionContacto
+      resolucionInvima
+      costoEvaluacion
+      user
+      createdAt
+      updatedAt
+      version
+      __typename
+    }
+    ecIterations {
+      items {
+        id
+        studyID
+        studyCenterCommitteeID
+        addendumID
+        tipoIteracion
+        tipoAclaracion
+        otroTipoAclaracion
+        fechaDeSometimientoCE
+        fechaRespuestaCE
+        estadoIteracion
+        informacionCarta
+        tiempoComite
+        tiempoPatrocinador
+        causalRetrasoPatrocinador
+        otroCausalRetrasoPatrocinador
+        notasDeSeguimiento
+        user
+        estado
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      nextToken
+      __typename
+    }
+    user
+    estado
+    diasAprobacionCentroCentro
+    diasAprobacionCentroPatrocinador
+    anhoAprobacionCentro
+    mesAprobacionCentro
+    createdAt
+    updatedAt
+    version
+    __typename
+  }
+}
+
+query ListStudyCenterCommittees(
+  $filter: ModelStudyCenterCommitteeFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listStudyCenterCommittees(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      studyCenterID
+      committeeID
+      studyID
+      study {
+        sponsorID
+        CIE10
+        id
+        identificador
+        identificadorNCT
+        linkClinical
+        titulo
+        areasTerapeuticas
+        tipoPoblacion
+        saludPublica
+        enfermedadHuerfana
+        tipoEstudio
+        fase
+        fechaAprobacionCasaMatriz
+        fechaFactibilidadColombia
+        enColombia
+        motivoNoSeleccion
+        fechaSeleccionColombia
+        fechaRecepcionFilialColombia
+        fechaVersionEspaniol
+        fechaPropuestaCierreReclutamiento
+        alcanceEstudio
+        codigosATC
+        tieneCRO
+        numeroPaisesParticipantes
+        totalSujetosNivelGlobal
+        fechaLiberacionProtocolo
+        fechaPrimerPacienteGlobal
+        fechaCierreReclutamientoGlobal
+        numeroSujetosPlaneadosColombia
+        porcentajeSujetosColombia
+        fechaRecepcionPaqueteInicialColombia
+        fechaPrimerPacienteReclutadoColombia
+        fechaCierreReclutamientoColombia
+        motivoDeSuspension
+        otroMotivoDeSuspension
+        linkDePublicacion
+        terminadoSatisfactoriamente
+        motivoDeTerminacion
+        otroMotivoDeTerminacion
+        fechaDeLicenciaKit
+        fechaDeImportacionEnBodegaKit
+        fechaPrimeraImportacionKit
+        fechaDeLicenciaMedicamentos
+        fechaDeImportacionEnBodegaMedicamentos
+        fechaPrimeraImportacionMedicamentos
+        estado
+        diasAprobacionInvimaInvima
+        diasAprobacionInvimaPatrocinador
+        anhoAprobacionInvima
+        mesAprobacionInvima
+        diasInicioEstudio
+        anhoInicioEstudio
+        mesInicioEstudio
+        user
+        fechaAprobacionEstudioInvima
+        fechaDeSometimientoEstudioInvima
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      studyCenter {
+        id
+        studyID
+        centerID
+        user
+        costoPorPaciente
+        fechaRecepcionPaquete
+        fechaRecepcionContrato
+        fechaFirmaContrato
+        fechaFirmaContratoPatrocinador
+        fechaAprobacionInvima
+        fechaActivacionCentro
+        cantidadPacientesPrevistos
+        cantidadPacientesIncluidos
+        fechaPrimerPacienteSeleccionado
+        fechaPrimerPacienteAleatorizado
+        estado
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      committee {
+        id
+        estado
+        nombre
+        tipoComite
+        periodicidadReunionesCEI
+        municipio
+        informacionContacto
+        resolucionInvima
+        costoEvaluacion
+        user
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      ecIterations {
+        nextToken
+        __typename
+      }
+      user
+      estado
+      diasAprobacionCentroCentro
+      diasAprobacionCentroPatrocinador
+      anhoAprobacionCentro
+      mesAprobacionCentro
+      createdAt
+      updatedAt
+      version
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+
+query GetInterruption($id: ID!) {
+  getInterruption(id: $id) {
+    study {
+      sponsorID
+      sponsor {
+        id
+        estado
+        nit
+        nombre
+        correo
+        logoURL
+        user
+        informacionContacto
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      cro {
+        id
+        estado
+        nit
+        nombre
+        informacionContacto
+        user
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      CIE10
+      studyCenters {
+        nextToken
+        __typename
+      }
+      interruptions {
+        nextToken
+        __typename
+      }
+      invimaIterations {
+        nextToken
+        __typename
+      }
+      studyCenterCommittees {
+        nextToken
+        __typename
+      }
+      addenda {
+        nextToken
+        __typename
+      }
+      id
+      identificador
+      identificadorNCT
+      linkClinical
+      titulo
+      areasTerapeuticas
+      tipoPoblacion
+      saludPublica
+      enfermedadHuerfana
+      tipoEstudio
+      fase
+      fechaAprobacionCasaMatriz
+      fechaFactibilidadColombia
+      enColombia
+      motivoNoSeleccion
+      fechaSeleccionColombia
+      fechaRecepcionFilialColombia
+      fechaVersionEspaniol
+      fechaPropuestaCierreReclutamiento
+      alcanceEstudio
+      codigosATC
+      tieneCRO
+      numeroPaisesParticipantes
+      totalSujetosNivelGlobal
+      fechaLiberacionProtocolo
+      fechaPrimerPacienteGlobal
+      fechaCierreReclutamientoGlobal
+      numeroSujetosPlaneadosColombia
+      porcentajeSujetosColombia
+      fechaRecepcionPaqueteInicialColombia
+      fechaPrimerPacienteReclutadoColombia
+      fechaCierreReclutamientoColombia
+      motivoDeSuspension
+      otroMotivoDeSuspension
+      linkDePublicacion
+      terminadoSatisfactoriamente
+      motivoDeTerminacion
+      otroMotivoDeTerminacion
+      fechaDeLicenciaKit
+      fechaDeImportacionEnBodegaKit
+      fechaPrimeraImportacionKit
+      fechaDeLicenciaMedicamentos
+      fechaDeImportacionEnBodegaMedicamentos
+      fechaPrimeraImportacionMedicamentos
+      estado
+      diasAprobacionInvimaInvima
+      diasAprobacionInvimaPatrocinador
+      anhoAprobacionInvima
+      mesAprobacionInvima
+      diasInicioEstudio
+      anhoInicioEstudio
+      mesInicioEstudio
+      user
+      fechaAprobacionEstudioInvima
+      fechaDeSometimientoEstudioInvima
+      createdAt
+      updatedAt
+      version
+      __typename
+    }
+    studyID
+    id
+    estado
+    interrupcionReclutamiento
+    motivoInterrupcion
+    otroMotivoInterrupcion
+    fechaInicialInterrupcion
+    fechaFinalizacionTnterrupcion
+    user
+    informacionContacto
+    createdAt
+    updatedAt
+    version
+    __typename
+  }
+}
+
+query ListInterruptions(
+  $filter: ModelInterruptionFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listInterruptions(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      study {
+        sponsorID
+        CIE10
+        id
+        identificador
+        identificadorNCT
+        linkClinical
+        titulo
+        areasTerapeuticas
+        tipoPoblacion
+        saludPublica
+        enfermedadHuerfana
+        tipoEstudio
+        fase
+        fechaAprobacionCasaMatriz
+        fechaFactibilidadColombia
+        enColombia
+        motivoNoSeleccion
+        fechaSeleccionColombia
+        fechaRecepcionFilialColombia
+        fechaVersionEspaniol
+        fechaPropuestaCierreReclutamiento
+        alcanceEstudio
+        codigosATC
+        tieneCRO
+        numeroPaisesParticipantes
+        totalSujetosNivelGlobal
+        fechaLiberacionProtocolo
+        fechaPrimerPacienteGlobal
+        fechaCierreReclutamientoGlobal
+        numeroSujetosPlaneadosColombia
+        porcentajeSujetosColombia
+        fechaRecepcionPaqueteInicialColombia
+        fechaPrimerPacienteReclutadoColombia
+        fechaCierreReclutamientoColombia
+        motivoDeSuspension
+        otroMotivoDeSuspension
+        linkDePublicacion
+        terminadoSatisfactoriamente
+        motivoDeTerminacion
+        otroMotivoDeTerminacion
+        fechaDeLicenciaKit
+        fechaDeImportacionEnBodegaKit
+        fechaPrimeraImportacionKit
+        fechaDeLicenciaMedicamentos
+        fechaDeImportacionEnBodegaMedicamentos
+        fechaPrimeraImportacionMedicamentos
+        estado
+        diasAprobacionInvimaInvima
+        diasAprobacionInvimaPatrocinador
+        anhoAprobacionInvima
+        mesAprobacionInvima
+        diasInicioEstudio
+        anhoInicioEstudio
+        mesInicioEstudio
+        user
+        fechaAprobacionEstudioInvima
+        fechaDeSometimientoEstudioInvima
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      studyID
+      id
+      estado
+      interrupcionReclutamiento
+      motivoInterrupcion
+      otroMotivoInterrupcion
+      fechaInicialInterrupcion
+      fechaFinalizacionTnterrupcion
+      user
+      informacionContacto
+      createdAt
+      updatedAt
+      version
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+
+query GetAddendum($id: ID!) {
+  getAddendum(id: $id) {
+    studyID
+    study {
+      sponsorID
+      sponsor {
+        id
+        estado
+        nit
+        nombre
+        correo
+        logoURL
+        user
+        informacionContacto
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      cro {
+        id
+        estado
+        nit
+        nombre
+        informacionContacto
+        user
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      CIE10
+      studyCenters {
+        nextToken
+        __typename
+      }
+      interruptions {
+        nextToken
+        __typename
+      }
+      invimaIterations {
+        nextToken
+        __typename
+      }
+      studyCenterCommittees {
+        nextToken
+        __typename
+      }
+      addenda {
+        nextToken
+        __typename
+      }
+      id
+      identificador
+      identificadorNCT
+      linkClinical
+      titulo
+      areasTerapeuticas
+      tipoPoblacion
+      saludPublica
+      enfermedadHuerfana
+      tipoEstudio
+      fase
+      fechaAprobacionCasaMatriz
+      fechaFactibilidadColombia
+      enColombia
+      motivoNoSeleccion
+      fechaSeleccionColombia
+      fechaRecepcionFilialColombia
+      fechaVersionEspaniol
+      fechaPropuestaCierreReclutamiento
+      alcanceEstudio
+      codigosATC
+      tieneCRO
+      numeroPaisesParticipantes
+      totalSujetosNivelGlobal
+      fechaLiberacionProtocolo
+      fechaPrimerPacienteGlobal
+      fechaCierreReclutamientoGlobal
+      numeroSujetosPlaneadosColombia
+      porcentajeSujetosColombia
+      fechaRecepcionPaqueteInicialColombia
+      fechaPrimerPacienteReclutadoColombia
+      fechaCierreReclutamientoColombia
+      motivoDeSuspension
+      otroMotivoDeSuspension
+      linkDePublicacion
+      terminadoSatisfactoriamente
+      motivoDeTerminacion
+      otroMotivoDeTerminacion
+      fechaDeLicenciaKit
+      fechaDeImportacionEnBodegaKit
+      fechaPrimeraImportacionKit
+      fechaDeLicenciaMedicamentos
+      fechaDeImportacionEnBodegaMedicamentos
+      fechaPrimeraImportacionMedicamentos
+      estado
+      diasAprobacionInvimaInvima
+      diasAprobacionInvimaPatrocinador
+      anhoAprobacionInvima
+      mesAprobacionInvima
+      diasInicioEstudio
+      anhoInicioEstudio
+      mesInicioEstudio
+      user
+      fechaAprobacionEstudioInvima
+      fechaDeSometimientoEstudioInvima
+      createdAt
+      updatedAt
+      version
+      __typename
+    }
+    invimaIterations {
+      items {
+        id
+        studyID
+        addendumID
+        tipoIteracion
+        tipoRequerimiento
+        otroTipoRequerimiento
+        fechaDeSometimiento
+        fechaRespuestaInvima
+        fechaDeNotificacion
+        estadoIteracion
+        resolucion
+        tiempoInvima
+        tiempoPatrocinador
+        tiempoNotificacion
+        causalRetrasoPatrocinador
+        otroCausalRetrasoPatrocinador
+        notasDeSeguimiento
+        user
+        estado
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      nextToken
+      __typename
+    }
+    centers {
+      items {
+        addendumID
+        studyCenterID
+        id
+        fechaEnvioCentro
+        fechaReciboCentro
+        fechaImplementacionCentro
+        user
+        estado
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      nextToken
+      __typename
+    }
+    id
+    descripcion
+    fechaCasaMatriz
+    fechaRecepcionPaquete
+    fechaVersionEspanol
+    primerPaisImplementacion
+    fechaImplementacionPais
+    estado
+    user
+    tiemposInvima {
+      nombre
+      dias
+      diasPatrocinador
+      mes
+      anho
+      fechaInicial
+      fechaFinal
+      __typename
+    }
+    createdAt
+    updatedAt
+    version
+    __typename
+  }
+}
+
+query ListAddendums(
+  $filter: ModelAddendumFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listAddendums(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      studyID
+      study {
+        sponsorID
+        CIE10
+        id
+        identificador
+        identificadorNCT
+        linkClinical
+        titulo
+        areasTerapeuticas
+        tipoPoblacion
+        saludPublica
+        enfermedadHuerfana
+        tipoEstudio
+        fase
+        fechaAprobacionCasaMatriz
+        fechaFactibilidadColombia
+        enColombia
+        motivoNoSeleccion
+        fechaSeleccionColombia
+        fechaRecepcionFilialColombia
+        fechaVersionEspaniol
+        fechaPropuestaCierreReclutamiento
+        alcanceEstudio
+        codigosATC
+        tieneCRO
+        numeroPaisesParticipantes
+        totalSujetosNivelGlobal
+        fechaLiberacionProtocolo
+        fechaPrimerPacienteGlobal
+        fechaCierreReclutamientoGlobal
+        numeroSujetosPlaneadosColombia
+        porcentajeSujetosColombia
+        fechaRecepcionPaqueteInicialColombia
+        fechaPrimerPacienteReclutadoColombia
+        fechaCierreReclutamientoColombia
+        motivoDeSuspension
+        otroMotivoDeSuspension
+        linkDePublicacion
+        terminadoSatisfactoriamente
+        motivoDeTerminacion
+        otroMotivoDeTerminacion
+        fechaDeLicenciaKit
+        fechaDeImportacionEnBodegaKit
+        fechaPrimeraImportacionKit
+        fechaDeLicenciaMedicamentos
+        fechaDeImportacionEnBodegaMedicamentos
+        fechaPrimeraImportacionMedicamentos
+        estado
+        diasAprobacionInvimaInvima
+        diasAprobacionInvimaPatrocinador
+        anhoAprobacionInvima
+        mesAprobacionInvima
+        diasInicioEstudio
+        anhoInicioEstudio
+        mesInicioEstudio
+        user
+        fechaAprobacionEstudioInvima
+        fechaDeSometimientoEstudioInvima
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      invimaIterations {
+        nextToken
+        __typename
+      }
+      centers {
+        nextToken
+        __typename
+      }
+      id
+      descripcion
+      fechaCasaMatriz
+      fechaRecepcionPaquete
+      fechaVersionEspanol
+      primerPaisImplementacion
+      fechaImplementacionPais
+      estado
+      user
+      tiemposInvima {
+        nombre
+        dias
+        diasPatrocinador
+        mes
+        anho
+        fechaInicial
+        fechaFinal
+        __typename
+      }
+      createdAt
+      updatedAt
+      version
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+
+query GetAddendumStudyCenter($id: ID!) {
+  getAddendumStudyCenter(id: $id) {
+    addendum {
+      studyID
+      study {
+        sponsorID
+        CIE10
+        id
+        identificador
+        identificadorNCT
+        linkClinical
+        titulo
+        areasTerapeuticas
+        tipoPoblacion
+        saludPublica
+        enfermedadHuerfana
+        tipoEstudio
+        fase
+        fechaAprobacionCasaMatriz
+        fechaFactibilidadColombia
+        enColombia
+        motivoNoSeleccion
+        fechaSeleccionColombia
+        fechaRecepcionFilialColombia
+        fechaVersionEspaniol
+        fechaPropuestaCierreReclutamiento
+        alcanceEstudio
+        codigosATC
+        tieneCRO
+        numeroPaisesParticipantes
+        totalSujetosNivelGlobal
+        fechaLiberacionProtocolo
+        fechaPrimerPacienteGlobal
+        fechaCierreReclutamientoGlobal
+        numeroSujetosPlaneadosColombia
+        porcentajeSujetosColombia
+        fechaRecepcionPaqueteInicialColombia
+        fechaPrimerPacienteReclutadoColombia
+        fechaCierreReclutamientoColombia
+        motivoDeSuspension
+        otroMotivoDeSuspension
+        linkDePublicacion
+        terminadoSatisfactoriamente
+        motivoDeTerminacion
+        otroMotivoDeTerminacion
+        fechaDeLicenciaKit
+        fechaDeImportacionEnBodegaKit
+        fechaPrimeraImportacionKit
+        fechaDeLicenciaMedicamentos
+        fechaDeImportacionEnBodegaMedicamentos
+        fechaPrimeraImportacionMedicamentos
+        estado
+        diasAprobacionInvimaInvima
+        diasAprobacionInvimaPatrocinador
+        anhoAprobacionInvima
+        mesAprobacionInvima
+        diasInicioEstudio
+        anhoInicioEstudio
+        mesInicioEstudio
+        user
+        fechaAprobacionEstudioInvima
+        fechaDeSometimientoEstudioInvima
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      invimaIterations {
+        nextToken
+        __typename
+      }
+      centers {
+        nextToken
+        __typename
+      }
+      id
+      descripcion
+      fechaCasaMatriz
+      fechaRecepcionPaquete
+      fechaVersionEspanol
+      primerPaisImplementacion
+      fechaImplementacionPais
+      estado
+      user
+      tiemposInvima {
+        nombre
+        dias
+        diasPatrocinador
+        mes
+        anho
+        fechaInicial
+        fechaFinal
+        __typename
+      }
+      createdAt
+      updatedAt
+      version
+      __typename
+    }
+    addendumID
+    studyCenter {
+      committees {
+        nextToken
+        __typename
+      }
+      addenda {
+        nextToken
+        __typename
+      }
+      id
+      studyID
+      centerID
+      study {
+        sponsorID
+        CIE10
+        id
+        identificador
+        identificadorNCT
+        linkClinical
+        titulo
+        areasTerapeuticas
+        tipoPoblacion
+        saludPublica
+        enfermedadHuerfana
+        tipoEstudio
+        fase
+        fechaAprobacionCasaMatriz
+        fechaFactibilidadColombia
+        enColombia
+        motivoNoSeleccion
+        fechaSeleccionColombia
+        fechaRecepcionFilialColombia
+        fechaVersionEspaniol
+        fechaPropuestaCierreReclutamiento
+        alcanceEstudio
+        codigosATC
+        tieneCRO
+        numeroPaisesParticipantes
+        totalSujetosNivelGlobal
+        fechaLiberacionProtocolo
+        fechaPrimerPacienteGlobal
+        fechaCierreReclutamientoGlobal
+        numeroSujetosPlaneadosColombia
+        porcentajeSujetosColombia
+        fechaRecepcionPaqueteInicialColombia
+        fechaPrimerPacienteReclutadoColombia
+        fechaCierreReclutamientoColombia
+        motivoDeSuspension
+        otroMotivoDeSuspension
+        linkDePublicacion
+        terminadoSatisfactoriamente
+        motivoDeTerminacion
+        otroMotivoDeTerminacion
+        fechaDeLicenciaKit
+        fechaDeImportacionEnBodegaKit
+        fechaPrimeraImportacionKit
+        fechaDeLicenciaMedicamentos
+        fechaDeImportacionEnBodegaMedicamentos
+        fechaPrimeraImportacionMedicamentos
+        estado
+        diasAprobacionInvimaInvima
+        diasAprobacionInvimaPatrocinador
+        anhoAprobacionInvima
+        mesAprobacionInvima
+        diasInicioEstudio
+        anhoInicioEstudio
+        mesInicioEstudio
+        user
+        fechaAprobacionEstudioInvima
+        fechaDeSometimientoEstudioInvima
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      center {
+        id
+        estado
+        nit
+        nombre
+        tipoCentro
+        nivelAtencion
+        numeroEmpleados
+        municipio
+        resolucionCertificacion
+        resolucionVigente
+        user
+        informacionContacto
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      user
+      costoPorPaciente
+      fechaRecepcionPaquete
+      fechaRecepcionContrato
+      fechaFirmaContrato
+      fechaFirmaContratoPatrocinador
+      fechaAprobacionInvima
+      fechaActivacionCentro
+      cantidadPacientesPrevistos
+      cantidadPacientesIncluidos
+      fechaPrimerPacienteSeleccionado
+      fechaPrimerPacienteAleatorizado
+      estado
+      createdAt
+      updatedAt
+      version
+      __typename
+    }
+    studyCenterID
+    ecIterations {
+      items {
+        id
+        studyID
+        studyCenterCommitteeID
+        addendumID
+        tipoIteracion
+        tipoAclaracion
+        otroTipoAclaracion
+        fechaDeSometimientoCE
+        fechaRespuestaCE
+        estadoIteracion
+        informacionCarta
+        tiempoComite
+        tiempoPatrocinador
+        causalRetrasoPatrocinador
+        otroCausalRetrasoPatrocinador
+        notasDeSeguimiento
+        user
+        estado
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      nextToken
+      __typename
+    }
+    id
+    fechaEnvioCentro
+    fechaReciboCentro
+    fechaImplementacionCentro
+    user
+    estado
+    tiemposCentro {
+      nombre
+      dias
+      diasPatrocinador
+      mes
+      anho
+      fechaInicial
+      fechaFinal
+      __typename
+    }
+    createdAt
+    updatedAt
+    version
+    __typename
+  }
+}
+
+query ListAddendumStudyCenters(
+  $filter: ModelAddendumStudyCenterFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listAddendumStudyCenters(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      addendum {
+        studyID
+        id
+        descripcion
+        fechaCasaMatriz
+        fechaRecepcionPaquete
+        fechaVersionEspanol
+        primerPaisImplementacion
+        fechaImplementacionPais
+        estado
+        user
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      addendumID
+      studyCenter {
+        id
+        studyID
+        centerID
+        user
+        costoPorPaciente
+        fechaRecepcionPaquete
+        fechaRecepcionContrato
+        fechaFirmaContrato
+        fechaFirmaContratoPatrocinador
+        fechaAprobacionInvima
+        fechaActivacionCentro
+        cantidadPacientesPrevistos
+        cantidadPacientesIncluidos
+        fechaPrimerPacienteSeleccionado
+        fechaPrimerPacienteAleatorizado
+        estado
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      studyCenterID
+      ecIterations {
+        nextToken
+        __typename
+      }
+      id
+      fechaEnvioCentro
+      fechaReciboCentro
+      fechaImplementacionCentro
+      user
+      estado
+      tiemposCentro {
+        nombre
+        dias
+        diasPatrocinador
+        mes
+        anho
+        fechaInicial
+        fechaFinal
+        __typename
+      }
+      createdAt
+      updatedAt
+      version
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+
+query GetAuditInfo(
+  $entity: String
+  $relatedEntityId: ModelStringKeyConditionInput
+  $sortDirection: ModelSortDirection
+  $filter: ModelAuditTraceFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  getAuditInfo(
+    entity: $entity
+    relatedEntityId: $relatedEntityId
+    sortDirection: $sortDirection
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      relatedEntityId
+      entity
+      eventDateTime
+      eventType
+      author
+      data
+      createdAt
+      updatedAt
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+
+query IteracionesByStudy(
+  $studyID: ID
+  $sortDirection: ModelSortDirection
+  $filter: ModelInvimaIterationFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  iteracionesByStudy(
+    studyID: $studyID
+    sortDirection: $sortDirection
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      studyID
+      study {
+        sponsorID
+        CIE10
+        id
+        identificador
+        identificadorNCT
+        linkClinical
+        titulo
+        areasTerapeuticas
+        tipoPoblacion
+        saludPublica
+        enfermedadHuerfana
+        tipoEstudio
+        fase
+        fechaAprobacionCasaMatriz
+        fechaFactibilidadColombia
+        enColombia
+        motivoNoSeleccion
+        fechaSeleccionColombia
+        fechaRecepcionFilialColombia
+        fechaVersionEspaniol
+        fechaPropuestaCierreReclutamiento
+        alcanceEstudio
+        codigosATC
+        tieneCRO
+        numeroPaisesParticipantes
+        totalSujetosNivelGlobal
+        fechaLiberacionProtocolo
+        fechaPrimerPacienteGlobal
+        fechaCierreReclutamientoGlobal
+        numeroSujetosPlaneadosColombia
+        porcentajeSujetosColombia
+        fechaRecepcionPaqueteInicialColombia
+        fechaPrimerPacienteReclutadoColombia
+        fechaCierreReclutamientoColombia
+        motivoDeSuspension
+        otroMotivoDeSuspension
+        linkDePublicacion
+        terminadoSatisfactoriamente
+        motivoDeTerminacion
+        otroMotivoDeTerminacion
+        fechaDeLicenciaKit
+        fechaDeImportacionEnBodegaKit
+        fechaPrimeraImportacionKit
+        fechaDeLicenciaMedicamentos
+        fechaDeImportacionEnBodegaMedicamentos
+        fechaPrimeraImportacionMedicamentos
+        estado
+        diasAprobacionInvimaInvima
+        diasAprobacionInvimaPatrocinador
+        anhoAprobacionInvima
+        mesAprobacionInvima
+        diasInicioEstudio
+        anhoInicioEstudio
+        mesInicioEstudio
+        user
+        fechaAprobacionEstudioInvima
+        fechaDeSometimientoEstudioInvima
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      addendumID
+      addendum {
+        studyID
+        id
+        descripcion
+        fechaCasaMatriz
+        fechaRecepcionPaquete
+        fechaVersionEspanol
+        primerPaisImplementacion
+        fechaImplementacionPais
+        estado
+        user
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      tipoIteracion
+      tipoRequerimiento
+      otroTipoRequerimiento
+      fechaDeSometimiento
+      fechaRespuestaInvima
+      fechaDeNotificacion
+      estadoIteracion
+      resolucion
+      tiempoInvima
+      tiempoPatrocinador
+      tiempoNotificacion
+      causalRetrasoPatrocinador
+      otroCausalRetrasoPatrocinador
+      notasDeSeguimiento
+      user
+      estado
+      createdAt
+      updatedAt
+      version
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+
+query IteracionesInvimaByAddendum(
+  $addendumID: ID
+  $sortDirection: ModelSortDirection
+  $filter: ModelInvimaIterationFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  iteracionesInvimaByAddendum(
+    addendumID: $addendumID
+    sortDirection: $sortDirection
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      studyID
+      study {
+        sponsorID
+        CIE10
+        id
+        identificador
+        identificadorNCT
+        linkClinical
+        titulo
+        areasTerapeuticas
+        tipoPoblacion
+        saludPublica
+        enfermedadHuerfana
+        tipoEstudio
+        fase
+        fechaAprobacionCasaMatriz
+        fechaFactibilidadColombia
+        enColombia
+        motivoNoSeleccion
+        fechaSeleccionColombia
+        fechaRecepcionFilialColombia
+        fechaVersionEspaniol
+        fechaPropuestaCierreReclutamiento
+        alcanceEstudio
+        codigosATC
+        tieneCRO
+        numeroPaisesParticipantes
+        totalSujetosNivelGlobal
+        fechaLiberacionProtocolo
+        fechaPrimerPacienteGlobal
+        fechaCierreReclutamientoGlobal
+        numeroSujetosPlaneadosColombia
+        porcentajeSujetosColombia
+        fechaRecepcionPaqueteInicialColombia
+        fechaPrimerPacienteReclutadoColombia
+        fechaCierreReclutamientoColombia
+        motivoDeSuspension
+        otroMotivoDeSuspension
+        linkDePublicacion
+        terminadoSatisfactoriamente
+        motivoDeTerminacion
+        otroMotivoDeTerminacion
+        fechaDeLicenciaKit
+        fechaDeImportacionEnBodegaKit
+        fechaPrimeraImportacionKit
+        fechaDeLicenciaMedicamentos
+        fechaDeImportacionEnBodegaMedicamentos
+        fechaPrimeraImportacionMedicamentos
+        estado
+        diasAprobacionInvimaInvima
+        diasAprobacionInvimaPatrocinador
+        anhoAprobacionInvima
+        mesAprobacionInvima
+        diasInicioEstudio
+        anhoInicioEstudio
+        mesInicioEstudio
+        user
+        fechaAprobacionEstudioInvima
+        fechaDeSometimientoEstudioInvima
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      addendumID
+      addendum {
+        studyID
+        id
+        descripcion
+        fechaCasaMatriz
+        fechaRecepcionPaquete
+        fechaVersionEspanol
+        primerPaisImplementacion
+        fechaImplementacionPais
+        estado
+        user
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      tipoIteracion
+      tipoRequerimiento
+      otroTipoRequerimiento
+      fechaDeSometimiento
+      fechaRespuestaInvima
+      fechaDeNotificacion
+      estadoIteracion
+      resolucion
+      tiempoInvima
+      tiempoPatrocinador
+      tiempoNotificacion
+      causalRetrasoPatrocinador
+      otroCausalRetrasoPatrocinador
+      notasDeSeguimiento
+      user
+      estado
+      createdAt
+      updatedAt
+      version
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+
+query CommitteeIterationsByStudy(
+  $studyID: ID
+  $sortDirection: ModelSortDirection
+  $filter: ModelStudyCommitteeIterationFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  committeeIterationsByStudy(
+    studyID: $studyID
+    sortDirection: $sortDirection
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      studyID
+      study {
+        sponsorID
+        CIE10
+        id
+        identificador
+        identificadorNCT
+        linkClinical
+        titulo
+        areasTerapeuticas
+        tipoPoblacion
+        saludPublica
+        enfermedadHuerfana
+        tipoEstudio
+        fase
+        fechaAprobacionCasaMatriz
+        fechaFactibilidadColombia
+        enColombia
+        motivoNoSeleccion
+        fechaSeleccionColombia
+        fechaRecepcionFilialColombia
+        fechaVersionEspaniol
+        fechaPropuestaCierreReclutamiento
+        alcanceEstudio
+        codigosATC
+        tieneCRO
+        numeroPaisesParticipantes
+        totalSujetosNivelGlobal
+        fechaLiberacionProtocolo
+        fechaPrimerPacienteGlobal
+        fechaCierreReclutamientoGlobal
+        numeroSujetosPlaneadosColombia
+        porcentajeSujetosColombia
+        fechaRecepcionPaqueteInicialColombia
+        fechaPrimerPacienteReclutadoColombia
+        fechaCierreReclutamientoColombia
+        motivoDeSuspension
+        otroMotivoDeSuspension
+        linkDePublicacion
+        terminadoSatisfactoriamente
+        motivoDeTerminacion
+        otroMotivoDeTerminacion
+        fechaDeLicenciaKit
+        fechaDeImportacionEnBodegaKit
+        fechaPrimeraImportacionKit
+        fechaDeLicenciaMedicamentos
+        fechaDeImportacionEnBodegaMedicamentos
+        fechaPrimeraImportacionMedicamentos
+        estado
+        diasAprobacionInvimaInvima
+        diasAprobacionInvimaPatrocinador
+        anhoAprobacionInvima
+        mesAprobacionInvima
+        diasInicioEstudio
+        anhoInicioEstudio
+        mesInicioEstudio
+        user
+        fechaAprobacionEstudioInvima
+        fechaDeSometimientoEstudioInvima
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      studyCenterCommitteeID
+      studyCenterCommittee {
+        id
+        studyID
+        centerID
+        user
+        costoPorPaciente
+        fechaRecepcionPaquete
+        fechaRecepcionContrato
+        fechaFirmaContrato
+        fechaFirmaContratoPatrocinador
+        fechaAprobacionInvima
+        fechaActivacionCentro
+        cantidadPacientesPrevistos
+        cantidadPacientesIncluidos
+        fechaPrimerPacienteSeleccionado
+        fechaPrimerPacienteAleatorizado
+        estado
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      addendumID
+      addendum {
+        studyID
+        id
+        descripcion
+        fechaCasaMatriz
+        fechaRecepcionPaquete
+        fechaVersionEspanol
+        primerPaisImplementacion
+        fechaImplementacionPais
+        estado
+        user
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      tipoIteracion
+      tipoAclaracion
+      otroTipoAclaracion
+      fechaDeSometimientoCE
+      fechaRespuestaCE
+      estadoIteracion
+      informacionCarta
+      tiempoComite
+      tiempoPatrocinador
+      causalRetrasoPatrocinador
+      otroCausalRetrasoPatrocinador
+      notasDeSeguimiento
+      user
+      estado
+      createdAt
+      updatedAt
+      version
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+
+query CommitteeIterationsByiamCommittee(
+  $studyCenterCommitteeID: ID
+  $sortDirection: ModelSortDirection
+  $filter: ModelStudyCommitteeIterationFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  committeeIterationsByiamCommittee(
+    studyCenterCommitteeID: $studyCenterCommitteeID
+    sortDirection: $sortDirection
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      studyID
+      study {
+        sponsorID
+        CIE10
+        id
+        identificador
+        identificadorNCT
+        linkClinical
+        titulo
+        areasTerapeuticas
+        tipoPoblacion
+        saludPublica
+        enfermedadHuerfana
+        tipoEstudio
+        fase
+        fechaAprobacionCasaMatriz
+        fechaFactibilidadColombia
+        enColombia
+        motivoNoSeleccion
+        fechaSeleccionColombia
+        fechaRecepcionFilialColombia
+        fechaVersionEspaniol
+        fechaPropuestaCierreReclutamiento
+        alcanceEstudio
+        codigosATC
+        tieneCRO
+        numeroPaisesParticipantes
+        totalSujetosNivelGlobal
+        fechaLiberacionProtocolo
+        fechaPrimerPacienteGlobal
+        fechaCierreReclutamientoGlobal
+        numeroSujetosPlaneadosColombia
+        porcentajeSujetosColombia
+        fechaRecepcionPaqueteInicialColombia
+        fechaPrimerPacienteReclutadoColombia
+        fechaCierreReclutamientoColombia
+        motivoDeSuspension
+        otroMotivoDeSuspension
+        linkDePublicacion
+        terminadoSatisfactoriamente
+        motivoDeTerminacion
+        otroMotivoDeTerminacion
+        fechaDeLicenciaKit
+        fechaDeImportacionEnBodegaKit
+        fechaPrimeraImportacionKit
+        fechaDeLicenciaMedicamentos
+        fechaDeImportacionEnBodegaMedicamentos
+        fechaPrimeraImportacionMedicamentos
+        estado
+        diasAprobacionInvimaInvima
+        diasAprobacionInvimaPatrocinador
+        anhoAprobacionInvima
+        mesAprobacionInvima
+        diasInicioEstudio
+        anhoInicioEstudio
+        mesInicioEstudio
+        user
+        fechaAprobacionEstudioInvima
+        fechaDeSometimientoEstudioInvima
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      studyCenterCommitteeID
+      studyCenterCommittee {
+        id
+        studyID
+        centerID
+        user
+        costoPorPaciente
+        fechaRecepcionPaquete
+        fechaRecepcionContrato
+        fechaFirmaContrato
+        fechaFirmaContratoPatrocinador
+        fechaAprobacionInvima
+        fechaActivacionCentro
+        cantidadPacientesPrevistos
+        cantidadPacientesIncluidos
+        fechaPrimerPacienteSeleccionado
+        fechaPrimerPacienteAleatorizado
+        estado
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      addendumID
+      addendum {
+        studyID
+        id
+        descripcion
+        fechaCasaMatriz
+        fechaRecepcionPaquete
+        fechaVersionEspanol
+        primerPaisImplementacion
+        fechaImplementacionPais
+        estado
+        user
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      tipoIteracion
+      tipoAclaracion
+      otroTipoAclaracion
+      fechaDeSometimientoCE
+      fechaRespuestaCE
+      estadoIteracion
+      informacionCarta
+      tiempoComite
+      tiempoPatrocinador
+      causalRetrasoPatrocinador
+      otroCausalRetrasoPatrocinador
+      notasDeSeguimiento
+      user
+      estado
+      createdAt
+      updatedAt
+      version
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+
+query IteracionesCEByAddendum(
+  $addendumID: ID
+  $sortDirection: ModelSortDirection
+  $filter: ModelStudyCommitteeIterationFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  iteracionesCEByAddendum(
+    addendumID: $addendumID
+    sortDirection: $sortDirection
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      studyID
+      study {
+        sponsorID
+        CIE10
+        id
+        identificador
+        identificadorNCT
+        linkClinical
+        titulo
+        areasTerapeuticas
+        tipoPoblacion
+        saludPublica
+        enfermedadHuerfana
+        tipoEstudio
+        fase
+        fechaAprobacionCasaMatriz
+        fechaFactibilidadColombia
+        enColombia
+        motivoNoSeleccion
+        fechaSeleccionColombia
+        fechaRecepcionFilialColombia
+        fechaVersionEspaniol
+        fechaPropuestaCierreReclutamiento
+        alcanceEstudio
+        codigosATC
+        tieneCRO
+        numeroPaisesParticipantes
+        totalSujetosNivelGlobal
+        fechaLiberacionProtocolo
+        fechaPrimerPacienteGlobal
+        fechaCierreReclutamientoGlobal
+        numeroSujetosPlaneadosColombia
+        porcentajeSujetosColombia
+        fechaRecepcionPaqueteInicialColombia
+        fechaPrimerPacienteReclutadoColombia
+        fechaCierreReclutamientoColombia
+        motivoDeSuspension
+        otroMotivoDeSuspension
+        linkDePublicacion
+        terminadoSatisfactoriamente
+        motivoDeTerminacion
+        otroMotivoDeTerminacion
+        fechaDeLicenciaKit
+        fechaDeImportacionEnBodegaKit
+        fechaPrimeraImportacionKit
+        fechaDeLicenciaMedicamentos
+        fechaDeImportacionEnBodegaMedicamentos
+        fechaPrimeraImportacionMedicamentos
+        estado
+        diasAprobacionInvimaInvima
+        diasAprobacionInvimaPatrocinador
+        anhoAprobacionInvima
+        mesAprobacionInvima
+        diasInicioEstudio
+        anhoInicioEstudio
+        mesInicioEstudio
+        user
+        fechaAprobacionEstudioInvima
+        fechaDeSometimientoEstudioInvima
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      studyCenterCommitteeID
+      studyCenterCommittee {
+        id
+        studyID
+        centerID
+        user
+        costoPorPaciente
+        fechaRecepcionPaquete
+        fechaRecepcionContrato
+        fechaFirmaContrato
+        fechaFirmaContratoPatrocinador
+        fechaAprobacionInvima
+        fechaActivacionCentro
+        cantidadPacientesPrevistos
+        cantidadPacientesIncluidos
+        fechaPrimerPacienteSeleccionado
+        fechaPrimerPacienteAleatorizado
+        estado
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      addendumID
+      addendum {
+        studyID
+        id
+        descripcion
+        fechaCasaMatriz
+        fechaRecepcionPaquete
+        fechaVersionEspanol
+        primerPaisImplementacion
+        fechaImplementacionPais
+        estado
+        user
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      tipoIteracion
+      tipoAclaracion
+      otroTipoAclaracion
+      fechaDeSometimientoCE
+      fechaRespuestaCE
+      estadoIteracion
+      informacionCarta
+      tiempoComite
+      tiempoPatrocinador
+      causalRetrasoPatrocinador
+      otroCausalRetrasoPatrocinador
+      notasDeSeguimiento
+      user
+      estado
+      createdAt
+      updatedAt
+      version
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+
+query StudiesBySponsor(
+  $sponsorID: ID
+  $sortDirection: ModelSortDirection
+  $filter: ModelStudyFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  studiesBySponsor(
+    sponsorID: $sponsorID
+    sortDirection: $sortDirection
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      sponsorID
+      sponsor {
+        id
+        estado
+        nit
+        nombre
+        correo
+        logoURL
+        user
+        informacionContacto
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      cro {
+        id
+        estado
+        nit
+        nombre
+        informacionContacto
+        user
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      CIE10
+      studyCenters {
+        nextToken
+        __typename
+      }
+      interruptions {
+        nextToken
+        __typename
+      }
+      invimaIterations {
+        nextToken
+        __typename
+      }
+      studyCenterCommittees {
+        nextToken
+        __typename
+      }
+      addenda {
+        nextToken
+        __typename
+      }
+      id
+      identificador
+      identificadorNCT
+      linkClinical
+      titulo
+      areasTerapeuticas
+      tipoPoblacion
+      saludPublica
+      enfermedadHuerfana
+      tipoEstudio
+      fase
+      fechaAprobacionCasaMatriz
+      fechaFactibilidadColombia
+      enColombia
+      motivoNoSeleccion
+      fechaSeleccionColombia
+      fechaRecepcionFilialColombia
+      fechaVersionEspaniol
+      fechaPropuestaCierreReclutamiento
+      alcanceEstudio
+      codigosATC
+      tieneCRO
+      numeroPaisesParticipantes
+      totalSujetosNivelGlobal
+      fechaLiberacionProtocolo
+      fechaPrimerPacienteGlobal
+      fechaCierreReclutamientoGlobal
+      numeroSujetosPlaneadosColombia
+      porcentajeSujetosColombia
+      fechaRecepcionPaqueteInicialColombia
+      fechaPrimerPacienteReclutadoColombia
+      fechaCierreReclutamientoColombia
+      motivoDeSuspension
+      otroMotivoDeSuspension
+      linkDePublicacion
+      terminadoSatisfactoriamente
+      motivoDeTerminacion
+      otroMotivoDeTerminacion
+      fechaDeLicenciaKit
+      fechaDeImportacionEnBodegaKit
+      fechaPrimeraImportacionKit
+      fechaDeLicenciaMedicamentos
+      fechaDeImportacionEnBodegaMedicamentos
+      fechaPrimeraImportacionMedicamentos
+      estado
+      diasAprobacionInvimaInvima
+      diasAprobacionInvimaPatrocinador
+      anhoAprobacionInvima
+      mesAprobacionInvima
+      diasInicioEstudio
+      anhoInicioEstudio
+      mesInicioEstudio
+      user
+      fechaAprobacionEstudioInvima
+      fechaDeSometimientoEstudioInvima
+      createdAt
+      updatedAt
+      version
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+
+query StudyCenterByStudy(
+  $studyID: ID
+  $centerID: ModelIDKeyConditionInput
+  $sortDirection: ModelSortDirection
+  $filter: ModelStudyCenterFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  studyCenterByStudy(
+    studyID: $studyID
+    centerID: $centerID
+    sortDirection: $sortDirection
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      committees {
+        nextToken
+        __typename
+      }
+      addenda {
+        nextToken
+        __typename
+      }
+      id
+      studyID
+      centerID
+      study {
+        sponsorID
+        CIE10
+        id
+        identificador
+        identificadorNCT
+        linkClinical
+        titulo
+        areasTerapeuticas
+        tipoPoblacion
+        saludPublica
+        enfermedadHuerfana
+        tipoEstudio
+        fase
+        fechaAprobacionCasaMatriz
+        fechaFactibilidadColombia
+        enColombia
+        motivoNoSeleccion
+        fechaSeleccionColombia
+        fechaRecepcionFilialColombia
+        fechaVersionEspaniol
+        fechaPropuestaCierreReclutamiento
+        alcanceEstudio
+        codigosATC
+        tieneCRO
+        numeroPaisesParticipantes
+        totalSujetosNivelGlobal
+        fechaLiberacionProtocolo
+        fechaPrimerPacienteGlobal
+        fechaCierreReclutamientoGlobal
+        numeroSujetosPlaneadosColombia
+        porcentajeSujetosColombia
+        fechaRecepcionPaqueteInicialColombia
+        fechaPrimerPacienteReclutadoColombia
+        fechaCierreReclutamientoColombia
+        motivoDeSuspension
+        otroMotivoDeSuspension
+        linkDePublicacion
+        terminadoSatisfactoriamente
+        motivoDeTerminacion
+        otroMotivoDeTerminacion
+        fechaDeLicenciaKit
+        fechaDeImportacionEnBodegaKit
+        fechaPrimeraImportacionKit
+        fechaDeLicenciaMedicamentos
+        fechaDeImportacionEnBodegaMedicamentos
+        fechaPrimeraImportacionMedicamentos
+        estado
+        diasAprobacionInvimaInvima
+        diasAprobacionInvimaPatrocinador
+        anhoAprobacionInvima
+        mesAprobacionInvima
+        diasInicioEstudio
+        anhoInicioEstudio
+        mesInicioEstudio
+        user
+        fechaAprobacionEstudioInvima
+        fechaDeSometimientoEstudioInvima
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      center {
+        id
+        estado
+        nit
+        nombre
+        tipoCentro
+        nivelAtencion
+        numeroEmpleados
+        municipio
+        resolucionCertificacion
+        resolucionVigente
+        user
+        informacionContacto
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      user
+      costoPorPaciente
+      fechaRecepcionPaquete
+      fechaRecepcionContrato
+      fechaFirmaContrato
+      fechaFirmaContratoPatrocinador
+      fechaAprobacionInvima
+      fechaActivacionCentro
+      cantidadPacientesPrevistos
+      cantidadPacientesIncluidos
+      fechaPrimerPacienteSeleccionado
+      fechaPrimerPacienteAleatorizado
+      estado
+      createdAt
+      updatedAt
+      version
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+
+query StudyCenterByCenter(
+  $centerID: ID
+  $studyID: ModelIDKeyConditionInput
+  $sortDirection: ModelSortDirection
+  $filter: ModelStudyCenterFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  studyCenterByCenter(
+    centerID: $centerID
+    studyID: $studyID
+    sortDirection: $sortDirection
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      committees {
+        nextToken
+        __typename
+      }
+      addenda {
+        nextToken
+        __typename
+      }
+      id
+      studyID
+      centerID
+      study {
+        sponsorID
+        CIE10
+        id
+        identificador
+        identificadorNCT
+        linkClinical
+        titulo
+        areasTerapeuticas
+        tipoPoblacion
+        saludPublica
+        enfermedadHuerfana
+        tipoEstudio
+        fase
+        fechaAprobacionCasaMatriz
+        fechaFactibilidadColombia
+        enColombia
+        motivoNoSeleccion
+        fechaSeleccionColombia
+        fechaRecepcionFilialColombia
+        fechaVersionEspaniol
+        fechaPropuestaCierreReclutamiento
+        alcanceEstudio
+        codigosATC
+        tieneCRO
+        numeroPaisesParticipantes
+        totalSujetosNivelGlobal
+        fechaLiberacionProtocolo
+        fechaPrimerPacienteGlobal
+        fechaCierreReclutamientoGlobal
+        numeroSujetosPlaneadosColombia
+        porcentajeSujetosColombia
+        fechaRecepcionPaqueteInicialColombia
+        fechaPrimerPacienteReclutadoColombia
+        fechaCierreReclutamientoColombia
+        motivoDeSuspension
+        otroMotivoDeSuspension
+        linkDePublicacion
+        terminadoSatisfactoriamente
+        motivoDeTerminacion
+        otroMotivoDeTerminacion
+        fechaDeLicenciaKit
+        fechaDeImportacionEnBodegaKit
+        fechaPrimeraImportacionKit
+        fechaDeLicenciaMedicamentos
+        fechaDeImportacionEnBodegaMedicamentos
+        fechaPrimeraImportacionMedicamentos
+        estado
+        diasAprobacionInvimaInvima
+        diasAprobacionInvimaPatrocinador
+        anhoAprobacionInvima
+        mesAprobacionInvima
+        diasInicioEstudio
+        anhoInicioEstudio
+        mesInicioEstudio
+        user
+        fechaAprobacionEstudioInvima
+        fechaDeSometimientoEstudioInvima
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      center {
+        id
+        estado
+        nit
+        nombre
+        tipoCentro
+        nivelAtencion
+        numeroEmpleados
+        municipio
+        resolucionCertificacion
+        resolucionVigente
+        user
+        informacionContacto
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      user
+      costoPorPaciente
+      fechaRecepcionPaquete
+      fechaRecepcionContrato
+      fechaFirmaContrato
+      fechaFirmaContratoPatrocinador
+      fechaAprobacionInvima
+      fechaActivacionCentro
+      cantidadPacientesPrevistos
+      cantidadPacientesIncluidos
+      fechaPrimerPacienteSeleccionado
+      fechaPrimerPacienteAleatorizado
+      estado
+      createdAt
+      updatedAt
+      version
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+
+query StudyCenterComiteesByStudyCenter(
+  $studyCenterID: ID
+  $committeeID: ModelIDKeyConditionInput
+  $sortDirection: ModelSortDirection
+  $filter: ModelStudyCenterCommitteeFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  studyCenterComiteesByStudyCenter(
+    studyCenterID: $studyCenterID
+    committeeID: $committeeID
+    sortDirection: $sortDirection
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      studyCenterID
+      committeeID
+      studyID
+      study {
+        sponsorID
+        CIE10
+        id
+        identificador
+        identificadorNCT
+        linkClinical
+        titulo
+        areasTerapeuticas
+        tipoPoblacion
+        saludPublica
+        enfermedadHuerfana
+        tipoEstudio
+        fase
+        fechaAprobacionCasaMatriz
+        fechaFactibilidadColombia
+        enColombia
+        motivoNoSeleccion
+        fechaSeleccionColombia
+        fechaRecepcionFilialColombia
+        fechaVersionEspaniol
+        fechaPropuestaCierreReclutamiento
+        alcanceEstudio
+        codigosATC
+        tieneCRO
+        numeroPaisesParticipantes
+        totalSujetosNivelGlobal
+        fechaLiberacionProtocolo
+        fechaPrimerPacienteGlobal
+        fechaCierreReclutamientoGlobal
+        numeroSujetosPlaneadosColombia
+        porcentajeSujetosColombia
+        fechaRecepcionPaqueteInicialColombia
+        fechaPrimerPacienteReclutadoColombia
+        fechaCierreReclutamientoColombia
+        motivoDeSuspension
+        otroMotivoDeSuspension
+        linkDePublicacion
+        terminadoSatisfactoriamente
+        motivoDeTerminacion
+        otroMotivoDeTerminacion
+        fechaDeLicenciaKit
+        fechaDeImportacionEnBodegaKit
+        fechaPrimeraImportacionKit
+        fechaDeLicenciaMedicamentos
+        fechaDeImportacionEnBodegaMedicamentos
+        fechaPrimeraImportacionMedicamentos
+        estado
+        diasAprobacionInvimaInvima
+        diasAprobacionInvimaPatrocinador
+        anhoAprobacionInvima
+        mesAprobacionInvima
+        diasInicioEstudio
+        anhoInicioEstudio
+        mesInicioEstudio
+        user
+        fechaAprobacionEstudioInvima
+        fechaDeSometimientoEstudioInvima
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      studyCenter {
+        id
+        studyID
+        centerID
+        user
+        costoPorPaciente
+        fechaRecepcionPaquete
+        fechaRecepcionContrato
+        fechaFirmaContrato
+        fechaFirmaContratoPatrocinador
+        fechaAprobacionInvima
+        fechaActivacionCentro
+        cantidadPacientesPrevistos
+        cantidadPacientesIncluidos
+        fechaPrimerPacienteSeleccionado
+        fechaPrimerPacienteAleatorizado
+        estado
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      committee {
+        id
+        estado
+        nombre
+        tipoComite
+        periodicidadReunionesCEI
+        municipio
+        informacionContacto
+        resolucionInvima
+        costoEvaluacion
+        user
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      ecIterations {
+        nextToken
+        __typename
+      }
+      user
+      estado
+      diasAprobacionCentroCentro
+      diasAprobacionCentroPatrocinador
+      anhoAprobacionCentro
+      mesAprobacionCentro
+      createdAt
+      updatedAt
+      version
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+
+query StudyCenterComiteesByComitee(
+  $committeeID: ID
+  $studyCenterID: ModelIDKeyConditionInput
+  $sortDirection: ModelSortDirection
+  $filter: ModelStudyCenterCommitteeFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  studyCenterComiteesByComitee(
+    committeeID: $committeeID
+    studyCenterID: $studyCenterID
+    sortDirection: $sortDirection
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      studyCenterID
+      committeeID
+      studyID
+      study {
+        sponsorID
+        CIE10
+        id
+        identificador
+        identificadorNCT
+        linkClinical
+        titulo
+        areasTerapeuticas
+        tipoPoblacion
+        saludPublica
+        enfermedadHuerfana
+        tipoEstudio
+        fase
+        fechaAprobacionCasaMatriz
+        fechaFactibilidadColombia
+        enColombia
+        motivoNoSeleccion
+        fechaSeleccionColombia
+        fechaRecepcionFilialColombia
+        fechaVersionEspaniol
+        fechaPropuestaCierreReclutamiento
+        alcanceEstudio
+        codigosATC
+        tieneCRO
+        numeroPaisesParticipantes
+        totalSujetosNivelGlobal
+        fechaLiberacionProtocolo
+        fechaPrimerPacienteGlobal
+        fechaCierreReclutamientoGlobal
+        numeroSujetosPlaneadosColombia
+        porcentajeSujetosColombia
+        fechaRecepcionPaqueteInicialColombia
+        fechaPrimerPacienteReclutadoColombia
+        fechaCierreReclutamientoColombia
+        motivoDeSuspension
+        otroMotivoDeSuspension
+        linkDePublicacion
+        terminadoSatisfactoriamente
+        motivoDeTerminacion
+        otroMotivoDeTerminacion
+        fechaDeLicenciaKit
+        fechaDeImportacionEnBodegaKit
+        fechaPrimeraImportacionKit
+        fechaDeLicenciaMedicamentos
+        fechaDeImportacionEnBodegaMedicamentos
+        fechaPrimeraImportacionMedicamentos
+        estado
+        diasAprobacionInvimaInvima
+        diasAprobacionInvimaPatrocinador
+        anhoAprobacionInvima
+        mesAprobacionInvima
+        diasInicioEstudio
+        anhoInicioEstudio
+        mesInicioEstudio
+        user
+        fechaAprobacionEstudioInvima
+        fechaDeSometimientoEstudioInvima
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      studyCenter {
+        id
+        studyID
+        centerID
+        user
+        costoPorPaciente
+        fechaRecepcionPaquete
+        fechaRecepcionContrato
+        fechaFirmaContrato
+        fechaFirmaContratoPatrocinador
+        fechaAprobacionInvima
+        fechaActivacionCentro
+        cantidadPacientesPrevistos
+        cantidadPacientesIncluidos
+        fechaPrimerPacienteSeleccionado
+        fechaPrimerPacienteAleatorizado
+        estado
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      committee {
+        id
+        estado
+        nombre
+        tipoComite
+        periodicidadReunionesCEI
+        municipio
+        informacionContacto
+        resolucionInvima
+        costoEvaluacion
+        user
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      ecIterations {
+        nextToken
+        __typename
+      }
+      user
+      estado
+      diasAprobacionCentroCentro
+      diasAprobacionCentroPatrocinador
+      anhoAprobacionCentro
+      mesAprobacionCentro
+      createdAt
+      updatedAt
+      version
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+
+query StudyCenterComiteesByStudy(
+  $studyID: ID
+  $sortDirection: ModelSortDirection
+  $filter: ModelStudyCenterCommitteeFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  studyCenterComiteesByStudy(
+    studyID: $studyID
+    sortDirection: $sortDirection
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      studyCenterID
+      committeeID
+      studyID
+      study {
+        sponsorID
+        CIE10
+        id
+        identificador
+        identificadorNCT
+        linkClinical
+        titulo
+        areasTerapeuticas
+        tipoPoblacion
+        saludPublica
+        enfermedadHuerfana
+        tipoEstudio
+        fase
+        fechaAprobacionCasaMatriz
+        fechaFactibilidadColombia
+        enColombia
+        motivoNoSeleccion
+        fechaSeleccionColombia
+        fechaRecepcionFilialColombia
+        fechaVersionEspaniol
+        fechaPropuestaCierreReclutamiento
+        alcanceEstudio
+        codigosATC
+        tieneCRO
+        numeroPaisesParticipantes
+        totalSujetosNivelGlobal
+        fechaLiberacionProtocolo
+        fechaPrimerPacienteGlobal
+        fechaCierreReclutamientoGlobal
+        numeroSujetosPlaneadosColombia
+        porcentajeSujetosColombia
+        fechaRecepcionPaqueteInicialColombia
+        fechaPrimerPacienteReclutadoColombia
+        fechaCierreReclutamientoColombia
+        motivoDeSuspension
+        otroMotivoDeSuspension
+        linkDePublicacion
+        terminadoSatisfactoriamente
+        motivoDeTerminacion
+        otroMotivoDeTerminacion
+        fechaDeLicenciaKit
+        fechaDeImportacionEnBodegaKit
+        fechaPrimeraImportacionKit
+        fechaDeLicenciaMedicamentos
+        fechaDeImportacionEnBodegaMedicamentos
+        fechaPrimeraImportacionMedicamentos
+        estado
+        diasAprobacionInvimaInvima
+        diasAprobacionInvimaPatrocinador
+        anhoAprobacionInvima
+        mesAprobacionInvima
+        diasInicioEstudio
+        anhoInicioEstudio
+        mesInicioEstudio
+        user
+        fechaAprobacionEstudioInvima
+        fechaDeSometimientoEstudioInvima
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      studyCenter {
+        id
+        studyID
+        centerID
+        user
+        costoPorPaciente
+        fechaRecepcionPaquete
+        fechaRecepcionContrato
+        fechaFirmaContrato
+        fechaFirmaContratoPatrocinador
+        fechaAprobacionInvima
+        fechaActivacionCentro
+        cantidadPacientesPrevistos
+        cantidadPacientesIncluidos
+        fechaPrimerPacienteSeleccionado
+        fechaPrimerPacienteAleatorizado
+        estado
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      committee {
+        id
+        estado
+        nombre
+        tipoComite
+        periodicidadReunionesCEI
+        municipio
+        informacionContacto
+        resolucionInvima
+        costoEvaluacion
+        user
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      ecIterations {
+        nextToken
+        __typename
+      }
+      user
+      estado
+      diasAprobacionCentroCentro
+      diasAprobacionCentroPatrocinador
+      anhoAprobacionCentro
+      mesAprobacionCentro
+      createdAt
+      updatedAt
+      version
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+
+query InterruptionByStudy(
+  $studyID: ID
+  $sortDirection: ModelSortDirection
+  $filter: ModelInterruptionFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  interruptionByStudy(
+    studyID: $studyID
+    sortDirection: $sortDirection
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      study {
+        sponsorID
+        CIE10
+        id
+        identificador
+        identificadorNCT
+        linkClinical
+        titulo
+        areasTerapeuticas
+        tipoPoblacion
+        saludPublica
+        enfermedadHuerfana
+        tipoEstudio
+        fase
+        fechaAprobacionCasaMatriz
+        fechaFactibilidadColombia
+        enColombia
+        motivoNoSeleccion
+        fechaSeleccionColombia
+        fechaRecepcionFilialColombia
+        fechaVersionEspaniol
+        fechaPropuestaCierreReclutamiento
+        alcanceEstudio
+        codigosATC
+        tieneCRO
+        numeroPaisesParticipantes
+        totalSujetosNivelGlobal
+        fechaLiberacionProtocolo
+        fechaPrimerPacienteGlobal
+        fechaCierreReclutamientoGlobal
+        numeroSujetosPlaneadosColombia
+        porcentajeSujetosColombia
+        fechaRecepcionPaqueteInicialColombia
+        fechaPrimerPacienteReclutadoColombia
+        fechaCierreReclutamientoColombia
+        motivoDeSuspension
+        otroMotivoDeSuspension
+        linkDePublicacion
+        terminadoSatisfactoriamente
+        motivoDeTerminacion
+        otroMotivoDeTerminacion
+        fechaDeLicenciaKit
+        fechaDeImportacionEnBodegaKit
+        fechaPrimeraImportacionKit
+        fechaDeLicenciaMedicamentos
+        fechaDeImportacionEnBodegaMedicamentos
+        fechaPrimeraImportacionMedicamentos
+        estado
+        diasAprobacionInvimaInvima
+        diasAprobacionInvimaPatrocinador
+        anhoAprobacionInvima
+        mesAprobacionInvima
+        diasInicioEstudio
+        anhoInicioEstudio
+        mesInicioEstudio
+        user
+        fechaAprobacionEstudioInvima
+        fechaDeSometimientoEstudioInvima
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      studyID
+      id
+      estado
+      interrupcionReclutamiento
+      motivoInterrupcion
+      otroMotivoInterrupcion
+      fechaInicialInterrupcion
+      fechaFinalizacionTnterrupcion
+      user
+      informacionContacto
+      createdAt
+      updatedAt
+      version
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+
+query AddendaByStudy(
+  $studyID: ID
+  $sortDirection: ModelSortDirection
+  $filter: ModelAddendumFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  addendaByStudy(
+    studyID: $studyID
+    sortDirection: $sortDirection
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      studyID
+      study {
+        sponsorID
+        CIE10
+        id
+        identificador
+        identificadorNCT
+        linkClinical
+        titulo
+        areasTerapeuticas
+        tipoPoblacion
+        saludPublica
+        enfermedadHuerfana
+        tipoEstudio
+        fase
+        fechaAprobacionCasaMatriz
+        fechaFactibilidadColombia
+        enColombia
+        motivoNoSeleccion
+        fechaSeleccionColombia
+        fechaRecepcionFilialColombia
+        fechaVersionEspaniol
+        fechaPropuestaCierreReclutamiento
+        alcanceEstudio
+        codigosATC
+        tieneCRO
+        numeroPaisesParticipantes
+        totalSujetosNivelGlobal
+        fechaLiberacionProtocolo
+        fechaPrimerPacienteGlobal
+        fechaCierreReclutamientoGlobal
+        numeroSujetosPlaneadosColombia
+        porcentajeSujetosColombia
+        fechaRecepcionPaqueteInicialColombia
+        fechaPrimerPacienteReclutadoColombia
+        fechaCierreReclutamientoColombia
+        motivoDeSuspension
+        otroMotivoDeSuspension
+        linkDePublicacion
+        terminadoSatisfactoriamente
+        motivoDeTerminacion
+        otroMotivoDeTerminacion
+        fechaDeLicenciaKit
+        fechaDeImportacionEnBodegaKit
+        fechaPrimeraImportacionKit
+        fechaDeLicenciaMedicamentos
+        fechaDeImportacionEnBodegaMedicamentos
+        fechaPrimeraImportacionMedicamentos
+        estado
+        diasAprobacionInvimaInvima
+        diasAprobacionInvimaPatrocinador
+        anhoAprobacionInvima
+        mesAprobacionInvima
+        diasInicioEstudio
+        anhoInicioEstudio
+        mesInicioEstudio
+        user
+        fechaAprobacionEstudioInvima
+        fechaDeSometimientoEstudioInvima
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      invimaIterations {
+        nextToken
+        __typename
+      }
+      centers {
+        nextToken
+        __typename
+      }
+      id
+      descripcion
+      fechaCasaMatriz
+      fechaRecepcionPaquete
+      fechaVersionEspanol
+      primerPaisImplementacion
+      fechaImplementacionPais
+      estado
+      user
+      tiemposInvima {
+        nombre
+        dias
+        diasPatrocinador
+        mes
+        anho
+        fechaInicial
+        fechaFinal
+        __typename
+      }
+      createdAt
+      updatedAt
+      version
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+
+query AddendumStudyCenterByAddendum(
+  $addendumID: ID
+  $sortDirection: ModelSortDirection
+  $filter: ModelAddendumStudyCenterFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  AddendumStudyCenterByAddendum(
+    addendumID: $addendumID
+    sortDirection: $sortDirection
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      addendum {
+        studyID
+        id
+        descripcion
+        fechaCasaMatriz
+        fechaRecepcionPaquete
+        fechaVersionEspanol
+        primerPaisImplementacion
+        fechaImplementacionPais
+        estado
+        user
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      addendumID
+      studyCenter {
+        id
+        studyID
+        centerID
+        user
+        costoPorPaciente
+        fechaRecepcionPaquete
+        fechaRecepcionContrato
+        fechaFirmaContrato
+        fechaFirmaContratoPatrocinador
+        fechaAprobacionInvima
+        fechaActivacionCentro
+        cantidadPacientesPrevistos
+        cantidadPacientesIncluidos
+        fechaPrimerPacienteSeleccionado
+        fechaPrimerPacienteAleatorizado
+        estado
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      studyCenterID
+      ecIterations {
+        nextToken
+        __typename
+      }
+      id
+      fechaEnvioCentro
+      fechaReciboCentro
+      fechaImplementacionCentro
+      user
+      estado
+      tiemposCentro {
+        nombre
+        dias
+        diasPatrocinador
+        mes
+        anho
+        fechaInicial
+        fechaFinal
+        __typename
+      }
+      createdAt
+      updatedAt
+      version
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+
+query AddendumStudyCenterByStudyCenter(
+  $studyCenterID: ID
+  $sortDirection: ModelSortDirection
+  $filter: ModelAddendumStudyCenterFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  AddendumStudyCenterByStudyCenter(
+    studyCenterID: $studyCenterID
+    sortDirection: $sortDirection
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      addendum {
+        studyID
+        id
+        descripcion
+        fechaCasaMatriz
+        fechaRecepcionPaquete
+        fechaVersionEspanol
+        primerPaisImplementacion
+        fechaImplementacionPais
+        estado
+        user
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      addendumID
+      studyCenter {
+        id
+        studyID
+        centerID
+        user
+        costoPorPaciente
+        fechaRecepcionPaquete
+        fechaRecepcionContrato
+        fechaFirmaContrato
+        fechaFirmaContratoPatrocinador
+        fechaAprobacionInvima
+        fechaActivacionCentro
+        cantidadPacientesPrevistos
+        cantidadPacientesIncluidos
+        fechaPrimerPacienteSeleccionado
+        fechaPrimerPacienteAleatorizado
+        estado
+        createdAt
+        updatedAt
+        version
+        __typename
+      }
+      studyCenterID
+      ecIterations {
+        nextToken
+        __typename
+      }
+      id
+      fechaEnvioCentro
+      fechaReciboCentro
+      fechaImplementacionCentro
+      user
+      estado
+      tiemposCentro {
+        nombre
+        dias
+        diasPatrocinador
+        mes
+        anho
+        fechaInicial
+        fechaFinal
+        __typename
+      }
+      createdAt
+      updatedAt
+      version
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}

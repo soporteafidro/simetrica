@@ -1,0 +1,69 @@
+<div [ngClass]="{'container-integra' : !isModal}">
+    <h1 *ngIf="!isModal">{{editMode?'Actualizar mi comité':'Crear comité'}}</h1>
+    <form name="form" (ngSubmit)="onSubmit(f)" #f="ngForm">
+        <div class="p-fluid p-formgrid p-grid">
+            <div class="p-col-12" *ngIf="!isModal">
+                <h3>Datos básicos</h3>
+            </div>
+
+            <div class="p-col-12 p-md-6 p-field">
+                <label><span class="inputRequired">* </span>Comité de Ética:</label>
+                <input name="nombre" type="text" pInputText [(ngModel)]="committee.nombre" required #nombre="ngModel" pTooltip="Nombre o razon social del comité de ética" tooltipPosition="top">
+                <small class="form-error" *ngIf="!nombre.valid && (f.submitted || nombre.touched)">* Campo
+            requerido</small>
+            </div>
+
+            <div class="p-col-12 p-md-6 p-field">
+                <label><span class="inputRequired">* </span>Municipio:</label>
+                <p-dropdown [showClear]="true" placeholder="Seleccione" #city="ngModel" name="city" [(ngModel)]="committee.municipio" [filter]="true" required emptyFilterMessage="No se encontraron resultados" [options]="locationOpction"></p-dropdown>
+                <small class="form-error" *ngIf="!city.valid && (f.submitted || city.touched)">* Campo
+            requerido</small>
+            </div>
+
+            <div class="p-col-12 p-md-6 p-field">
+                <label>Tipo de Comité de Ética:</label>
+                <p-dropdown [showClear]="true" placeholder="Seleccione" #tipoComite="ngModel" name="tipoComite" [(ngModel)]="committee.tipoComite" [filter]="true" [options]="typeCommittee" emptyFilterMessage="No se encontraron resultados" pTooltip="Seleccione el tipo de comité al que pertenece el comité de ética"
+                    tooltipPosition="top"></p-dropdown>
+            </div>
+
+            <div class="p-col-12 p-md-6 p-field">
+                <label><span class="inputRequired">* </span>Periodicidad de reuniones del CEI:</label>
+                <p-dropdown (onChange)="periodicidadSeleccionada()" [showClear]="true" placeholder="Seleccione" #periodicidadReunionesCEI="ngModel" name="periodicidadReunionesCEI" required [(ngModel)]="tipoPeriodicidadReuniones" [options]="periodicidadReuniones" pTooltip="Periodicidad de reuniones del comité de ética para validar un estudio" tooltipPosition="top"></p-dropdown>
+                <small class="form-error" *ngIf="!periodicidadReunionesCEI.valid && (f.submitted || periodicidadReunionesCEI.touched)">* Campo
+                    requerido</small>
+            </div>
+
+            <div class="p-col-12 p-md-6 p-field" *ngIf="isPeriodicidadReunionesOtra">
+                <label><span class="inputRequired">* </span>Otro tipo de periodicidadde reuniones:</label>
+                <input name="preriodicidad" type="text" pInputText [(ngModel)]="committee.periodicidadReunionesCEI" required #preriodicidad="ngModel">
+                <small class="form-error" *ngIf="!preriodicidad.valid && isPeriodicidadReunionesOtra && (f.submitted || preriodicidad.touched)">* Campo
+                    requerido</small>
+            </div>
+
+            <div class="p-col-12 p-md-6 p-field">
+                <label>Resolución Invima:</label>
+                <input name="resolucionInvima" type="text" pInputText [(ngModel)]="committee.resolucionInvima" #resolucionInvima="ngModel" pTooltip="Resolución de aprobación por primera vez" tooltipPosition="top">
+            </div>
+
+            <div class="p-col-12 p-md-6 p-field">
+                <label><span class="inputRequired">* </span>Costo de la evaluación</label>
+                <p-inputNumber :min="0" name="costoEvaluacion" type="number" [(ngModel)]="committee.costoEvaluacion" #costoEvaluacion="ngModel" pTooltip="Costo por evaluación del paquete inicial. Tener un sitio independiente para alimentación de la información. " tooltipPosition="top"
+                    required></p-inputNumber>
+                <small class="form-error" *ngIf="!costoEvaluacion.valid && (f.submitted || costoEvaluacion.touched)">* Campo requerido</small>
+            </div>
+
+            <div class="p-col-12 p-md-6 p-field">
+                <label>Información de contacto:</label>
+                <textarea pInputTextarea name="informacionContacto" type="text" pInputText [(ngModel)]="committee.informacionContacto" #informacionContacto="ngModel" [rows]="5" autoResize="autoResize"></textarea>
+            </div>
+
+
+            <div class="p-field p-col-12 p-sm-6 p-md-3 p-md-offset-6 p-xl-2 p-xl-offset-8" *ngIf="!isModal">
+                <button class="p-button-outlined p-button-secondary" pButton label="Cancelar" type="button" (click)="onCancelar()"></button>
+            </div>
+            <div class="p-field p-col-12 p-sm-6 p-md-3" [ngClass]="{'p-md-offset-9': isModal, 'p-xl-2': !isModal }">
+                <button pButton label="{{editMode ? 'Actualizar' : 'Agregar'}}" type="submit"></button>
+            </div>
+        </div>
+    </form>
+</div>

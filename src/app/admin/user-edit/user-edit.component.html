@@ -1,0 +1,78 @@
+<form name="form" (ngSubmit)="onSubmit(f)" #f="ngForm">
+  <div class="p-fluid p-formgrid p-grid">
+
+    <div class="p-field p-col-12 p-md-6">
+      <h4>
+        <label><span class="inputRequired">* </span>Roles</label>
+      </h4>
+      <p-dropdown [showClear]="true" class="input" placeholder="Grupos" name="grupos" [options]="allGroups" [(ngModel)]="selectedGroup" required #grupos="ngModel" (onChange)="rolSelected()"></p-dropdown>
+      <small class="form-error" *ngIf="grupos.invalid && (f.submitted || grupos.touched)">* Campo requerido</small>
+    </div>
+
+    <div class="p-field p-col-12 p-md-6" *ngIf="visibilityPatrocinador">
+      <h4>
+        <label><span class="inputRequired">* </span>Patrocinador</label>
+      </h4>
+      <p-dropdown [showClear]="true" class="input" placeholder="Patrocinadores" name="sponsor" [options]="allSponsors" [(ngModel)]="user.patrocinador" optionLabel="nombre" #sponsor="ngModel" required></p-dropdown>
+      <small class="form-error" *ngIf="!sponsor.valid && (f.submitted || sponsor.touched)">* Campo
+        requerido</small>
+    </div>
+    
+    <div class="p-field p-col-12 p-md-6">
+      <h4><label><span class="inputRequired">* </span>Usuario</label></h4>
+      <input disabled class="input" name="username" type="text" pInputText [(ngModel)]="user.username" #username="ngModel">
+    </div>
+
+    <div class="p-field p-col-12 p-md-6">
+      <h4><label><span class="inputRequired">* </span>Nombres</label></h4>
+      <input class="input" name="name" type="text" pInputText [(ngModel)]="user.name" required #name="ngModel">
+      <small class="form-error" *ngIf="!name.valid && (f.submitted || name.touched)">* Campo
+        requerido</small>
+    </div>
+
+    <div class="p-field p-col-12 p-md-6">
+      <h4><label><span class="inputRequired">* </span>Número de identificación</label></h4>
+      <input class="input" name="identificacion" type="text" pInputText [(ngModel)]="user.identificacion" required #identificacion="ngModel">
+      <small class="form-error" *ngIf="!identificacion.valid && (f.submitted || identificacion.touched)">* Campo
+        requerido</small>
+    </div>
+
+    <div class="p-field p-col-12 p-md-6">
+      <h4><label><span class="inputRequired">* </span>Email</label></h4>
+      <input class="input" name="email" type="email" pInputText [(ngModel)]="user.email" #email="ngModel"
+        pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required>
+      <small class="form-error" *ngIf="!email.valid && (f.submitted || email.touched)">* Campo
+        requerido</small>
+        <br *ngIf="email.errors && email.errors.pattern && (f.submitted || email.touched)">
+      <small class="form-error" *ngIf="email.errors && email.errors.pattern && (f.submitted || email.touched)">* Email
+        inválido, no cumple el patrón.</small>
+    </div>
+
+    <div class="p-field p-col-12 p-md-6">
+      <h4>
+        <label><span class="inputRequired">* </span>Celular</label>
+      </h4>
+      <input class="input" name="celular" type="text" pInputText [(ngModel)]="user.phone_number" #celular="ngModel"
+        placeholder="+57 2134 5678" required
+        pattern="^(([+][(]?[0-9]{1,3}[)]?)|([(]?[0-9]{4}[)]?))\s*[)]?[-\s\.]?[(]?[0-9]{1,3}[)]?([-\s\.]?[0-9]{3})([-\s\.]?[0-9]{3,4})">
+      <small class="form-error" *ngIf="!celular.valid && (f.submitted || celular.touched)">* Campo
+        requerido</small>
+        <br *ngIf="celular.errors && celular.errors.pattern && (f.submitted || celular.touched)">
+      <small class="form-error"
+        *ngIf="celular.errors && celular.errors.pattern && (f.submitted || celular.touched)">* Se
+        requiere el indicador del país antecedido por un +</small>
+    </div>
+
+
+    <div class="p-field p-col-12 p-sm-6 p-md-4 p-md-offset-4">
+      <button pButton label="Cancelar" type="button" (click)="onCancelar()" class="p-button-secondary"></button>
+    </div>
+    
+    <div class="p-field p-col-12 p-sm-6 p-md-4">
+      <button pButton label="Editar Usuario" type="submit"></button>
+    </div>
+
+
+  </div>
+</form>
+

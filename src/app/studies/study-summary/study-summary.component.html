@@ -1,0 +1,214 @@
+<div class="container-integra-gray">
+  <div class="p-grid">
+    <div class="p-col-9">
+      <h1>Información detallada del estudio</h1>
+    </div>
+    <div class="p-col-3" style="text-align: right; position: relative">
+      <button
+        pButton
+        pRipple
+        type="button"
+        class="btnTiempos"
+        icon="pi pi-sliders-h"
+        label="Tiempos"
+        (click)="openTimesModal()"
+      ></button>
+    </div>
+  </div>
+  <div class="card p-p-1 pb0">
+    <div class="p-grid" *ngIf="study">
+      <div class="p-col-12 bgW c-card">
+        <div class="p-col-12">
+          <span><strong>Título: </strong>{{ study.titulo }}</span>
+        </div>
+      </div>
+      <div class="p-col-12 pb0">
+        <div class="p-grid" style="height: 100%">
+          <div class="p-col-3">
+            <div class="p-mb-2 p-col-12 coloredOne c-card">
+              <div class="ma">
+                <span class="block" style="margin-bottom: 10px"
+                  ><strong>Identificador:</strong>
+                  {{ study.identificador }}</span
+                >
+                <div *ngIf="!isReader || !isMedico">
+                  <button
+                    pButton
+                    pRipple
+                    type="button"
+                    style="height: 1rem; width: 100%"
+                    label="{{ estadoAsString }}"
+                    icon="pi pi-pencil"
+                    [ngClass]="{
+                      'p-button-danger':
+                        study.estado === 'SUSPENDIDO' ||
+                        study.estado === 'ELIMINADO',
+                      'p-button-info': study.estado === 'PROPUESTO',
+                      'p-button-success': study.estado === 'ENCURSO',
+                      'p-button-warning': study.estado === 'FINALIZADO'
+                    }"
+                    (click)="openEditEstado()"
+                  ></button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="p-col-9">
+            <div class="p-grid">
+              <div *ngIf="!isTimeElapsedError" class="p-col-4">
+                <div class="p-col-12 dataBox c-card">
+                  <div class="indicador" style="margin-bottom: 3px">
+                    <h3>Tiempo transcurrido</h3>
+                  </div>
+                  <div style="text-align: center; margin-bottom: 3px">
+                    <span class="p-tag p-tag-success" style="font-size: 20px">{{
+                      tiempoDeInicio
+                    }}</span>
+                  </div>
+                  <div style="text-align: center">
+                    <small
+                      >{{
+                        dateIITPipe.transform(study.fechaFactibilidadColombia)
+                      }}
+                      -
+                      {{
+                        study.fechaPrimerPacienteReclutadoColombia
+                          ? dateIITPipe.transform(
+                              study.fechaPrimerPacienteReclutadoColombia
+                            )
+                          : "Hoy"
+                      }}</small
+                    >
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="isTimeElapsedError" class="p-col-4">
+                <div class="p-col-12 dataBox c-card">
+                  <div class="p-mt-3" style="text-align: center">
+                    <span
+                      class="p-badge p-badge-warning p-badge-xl"
+                      style="cursor: pointer"
+                      (click)="displayDialog = true"
+                      >!</span
+                    >
+                    <p-dialog
+                      header="Error"
+                      [(visible)]="displayDialog"
+                      [modal]="true"
+                      [style]="{ width: '40vw' }"
+                      [baseZIndex]="10000"
+                    >
+                      <p style="text-align: center">{{ dialogMessage }}</p>
+                      <ng-template pTemplate="footer">
+                        <p-button
+                          icon="pi pi-check"
+                          (click)="displayDialog = false"
+                          label="Ok"
+                          styleClass="p-button-text"
+                        >
+                        </p-button>
+                      </ng-template>
+                    </p-dialog>
+                  </div>
+                </div>
+              </div>
+              <div class="p-col-2">
+                <div class="p-col-12 dataBox c-card">
+                  <div class="indicador">
+                    <h3>Centros</h3>
+                  </div>
+                  <div style="text-align: center">
+                    <span class="p-badge p-badge-success p-badge-xl">{{
+                      totalCentros
+                    }}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="p-col-2">
+                <div class="p-col-12 dataBox c-card">
+                  <div class="indicador">
+                    <h3>Comités</h3>
+                  </div>
+                  <div style="text-align: center">
+                    <span class="p-badge p-badge-success p-badge-xl">{{
+                      totalComites
+                    }}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="p-col-2">
+                <div class="p-col-12 dataBox c-card">
+                  <div class="indicador">
+                    <h3>Enmiendas</h3>
+                  </div>
+                  <div style="text-align: center">
+                    <span class="p-badge p-badge-success p-badge-xl">{{
+                      totalEnmiendas
+                    }}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="p-col-2">
+                <div class="p-col-12 dataBox c-card">
+                  <div class="indicador">
+                    <h3>Interrupciones</h3>
+                  </div>
+                  <div style="text-align: center">
+                    <span class="p-badge p-badge-success p-badge-xl">{{
+                      totalInterrupciones
+                    }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card p-p-1">
+    <div class="p-grid c-card">
+      <p-tabView [style]="{ width: '100%' }" style="width: 100%">
+        <p-tabPanel header="Información general ">
+          <app-study-general-information
+            [study]="study"
+            (onUpdate)="loadStudy()"
+          ></app-study-general-information>
+        </p-tabPanel>
+        <p-tabPanel header="Centro ">
+          <app-study-centers-list
+            [studyId]="studyId"
+            (onUpdate)="loadStudy(); reloadAddendums()"
+          ></app-study-centers-list>
+        </p-tabPanel>
+        <p-tabPanel header="Comité de ética ">
+          <app-committees-list
+            [parentId]="studyId"
+            [studyId]="studyId"
+            (onUpdate)="loadStudy(); reloadAddendums()"
+          ></app-committees-list>
+        </p-tabPanel>
+        <p-tabPanel header="INVIMA ">
+          <app-invima-list
+            [parentId]="studyId"
+            [studyId]="studyId"
+            (onUpdate)="loadStudy()"
+          ></app-invima-list>
+        </p-tabPanel>
+        <p-tabPanel header="Enmiendas ">
+          <app-addendums-list
+            #addendumsTab
+            [studyId]="studyId"
+            (onUpdate)="loadStudy()"
+          ></app-addendums-list>
+        </p-tabPanel>
+        <p-tabPanel header="Interrupciones " *ngIf="studyId">
+          <app-interruption-list
+            [idStudy]="studyId"
+            (onUpdate)="loadStudy()"
+          ></app-interruption-list>
+        </p-tabPanel>
+      </p-tabView>
+    </div>
+  </div>
+</div>

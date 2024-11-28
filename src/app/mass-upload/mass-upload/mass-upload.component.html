@@ -1,0 +1,73 @@
+<div class="container-integra">
+  <div class="p-grid p-fluid p-justify-end">
+    <div class="p-col-12">
+      <h1>{{ titulo }}</h1>
+    </div>
+  </div>
+
+  <div class="p-grid">
+    <div class="p-col-12 p-md-4">
+      <button
+        class="button-top"
+        type="button"
+        pButton
+        (click)="downloadTemplate()"
+        icon="pi pi-download"
+        label="Descargar Plantilla"
+      ></button>
+    </div>
+
+    <div class="p-col-12 p-md-4">
+      <label for="file-upload" class="subir">
+        <p class="button-top button-upload-template">
+          <i class="pi pi-upload"></i> CARGAR PLANTILLA
+        </p>
+      </label>
+      <input
+        type="file"
+        accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        id="file-upload"
+        (change)="loadFile($event.target.files)"
+        #inputFile
+      />
+      <p
+        class="name_file"
+        *ngIf="nameDocument != null"
+        style="text-align: center"
+      >
+        Nombre del archivo: {{ nameDocument }}
+      </p>
+    </div>
+
+    <div class="p-col-12 p-md-4">
+      <button
+        class="button-top"
+        type="button"
+        pButton
+        (click)="save()"
+        label="Guardar registros"
+        [disabled]="!erroresCargaMasiva"
+      ></button>
+    </div>
+
+    <div
+      class="p-col-12"
+      *ngIf="itemsTable.length > 0 && dataPrivew.length > 0"
+    >
+      <app-preview-data-upload
+        [data]="dataPrivew"
+        [itemsTable]="itemsTable"
+        [source]="source"
+      ></app-preview-data-upload>
+    </div>
+
+    <div class="p-col-12" style="text-align: center">
+      <button
+        type="button"
+        pButton
+        routerLink="/studies"
+        label="Cerrar"
+      ></button>
+    </div>
+  </div>
+</div>

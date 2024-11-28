@@ -1,0 +1,27 @@
+<div class="container-integra">
+
+    <p-progressBar class="stepper" [value]="progress"></p-progressBar>
+
+    <div id="stepperContent">
+
+        <div [ngClass]="{'hidden': currStep != 1}">
+            <h1>Datos de identificación</h1>
+            <div style="background-color: white;">
+                <app-study-identification-data [study]="study" (onBtnAction)="onBtnAction($event)"></app-study-identification-data>
+            </div>
+        </div>
+        <div [ngClass]="{'hidden': currStep != 2}">
+            <h1>Propiedades del estudio</h1>
+            <div style="background-color: white;">
+                <app-study-properties [study]="study" (onBtnAction)="onBtnAction($event)"></app-study-properties>
+            </div>
+        </div>
+        <div [ngClass]="{'hidden': currStep != 3}">
+            <h1>Datos internacionales / nacionales del estudio</h1>
+            <div style="background-color: white;">
+                <app-study-international-national-data [study]="study" (onBtnAction)="onBtnAction($event)"></app-study-international-national-data>
+            </div>
+        </div>
+    </div>
+
+</div>

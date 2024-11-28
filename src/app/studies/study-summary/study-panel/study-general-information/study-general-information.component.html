@@ -1,0 +1,316 @@
+<div *ngIf="study" class="p-col-12 p-fluid pad">
+  <p-accordion>
+    <p-accordionTab header="Información general" [selected]="true">
+      <div class="p-grid">
+        <div class="p-col-4 p-md-4">
+          <div *ngIf="study.sponsor.nombre" class="p-mt-2">
+            <span
+              ><strong>Patrocinador: </strong>{{ study.sponsor.nombre }}</span
+            >
+          </div>
+          <div *ngIf="study.identificador" class="p-mt-2">
+            <span
+              ><strong>Identificador: </strong>{{ study.identificador }}</span
+            >
+          </div>
+          <div *ngIf="study.identificadorNCT" class="p-mt-2">
+            <span
+              ><strong>Identificador de base internacional: </strong
+              >{{ study.identificadorNCT }}</span
+            >
+          </div>
+          <div *ngIf="study.tipoEstudio" class="p-mt-2">
+            <span
+              ><strong>Tipo de estudio: </strong>{{ study.tipoEstudio }}</span
+            >
+          </div>
+          <div style="text-align: justify" class="p-mt-2">
+            <span><strong>Título: </strong>{{ study.titulo }}</span>
+          </div>
+        </div>
+        <div class="p-col-4 p-md-4">
+          <div *ngIf="study.areasTerapeuticas" class="p-mt-2">
+            <span
+              ><strong>Áreas terapéuticas: </strong
+              ><span *ngFor="let p of areasTerapeuticas; let ultimo = last"
+                >{{ p }}<span *ngIf="!ultimo">, </span></span
+              ></span
+            >
+          </div>
+          <div *ngIf="study.areasTerapeuticas" class="p-mt-2">
+            <span
+              ><strong>Tipo de población: </strong
+              >{{ study.tipoPoblacion }}</span
+            >
+          </div>
+          <div *ngIf="study.areasTerapeuticas" class="p-mt-2">
+            <span
+              ><strong>¿En salud pública?: </strong
+              >{{ study.saludPublica }}</span
+            >
+          </div>
+          <div *ngIf="study.enfermedadHuerfana" class="p-mt-2">
+            <span
+              ><strong>¿De enfermedad huérfana?: </strong
+              >{{ study.enfermedadHuerfana }}</span
+            >
+          </div>
+          <div *ngIf="study.CIE10" class="p-mt-2">
+            <span><strong>CIE-10: </strong>{{ study.CIE10 }}</span>
+          </div>
+        </div>
+        <div class="p-col-4 p-md-4">
+          <div *ngIf="study.fase" class="p-mt-2">
+            <span><strong>Fase: </strong>{{ study.fase }}</span>
+          </div>
+          <div *ngIf="study.fechaAprobacionCasaMatriz" class="p-mt-2">
+            <span
+              ><strong>Fecha de aprobación protocolo casa matriz: </strong
+              >{{ study.fechaAprobacionCasaMatriz | date: "dd-MM-yyyy" }}</span
+            >
+          </div>
+          <div *ngIf="study.fechaFactibilidadColombia" class="p-mt-2">
+            <span
+              ><strong>Fecha de factibilidad en Colombia: </strong
+              >{{ study.fechaFactibilidadColombia | date: "dd-MM-yyyy" }}</span
+            >
+          </div>
+          <div *ngIf="study.enColombia" class="p-mt-2">
+            <span><strong>¿En Colombia?: </strong>{{ study.enColombia }}</span>
+          </div>
+          <div *ngIf="study.motivoNoSeleccion" class="p-mt-2">
+            <span
+              ><strong>Motivo de NO selección: </strong
+              >{{ study.motivoNoSeleccion }}</span
+            >
+          </div>
+        </div>
+      </div>
+      <div *ngIf="!isReader || !isMedico" class="p-grid">
+        <div class="p-col-3 p-offset-9 p-mt-2">
+          <button
+            pButton
+            label="Actualizar"
+            icon="pi pi-pencil"
+            iconPos="left"
+            class="updateBtn"
+            (click)="editarDatosDeIdentificacion()"
+          ></button>
+        </div>
+      </div>
+    </p-accordionTab>
+    <p-accordionTab header="Datos internacionales y nacionales">
+      <div class="p-grid">
+        <div class="p-col-6 p-md-6">
+          <div>
+            <h3>Datos Internacionales</h3>
+          </div>
+          <div *ngIf="study.numeroPaisesParticipantes" class="p-mt-2">
+            <span
+              ><strong>Número de paises participantes: </strong
+              >{{ study.numeroPaisesParticipantes }}</span
+            >
+          </div>
+          <div *ngIf="study.totalSujetosNivelGlobal" class="p-mt-2">
+            <span
+              ><strong>Total de sujetos a nivel global: </strong
+              >{{ study.totalSujetosNivelGlobal }}</span
+            >
+          </div>
+          <div *ngIf="study.fechaLiberacionProtocolo" class="p-mt-2">
+            <span
+              ><strong>Fecha de liberación del protocolo: </strong
+              >{{ study.fechaLiberacionProtocolo | date: "dd-MM-yyyy" }}</span
+            >
+          </div>
+          <div *ngIf="study.fechaPrimerPacienteGlobal" class="p-mt-2">
+            <span
+              ><strong>Fecha del primer paciente global: </strong
+              >{{ study.fechaPrimerPacienteGlobal | date: "dd-MM-yyyy" }}</span
+            >
+          </div>
+          <div *ngIf="study.fechaCierreReclutamientoGlobal" class="p-mt-2">
+            <span
+              ><strong>Fecha último paciente enrolado a nivel global: </strong
+              >{{
+                study.fechaCierreReclutamientoGlobal | date: "dd-MM-yyyy"
+              }}</span
+            >
+          </div>
+        </div>
+        <div class="p-col-6 p-md-6">
+          <div>
+            <h3>Datos Nacionales</h3>
+          </div>
+          <div *ngIf="study.numeroSujetosPlaneadosColombia" class="p-mt-2">
+            <span
+              ><strong>Número de sujetos planeados: </strong
+              >{{ study.numeroSujetosPlaneadosColombia }}</span
+            >
+          </div>
+          <div
+            *ngIf="study.fechaRecepcionPaqueteInicialColombia"
+            class="p-mt-2"
+          >
+            <span
+              ><strong>Fecha de recepción paquete inicial: </strong
+              >{{
+                study.fechaRecepcionPaqueteInicialColombia | date: "dd-MM-yyyy"
+              }}</span
+            >
+          </div>
+          <div
+            *ngIf="study.fechaPrimerPacienteReclutadoColombia"
+            class="p-mt-2"
+          >
+            <span
+              ><strong>Fecha del primer paciente reclutado: </strong
+              >{{
+                study.fechaPrimerPacienteReclutadoColombia | date: "dd-MM-yyyy"
+              }}</span
+            >
+          </div>
+          <div *ngIf="study.fechaCierreReclutamientoColombia" class="p-mt-2">
+            <span
+              ><strong>Fecha de cierre de reclutamiento: </strong
+              >{{
+                study.fechaCierreReclutamientoColombia | date: "dd-MM-yyyy"
+              }}</span
+            >
+          </div>
+          <div *ngIf="study.fechaCierreReclutamientoColombia" class="p-mt-2">
+            <span
+              ><strong>Fecha último paciente enrolado Colombia: </strong
+              >{{
+                study.fechaCierreReclutamientoColombia | date: "dd-MM-yyyy"
+              }}</span
+            >
+          </div>
+        </div>
+      </div>
+      <div *ngIf="!isReader" class="p-grid">
+        <div class="p-col-3 p-offset-9 p-mt-2">
+          <button
+            pButton
+            label="Actualizar"
+            icon="pi pi-pencil"
+            iconPos="left"
+            class="updateBtn"
+            (click)="editarDatosInternacionalesYNacionales()"
+          ></button>
+        </div>
+      </div>
+    </p-accordionTab>
+    <p-accordionTab header="Propiedades">
+      <div class="p-grid">
+        <div class="p-col-12">
+          <div>
+            <h3>Datos de importación</h3>
+          </div>
+          <div *ngIf="study.alcanceEstudio" class="p-mt-2">
+            <span
+              ><strong>Alcance del estudio: </strong
+              >{{ study.alcanceEstudio }}</span
+            >
+          </div>
+          <div *ngIf="study.codigosATC" class="p-mt-2">
+            <span><strong>Códigos ATC: </strong>{{ study.codigosATC }}</span>
+          </div>
+          <div *ngIf="study.cro?.nombre" class="p-mt-2">
+            <span><strong>CRO: </strong>{{ study.cro?.nombre }}</span>
+          </div>
+        </div>
+
+        <div class="p-col-6 p-md-12">
+          <div>
+            <h3>Otros</h3>
+          </div>
+        </div>
+
+        <div
+          class="p-col-6 p-md-6"
+          *ngIf="
+            study.fechaDeLicenciaMedicamentos ||
+            study.fechaPrimeraImportacionMedicamentos ||
+            study.fechaDeImportacionEnBodegaMedicamentos
+          "
+        >
+          <div *ngIf="study.fechaDeLicenciaMedicamentos" class="p-mt-2">
+            <span
+              ><strong>Fecha de la licencia de los medicamentos: </strong
+              >{{
+                study.fechaDeLicenciaMedicamentos | date: "dd-MM-yyyy"
+              }}</span
+            >
+          </div>
+          <div *ngIf="study.fechaPrimeraImportacionMedicamentos" class="p-mt-2">
+            <span
+              ><strong
+                >Fecha de la primera importación de los medicamentos: </strong
+              >{{
+                study.fechaPrimeraImportacionMedicamentos | date: "dd-MM-yyyy"
+              }}</span
+            >
+          </div>
+          <div
+            *ngIf="study.fechaDeImportacionEnBodegaMedicamentos"
+            class="p-mt-2"
+          >
+            <span
+              ><strong
+                >Fecha de la importación de los medicamentos en bodega: </strong
+              >{{
+                study.fechaDeImportacionEnBodegaMedicamentos
+                  | date: "dd-MM-yyyy"
+              }}</span
+            >
+          </div>
+        </div>
+
+        <div
+          class="p-col-6 p-md-6"
+          *ngIf="
+            study.fechaDeLicenciaKit ||
+            study.fechaPrimeraImportacionKit ||
+            study.fechaDeImportacionEnBodegaKit
+          "
+        >
+          <div *ngIf="study.fechaDeLicenciaKit" class="p-mt-2">
+            <span
+              ><strong>Fecha de la licencia de los kits / insumos: </strong
+              >{{ study.fechaDeLicenciaKit | date: "dd-MM-yyyy" }}</span
+            >
+          </div>
+          <div *ngIf="study.fechaPrimeraImportacionKit" class="p-mt-2">
+            <span
+              ><strong
+                >Fecha de la primera importación de los kits / insumos: </strong
+              >{{ study.fechaPrimeraImportacionKit | date: "dd-MM-yyyy" }}</span
+            >
+          </div>
+          <div *ngIf="study.fechaDeImportacionEnBodegaKit" class="p-mt-2">
+            <span
+              ><strong
+                >Fecha de la importación de los kits / insumos en bodega: </strong
+              >{{
+                study.fechaDeImportacionEnBodegaKit | date: "dd-MM-yyyy"
+              }}</span
+            >
+          </div>
+        </div>
+      </div>
+      <div *ngIf="!isReader" class="p-grid">
+        <div class="p-col-3 p-offset-9 p-mt-2">
+          <button
+            pButton
+            label="Actualizar"
+            icon="pi pi-pencil"
+            iconPos="left"
+            class="updateBtn"
+            (click)="editarPropiedades()"
+          ></button>
+        </div>
+      </div>
+    </p-accordionTab>
+  </p-accordion>
+</div>

@@ -1,0 +1,1660 @@
+[
+    {
+        "Attributes": [
+            {
+                "Name": "sub",
+                "Value": "5000fa2b-b26f-41b2-9bb5-c286394cd4cb"
+            },
+            {
+                "Name": "email_verified",
+                "Value": "true"
+            },
+            {
+                "Name": "custom:identificacion",
+                "Value": "51957578"
+            },
+            {
+                "Name": "name",
+                "Value": "Amanda Medina"
+            },
+            {
+                "Name": "phone_number_verified",
+                "Value": "false"
+            },
+            {
+                "Name": "custom:patrocinador",
+                "Value": "7"
+            },
+            {
+                "Name": "phone_number",
+                "Value": "+573153596328"
+            },
+            {
+                "Name": "email",
+                "Value": "amanda.medina@bayer.com"
+            }
+        ],
+        "Enabled": true,
+        "UserCreateDate": "2022-09-13T15:47:46.558Z",
+        "UserLastModifiedDate": "2022-09-13T15:47:46.558Z",
+        "UserStatus": "FORCE_CHANGE_PASSWORD",
+        "Username": "AMedina.test",
+        "Groups": [
+            "Supervisor"
+        ]
+    },
+    {
+        "Attributes": [
+            {
+                "Name": "sub",
+                "Value": "7805f3b2-7b92-4967-a65c-5c4fcd787e30"
+            },
+            {
+                "Name": "email_verified",
+                "Value": "true"
+            },
+            {
+                "Name": "custom:identificacion",
+                "Value": "39758137"
+            },
+            {
+                "Name": "name",
+                "Value": "Claudia Patricia Rojas Maldonado"
+            },
+            {
+                "Name": "phone_number_verified",
+                "Value": "false"
+            },
+            {
+                "Name": "custom:patrocinador",
+                "Value": "22"
+            },
+            {
+                "Name": "phone_number",
+                "Value": "+573153267454"
+            },
+            {
+                "Name": "email",
+                "Value": "claudia.rojas@pfizer.com"
+            }
+        ],
+        "Enabled": true,
+        "UserCreateDate": "2022-09-13T15:46:31.930Z",
+        "UserLastModifiedDate": "2022-09-13T15:46:31.930Z",
+        "UserStatus": "FORCE_CHANGE_PASSWORD",
+        "Username": "CRojas.test",
+        "Groups": [
+            "Supervisor"
+        ]
+    },
+    {
+        "Attributes": [
+            {
+                "Name": "sub",
+                "Value": "54b9812d-b86b-4394-a989-0ac26c1355e1"
+            },
+            {
+                "Name": "email_verified",
+                "Value": "true"
+            },
+            {
+                "Name": "custom:identificacion",
+                "Value": "34343435"
+            },
+            {
+                "Name": "name",
+                "Value": "Edwar Perez"
+            },
+            {
+                "Name": "phone_number_verified",
+                "Value": "false"
+            },
+            {
+                "Name": "custom:patrocinador",
+                "Value": "1"
+            },
+            {
+                "Name": "phone_number",
+                "Value": "+573214282234"
+            },
+            {
+                "Name": "email",
+                "Value": "alt.n4-8oxfwnp7@yopmail.com"
+            }
+        ],
+        "Enabled": true,
+        "UserCreateDate": "2022-10-21T17:05:22.613Z",
+        "UserLastModifiedDate": "2022-10-21T17:06:02.570Z",
+        "UserStatus": "CONFIRMED",
+        "Username": "Digi",
+        "Groups": [
+            "Digitador"
+        ]
+    },
+    {
+        "Attributes": [
+            {
+                "Name": "sub",
+                "Value": "0df6eb1d-fce9-4eb8-928b-60c3c71e3a7d"
+            },
+            {
+                "Name": "email_verified",
+                "Value": "true"
+            },
+            {
+                "Name": "custom:identificacion",
+                "Value": "1014284513"
+            },
+            {
+                "Name": "name",
+                "Value": "Edwar Ricardo"
+            },
+            {
+                "Name": "phone_number_verified",
+                "Value": "false"
+            },
+            {
+                "Name": "custom:patrocinador",
+                "Value": "1"
+            },
+            {
+                "Name": "phone_number",
+                "Value": "+573214282234"
+            },
+            {
+                "Name": "email",
+                "Value": "edwar.perez@integrait.co"
+            }
+        ],
+        "Enabled": true,
+        "UserCreateDate": "2022-06-16T17:38:57.921Z",
+        "UserLastModifiedDate": "2022-06-16T17:40:08.290Z",
+        "UserStatus": "CONFIRMED",
+        "Username": "Edwar",
+        "Groups": []
+    },
+    {
+        "Attributes": [
+            {
+                "Name": "sub",
+                "Value": "0db0cba0-516c-4111-adfe-c292ccafad91"
+            },
+            {
+                "Name": "email_verified",
+                "Value": "true"
+            },
+            {
+                "Name": "custom:identificacion",
+                "Value": "22584984"
+            },
+            {
+                "Name": "name",
+                "Value": "Gala Galvis"
+            },
+            {
+                "Name": "phone_number_verified",
+                "Value": "false"
+            },
+            {
+                "Name": "custom:patrocinador",
+                "Value": "21"
+            },
+            {
+                "Name": "phone_number",
+                "Value": "+573176486668"
+            },
+            {
+                "Name": "email",
+                "Value": "gfgm@novonordisk.com"
+            }
+        ],
+        "Enabled": true,
+        "UserCreateDate": "2022-09-13T15:45:09.455Z",
+        "UserLastModifiedDate": "2022-09-13T15:45:09.455Z",
+        "UserStatus": "FORCE_CHANGE_PASSWORD",
+        "Username": "GGalvis.test",
+        "Groups": [
+            "Supervisor"
+        ]
+    },
+    {
+        "Attributes": [
+            {
+                "Name": "sub",
+                "Value": "ee995614-6a57-4055-80c9-8c810eb41b83"
+            },
+            {
+                "Name": "email_verified",
+                "Value": "true"
+            },
+            {
+                "Name": "custom:identificacion",
+                "Value": "290173"
+            },
+            {
+                "Name": "name",
+                "Value": "Gustavo Martins"
+            },
+            {
+                "Name": "phone_number_verified",
+                "Value": "false"
+            },
+            {
+                "Name": "custom:patrocinador",
+                "Value": "2"
+            },
+            {
+                "Name": "phone_number",
+                "Value": "+551151719623"
+            },
+            {
+                "Name": "email",
+                "Value": "gmarti09@amgen.com"
+            }
+        ],
+        "Enabled": true,
+        "UserCreateDate": "2022-09-13T15:48:53.185Z",
+        "UserLastModifiedDate": "2022-09-13T15:48:53.185Z",
+        "UserStatus": "FORCE_CHANGE_PASSWORD",
+        "Username": "GMartins",
+        "Groups": [
+            "Supervisor"
+        ]
+    },
+    {
+        "Attributes": [
+            {
+                "Name": "sub",
+                "Value": "366e2dfb-861c-4c11-a44d-d5488a2ab5b0"
+            },
+            {
+                "Name": "email_verified",
+                "Value": "true"
+            },
+            {
+                "Name": "custom:identificacion",
+                "Value": "53118245"
+            },
+            {
+                "Name": "name",
+                "Value": "Johana Celis Villamizar "
+            },
+            {
+                "Name": "phone_number_verified",
+                "Value": "false"
+            },
+            {
+                "Name": "custom:patrocinador",
+                "Value": "20"
+            },
+            {
+                "Name": "phone_number",
+                "Value": "+573174302319"
+            },
+            {
+                "Name": "email",
+                "Value": "johana.celis@novartis.com"
+            }
+        ],
+        "Enabled": true,
+        "UserCreateDate": "2022-09-13T16:41:26.438Z",
+        "UserLastModifiedDate": "2022-09-13T16:41:26.438Z",
+        "UserStatus": "FORCE_CHANGE_PASSWORD",
+        "Username": "JCelis.test",
+        "Groups": [
+            "Supervisor"
+        ]
+    },
+    {
+        "Attributes": [
+            {
+                "Name": "sub",
+                "Value": "3b211982-240c-44ae-92ef-8c404300c9fd"
+            },
+            {
+                "Name": "email_verified",
+                "Value": "true"
+            },
+            {
+                "Name": "custom:identificacion",
+                "Value": "1032451435"
+            },
+            {
+                "Name": "name",
+                "Value": "Jose Forero"
+            },
+            {
+                "Name": "phone_number_verified",
+                "Value": "false"
+            },
+            {
+                "Name": "custom:patrocinador",
+                "Value": "14"
+            },
+            {
+                "Name": "phone_number",
+                "Value": "+573144461628"
+            },
+            {
+                "Name": "email",
+                "Value": "jose.d.forero@gsk.com"
+            }
+        ],
+        "Enabled": true,
+        "UserCreateDate": "2022-09-13T16:36:44.012Z",
+        "UserLastModifiedDate": "2022-09-13T16:36:44.012Z",
+        "UserStatus": "FORCE_CHANGE_PASSWORD",
+        "Username": "JForero.test",
+        "Groups": [
+            "Supervisor"
+        ]
+    },
+    {
+        "Attributes": [
+            {
+                "Name": "sub",
+                "Value": "8e032bb7-bd72-41cb-8140-0ce8415db66f"
+            },
+            {
+                "Name": "email_verified",
+                "Value": "true"
+            },
+            {
+                "Name": "custom:identificacion",
+                "Value": "1032368676"
+            },
+            {
+                "Name": "name",
+                "Value": "Juan Manuel Reyes"
+            },
+            {
+                "Name": "phone_number_verified",
+                "Value": "false"
+            },
+            {
+                "Name": "custom:patrocinador",
+                "Value": "22"
+            },
+            {
+                "Name": "phone_number",
+                "Value": "+573112880877"
+            },
+            {
+                "Name": "email",
+                "Value": "JuanManuel.Reyes@pfizer.com"
+            }
+        ],
+        "Enabled": true,
+        "UserCreateDate": "2022-09-13T16:29:29.173Z",
+        "UserLastModifiedDate": "2022-09-13T16:29:29.173Z",
+        "UserStatus": "FORCE_CHANGE_PASSWORD",
+        "Username": "JReyes.test",
+        "Groups": [
+            "Supervisor"
+        ]
+    },
+    {
+        "Attributes": [
+            {
+                "Name": "sub",
+                "Value": "f3bfac1b-4224-4061-8226-5fa2d89da457"
+            },
+            {
+                "Name": "email_verified",
+                "Value": "true"
+            },
+            {
+                "Name": "custom:identificacion",
+                "Value": "29076411"
+            },
+            {
+                "Name": "name",
+                "Value": "Lucía Rodríguez Ruiz de Gauna"
+            },
+            {
+                "Name": "phone_number_verified",
+                "Value": "false"
+            },
+            {
+                "Name": "custom:patrocinador",
+                "Value": "10"
+            },
+            {
+                "Name": "phone_number",
+                "Value": "+5491150962718"
+            },
+            {
+                "Name": "email",
+                "Value": "lucia.rodriguez_ruiz@boehringer-ingelheim.com"
+            }
+        ],
+        "Enabled": true,
+        "UserCreateDate": "2022-09-13T16:10:31.263Z",
+        "UserLastModifiedDate": "2022-09-13T16:10:31.263Z",
+        "UserStatus": "FORCE_CHANGE_PASSWORD",
+        "Username": "LRodriguez.test",
+        "Groups": [
+            "Supervisor"
+        ]
+    },
+    {
+        "Attributes": [
+            {
+                "Name": "sub",
+                "Value": "083a988d-f7a2-4e98-b6a2-05e1f83e9ac5"
+            },
+            {
+                "Name": "email_verified",
+                "Value": "true"
+            },
+            {
+                "Name": "custom:identificacion",
+                "Value": "8740906 "
+            },
+            {
+                "Name": "name",
+                "Value": "Mariel Alika Cárdenas Cho"
+            },
+            {
+                "Name": "phone_number_verified",
+                "Value": "false"
+            },
+            {
+                "Name": "custom:patrocinador",
+                "Value": "14"
+            },
+            {
+                "Name": "phone_number",
+                "Value": "+50762410384"
+            },
+            {
+                "Name": "email",
+                "Value": "mariel.a.cardenas@gsk.com"
+            }
+        ],
+        "Enabled": true,
+        "UserCreateDate": "2022-09-13T16:40:25.354Z",
+        "UserLastModifiedDate": "2022-09-13T16:40:25.354Z",
+        "UserStatus": "FORCE_CHANGE_PASSWORD",
+        "Username": "MACardenas.test",
+        "Groups": [
+            "Supervisor"
+        ]
+    },
+    {
+        "Attributes": [
+            {
+                "Name": "sub",
+                "Value": "95d60fbd-8825-47f4-bdf3-0a0167bf18ad"
+            },
+            {
+                "Name": "email_verified",
+                "Value": "true"
+            },
+            {
+                "Name": "custom:identificacion",
+                "Value": "15753106"
+            },
+            {
+                "Name": "name",
+                "Value": "Montserrat del Carmen López Hernández"
+            },
+            {
+                "Name": "phone_number_verified",
+                "Value": "false"
+            },
+            {
+                "Name": "custom:patrocinador",
+                "Value": "26"
+            },
+            {
+                "Name": "phone_number",
+                "Value": "+525555072641"
+            },
+            {
+                "Name": "email",
+                "Value": "Montserrat.Lopez@sanofi.com"
+            }
+        ],
+        "Enabled": true,
+        "UserCreateDate": "2022-09-13T16:26:28.170Z",
+        "UserLastModifiedDate": "2022-09-13T16:26:28.170Z",
+        "UserStatus": "FORCE_CHANGE_PASSWORD",
+        "Username": "MLopez.test",
+        "Groups": [
+            "Supervisor"
+        ]
+    },
+    {
+        "Attributes": [
+            {
+                "Name": "sub",
+                "Value": "c7480eb5-d0b4-4131-8898-2da2bb8ad1b8"
+            },
+            {
+                "Name": "email_verified",
+                "Value": "true"
+            },
+            {
+                "Name": "custom:identificacion",
+                "Value": "52990215"
+            },
+            {
+                "Name": "name",
+                "Value": "Mariana Pineda Posada"
+            },
+            {
+                "Name": "phone_number_verified",
+                "Value": "false"
+            },
+            {
+                "Name": "custom:patrocinador",
+                "Value": "2"
+            },
+            {
+                "Name": "phone_number",
+                "Value": "+573173650897"
+            },
+            {
+                "Name": "email",
+                "Value": "mpined04@amgen.com"
+            }
+        ],
+        "Enabled": true,
+        "UserCreateDate": "2022-09-13T16:08:49.247Z",
+        "UserLastModifiedDate": "2022-09-13T16:08:49.247Z",
+        "UserStatus": "FORCE_CHANGE_PASSWORD",
+        "Username": "MPineda.test",
+        "Groups": [
+            "Supervisor"
+        ]
+    },
+    {
+        "Attributes": [
+            {
+                "Name": "sub",
+                "Value": "8593fe82-434e-4846-be97-f480c2b77b87"
+            },
+            {
+                "Name": "email_verified",
+                "Value": "true"
+            },
+            {
+                "Name": "custom:identificacion",
+                "Value": "52953326"
+            },
+            {
+                "Name": "name",
+                "Value": "Magda Jimena Santa"
+            },
+            {
+                "Name": "phone_number_verified",
+                "Value": "false"
+            },
+            {
+                "Name": "custom:patrocinador",
+                "Value": "14"
+            },
+            {
+                "Name": "phone_number",
+                "Value": "+573203502398"
+            },
+            {
+                "Name": "email",
+                "Value": "magda.j.santa@gsk.com"
+            }
+        ],
+        "Enabled": true,
+        "UserCreateDate": "2022-09-13T16:37:53.712Z",
+        "UserLastModifiedDate": "2022-09-13T16:37:53.712Z",
+        "UserStatus": "FORCE_CHANGE_PASSWORD",
+        "Username": "MSanta.test",
+        "Groups": [
+            "Supervisor"
+        ]
+    },
+    {
+        "Attributes": [
+            {
+                "Name": "sub",
+                "Value": "347365da-bc4a-4abf-b186-44b0f7fd79bd"
+            },
+            {
+                "Name": "email_verified",
+                "Value": "true"
+            },
+            {
+                "Name": "custom:identificacion",
+                "Value": "1095700123"
+            },
+            {
+                "Name": "name",
+                "Value": "Oscar Eduardo Carreño Lopez"
+            },
+            {
+                "Name": "phone_number_verified",
+                "Value": "false"
+            },
+            {
+                "Name": "custom:patrocinador",
+                "Value": "19"
+            },
+            {
+                "Name": "phone_number",
+                "Value": "+573166198112"
+            },
+            {
+                "Name": "email",
+                "Value": "oscar.carreno1@merck.com"
+            }
+        ],
+        "Enabled": true,
+        "UserCreateDate": "2022-09-13T16:39:13.445Z",
+        "UserLastModifiedDate": "2022-09-13T16:39:13.445Z",
+        "UserStatus": "FORCE_CHANGE_PASSWORD",
+        "Username": "OCarreño.test",
+        "Groups": [
+            "Supervisor"
+        ]
+    },
+    {
+        "Attributes": [
+            {
+                "Name": "sub",
+                "Value": "8571d246-9328-48d1-aaa0-7d0b8d0a2a0e"
+            },
+            {
+                "Name": "email_verified",
+                "Value": "true"
+            },
+            {
+                "Name": "custom:identificacion",
+                "Value": "1020736345"
+            },
+            {
+                "Name": "name",
+                "Value": "Susana Casas"
+            },
+            {
+                "Name": "phone_number_verified",
+                "Value": "false"
+            },
+            {
+                "Name": "custom:patrocinador",
+                "Value": "16"
+            },
+            {
+                "Name": "phone_number",
+                "Value": "+573107576109"
+            },
+            {
+                "Name": "email",
+                "Value": "SCasasAr@ITS.JNJ.com"
+            }
+        ],
+        "Enabled": true,
+        "UserCreateDate": "2022-09-13T16:07:44.315Z",
+        "UserLastModifiedDate": "2022-09-13T16:07:44.315Z",
+        "UserStatus": "FORCE_CHANGE_PASSWORD",
+        "Username": "SCasas.test",
+        "Groups": [
+            "Supervisor"
+        ]
+    },
+    {
+        "Attributes": [
+            {
+                "Name": "sub",
+                "Value": "018dfb43-9bdf-4bc4-bb12-a08bfdc55896"
+            },
+            {
+                "Name": "email_verified",
+                "Value": "true"
+            },
+            {
+                "Name": "custom:identificacion",
+                "Value": "1001679963"
+            },
+            {
+                "Name": "name",
+                "Value": "Juan Carlos Hoyos Cabariquee"
+            },
+            {
+                "Name": "phone_number_verified",
+                "Value": "false"
+            },
+            {
+                "Name": "custom:patrocinador",
+                "Value": "10"
+            },
+            {
+                "Name": "phone_number",
+                "Value": "+573022135764"
+            },
+            {
+                "Name": "email",
+                "Value": "jua456n@yopmail.com"
+            }
+        ],
+        "Enabled": true,
+        "UserCreateDate": "2022-07-05T20:38:51.228Z",
+        "UserLastModifiedDate": "2022-07-05T20:38:51.228Z",
+        "UserStatus": "FORCE_CHANGE_PASSWORD",
+        "Username": "Subject56",
+        "Groups": [
+            "Supervisor"
+        ]
+    },
+    {
+        "Attributes": [
+            {
+                "Name": "sub",
+                "Value": "fe787b69-3999-4c21-9fd4-0accadeadefe"
+            },
+            {
+                "Name": "email_verified",
+                "Value": "true"
+            },
+            {
+                "Name": "custom:identificacion",
+                "Value": "51960286"
+            },
+            {
+                "Name": "name",
+                "Value": "Teresa Eugenia Rodríguez Sánchez"
+            },
+            {
+                "Name": "phone_number_verified",
+                "Value": "false"
+            },
+            {
+                "Name": "custom:patrocinador",
+                "Value": "23"
+            },
+            {
+                "Name": "phone_number",
+                "Value": "+573112599072"
+            },
+            {
+                "Name": "email",
+                "Value": "teresa.rodriguez.tr1@roche.com"
+            }
+        ],
+        "Enabled": true,
+        "UserCreateDate": "2022-09-13T16:11:51.843Z",
+        "UserLastModifiedDate": "2022-09-13T16:11:51.843Z",
+        "UserStatus": "FORCE_CHANGE_PASSWORD",
+        "Username": "TRodriguez.test",
+        "Groups": [
+            "Supervisor"
+        ]
+    },
+    {
+        "Attributes": [
+            {
+                "Name": "sub",
+                "Value": "94f05f76-e15f-45b8-a71f-306441f863bd"
+            },
+            {
+                "Name": "email_verified",
+                "Value": "true"
+            },
+            {
+                "Name": "custom:identificacion",
+                "Value": "27682906"
+            },
+            {
+                "Name": "name",
+                "Value": "Yesenia Marín Delgado"
+            },
+            {
+                "Name": "phone_number_verified",
+                "Value": "false"
+            },
+            {
+                "Name": "custom:patrocinador",
+                "Value": "11"
+            },
+            {
+                "Name": "phone_number",
+                "Value": "+525553372923"
+            },
+            {
+                "Name": "email",
+                "Value": "yesenia.marin@bms.com"
+            }
+        ],
+        "Enabled": true,
+        "UserCreateDate": "2022-09-13T16:35:35.411Z",
+        "UserLastModifiedDate": "2022-09-13T16:35:35.411Z",
+        "UserStatus": "FORCE_CHANGE_PASSWORD",
+        "Username": "YMarin.test",
+        "Groups": [
+            "Supervisor"
+        ]
+    },
+    {
+        "Attributes": [
+            {
+                "Name": "sub",
+                "Value": "d1a4c07a-5869-4eef-badf-780d32a66c83"
+            },
+            {
+                "Name": "email_verified",
+                "Value": "true"
+            },
+            {
+                "Name": "name",
+                "Value": "Admin"
+            },
+            {
+                "Name": "phone_number_verified",
+                "Value": "true"
+            },
+            {
+                "Name": "phone_number",
+                "Value": "+573006117931"
+            },
+            {
+                "Name": "email",
+                "Value": "sr@integrait.co"
+            }
+        ],
+        "Enabled": true,
+        "UserCreateDate": "2022-06-16T14:39:07.917Z",
+        "UserLastModifiedDate": "2022-06-16T14:42:58.620Z",
+        "UserStatus": "CONFIRMED",
+        "Username": "admin",
+        "Groups": [
+            "Admin"
+        ]
+    },
+    {
+        "Attributes": [
+            {
+                "Name": "sub",
+                "Value": "a875d7e8-8cae-4700-b222-b651103de489"
+            },
+            {
+                "Name": "email_verified",
+                "Value": "true"
+            },
+            {
+                "Name": "custom:identificacion",
+                "Value": "4532345"
+            },
+            {
+                "Name": "name",
+                "Value": "Camilo Mojica"
+            },
+            {
+                "Name": "phone_number_verified",
+                "Value": "false"
+            },
+            {
+                "Name": "custom:patrocinador",
+                "Value": "15"
+            },
+            {
+                "Name": "phone_number",
+                "Value": "+574902349583"
+            },
+            {
+                "Name": "email",
+                "Value": "camilo.mojica@grunenthal.com"
+            }
+        ],
+        "Enabled": true,
+        "UserCreateDate": "2022-07-05T23:06:00.219Z",
+        "UserLastModifiedDate": "2022-07-05T23:06:00.219Z",
+        "UserStatus": "FORCE_CHANGE_PASSWORD",
+        "Username": "camilo.mojica.test",
+        "Groups": [
+            "Supervisor"
+        ]
+    },
+    {
+        "Attributes": [
+            {
+                "Name": "sub",
+                "Value": "b7e5f90b-5b34-4dde-b520-8aebdf533bea"
+            },
+            {
+                "Name": "email_verified",
+                "Value": "true"
+            },
+            {
+                "Name": "custom:identificacion",
+                "Value": "52313280"
+            },
+            {
+                "Name": "name",
+                "Value": "Claudia Ramos"
+            },
+            {
+                "Name": "phone_number_verified",
+                "Value": "false"
+            },
+            {
+                "Name": "custom:patrocinador",
+                "Value": "1"
+            },
+            {
+                "Name": "phone_number",
+                "Value": "+573168766780"
+            },
+            {
+                "Name": "email",
+                "Value": "claudia.ramos@abbvie.com"
+            }
+        ],
+        "Enabled": true,
+        "UserCreateDate": "2022-08-27T03:44:52.760Z",
+        "UserLastModifiedDate": "2022-08-27T03:44:52.760Z",
+        "UserStatus": "FORCE_CHANGE_PASSWORD",
+        "Username": "claudia.ramos.test",
+        "Groups": [
+            "Supervisor"
+        ]
+    },
+    {
+        "Attributes": [
+            {
+                "Name": "sub",
+                "Value": "13d5bab7-646f-454f-9d3a-c4224d58a020"
+            },
+            {
+                "Name": "email_verified",
+                "Value": "true"
+            },
+            {
+                "Name": "custom:identificacion",
+                "Value": "1234567"
+            },
+            {
+                "Name": "name",
+                "Value": "Claudia Tique"
+            },
+            {
+                "Name": "phone_number_verified",
+                "Value": "false"
+            },
+            {
+                "Name": "custom:patrocinador",
+                "Value": "15"
+            },
+            {
+                "Name": "phone_number",
+                "Value": "+573105614830"
+            },
+            {
+                "Name": "email",
+                "Value": "claudia.tique@grunenthal.com"
+            }
+        ],
+        "Enabled": true,
+        "UserCreateDate": "2022-07-05T21:07:42.627Z",
+        "UserLastModifiedDate": "2022-07-06T12:35:01.274Z",
+        "UserStatus": "CONFIRMED",
+        "Username": "claudia.tique.test",
+        "Groups": [
+            "Supervisor"
+        ]
+    },
+    {
+        "Attributes": [
+            {
+                "Name": "sub",
+                "Value": "84255231-507f-46a9-b258-ad1ff7396e76"
+            },
+            {
+                "Name": "email_verified",
+                "Value": "true"
+            },
+            {
+                "Name": "custom:identificacion",
+                "Value": "53178241"
+            },
+            {
+                "Name": "name",
+                "Value": "Diana Bermudez"
+            },
+            {
+                "Name": "phone_number_verified",
+                "Value": "false"
+            },
+            {
+                "Name": "custom:patrocinador",
+                "Value": "1"
+            },
+            {
+                "Name": "phone_number",
+                "Value": "+573124678325"
+            },
+            {
+                "Name": "email",
+                "Value": "diana.bermudez@abbvie.com"
+            }
+        ],
+        "Enabled": true,
+        "UserCreateDate": "2022-08-27T03:47:47.706Z",
+        "UserLastModifiedDate": "2022-08-27T03:47:47.706Z",
+        "UserStatus": "FORCE_CHANGE_PASSWORD",
+        "Username": "diana.bermudez.test",
+        "Groups": [
+            "Supervisor"
+        ]
+    },
+    {
+        "Attributes": [
+            {
+                "Name": "sub",
+                "Value": "6880a107-d843-4747-82ee-114cbcca7cfb"
+            },
+            {
+                "Name": "email_verified",
+                "Value": "true"
+            },
+            {
+                "Name": "custom:identificacion",
+                "Value": "090909"
+            },
+            {
+                "Name": "name",
+                "Value": "Edwar Perez 1"
+            },
+            {
+                "Name": "phone_number_verified",
+                "Value": "false"
+            },
+            {
+                "Name": "custom:patrocinador",
+                "Value": "22"
+            },
+            {
+                "Name": "phone_number",
+                "Value": "+573214282234"
+            },
+            {
+                "Name": "email",
+                "Value": "alt.xk-bgjrkl9@yopmail.com"
+            }
+        ],
+        "Enabled": true,
+        "UserCreateDate": "2022-09-05T17:30:21.606Z",
+        "UserLastModifiedDate": "2022-09-05T17:34:15.558Z",
+        "UserStatus": "CONFIRMED",
+        "Username": "edwar.perezqa",
+        "Groups": [
+            "Digitador"
+        ]
+    },
+    {
+        "Attributes": [
+            {
+                "Name": "sub",
+                "Value": "77047718-fd46-4361-a63f-8e8b1244c5c8"
+            },
+            {
+                "Name": "email_verified",
+                "Value": "true"
+            },
+            {
+                "Name": "custom:identificacion",
+                "Value": "1014284513"
+            },
+            {
+                "Name": "name",
+                "Value": "Edwar Ricardo"
+            },
+            {
+                "Name": "phone_number_verified",
+                "Value": "false"
+            },
+            {
+                "Name": "custom:patrocinador",
+                "Value": "1"
+            },
+            {
+                "Name": "phone_number",
+                "Value": "+573214282234"
+            },
+            {
+                "Name": "email",
+                "Value": "edwar.perez@integrait.co"
+            }
+        ],
+        "Enabled": true,
+        "UserCreateDate": "2022-06-16T19:12:19.475Z",
+        "UserLastModifiedDate": "2022-06-16T19:13:06.497Z",
+        "UserStatus": "CONFIRMED",
+        "Username": "edwar",
+        "Groups": []
+    },
+    {
+        "Attributes": [
+            {
+                "Name": "sub",
+                "Value": "f078bdad-6151-497f-aac3-92f07ddab5c6"
+            },
+            {
+                "Name": "email_verified",
+                "Value": "true"
+            },
+            {
+                "Name": "custom:identificacion",
+                "Value": "1001779962"
+            },
+            {
+                "Name": "name",
+                "Value": "Juan Carlos Hoyos Cabarique"
+            },
+            {
+                "Name": "phone_number_verified",
+                "Value": "false"
+            },
+            {
+                "Name": "custom:patrocinador",
+                "Value": "1"
+            },
+            {
+                "Name": "phone_number",
+                "Value": "+573022135761"
+            },
+            {
+                "Name": "email",
+                "Value": "juan3@yopmail.com"
+            }
+        ],
+        "Enabled": true,
+        "UserCreateDate": "2022-06-17T15:37:06.449Z",
+        "UserLastModifiedDate": "2022-06-17T15:37:06.449Z",
+        "UserStatus": "FORCE_CHANGE_PASSWORD",
+        "Username": "juan.hoyos2",
+        "Groups": []
+    },
+    {
+        "Attributes": [
+            {
+                "Name": "sub",
+                "Value": "30308b8e-db09-4bcd-b32a-a3af6f63f70a"
+            },
+            {
+                "Name": "email_verified",
+                "Value": "true"
+            },
+            {
+                "Name": "custom:identificacion",
+                "Value": "1001779944"
+            },
+            {
+                "Name": "name",
+                "Value": "Juan Carlos Hoyos Cabarique"
+            },
+            {
+                "Name": "phone_number_verified",
+                "Value": "false"
+            },
+            {
+                "Name": "custom:patrocinador",
+                "Value": "NA"
+            },
+            {
+                "Name": "phone_number",
+                "Value": "+573022135761"
+            },
+            {
+                "Name": "email",
+                "Value": "juan.hoyos@integrait.co"
+            }
+        ],
+        "Enabled": true,
+        "UserCreateDate": "2022-07-06T15:06:40.156Z",
+        "UserLastModifiedDate": "2022-07-06T15:06:40.156Z",
+        "UserStatus": "FORCE_CHANGE_PASSWORD",
+        "Username": "juan.hoyos",
+        "Groups": [
+            "Admin"
+        ]
+    },
+    {
+        "Attributes": [
+            {
+                "Name": "sub",
+                "Value": "e42c359c-dc42-4c73-9cae-75da7d7d17c7"
+            },
+            {
+                "Name": "email_verified",
+                "Value": "true"
+            },
+            {
+                "Name": "custom:identificacion",
+                "Value": "100175677"
+            },
+            {
+                "Name": "name",
+                "Value": "Juan Carlos Hoyos Cabarique"
+            },
+            {
+                "Name": "phone_number_verified",
+                "Value": "false"
+            },
+            {
+                "Name": "custom:patrocinador",
+                "Value": "1"
+            },
+            {
+                "Name": "phone_number",
+                "Value": "+573022145841"
+            },
+            {
+                "Name": "email",
+                "Value": "juan.test@yopmail.com"
+            }
+        ],
+        "Enabled": true,
+        "UserCreateDate": "2022-09-02T17:22:12.864Z",
+        "UserLastModifiedDate": "2022-09-02T17:22:12.864Z",
+        "UserStatus": "FORCE_CHANGE_PASSWORD",
+        "Username": "juan.test",
+        "Groups": [
+            "Digitador"
+        ]
+    },
+    {
+        "Attributes": [
+            {
+                "Name": "sub",
+                "Value": "c07192f6-cfdf-4a7e-a3fd-81d7c6434487"
+            },
+            {
+                "Name": "email_verified",
+                "Value": "true"
+            },
+            {
+                "Name": "custom:identificacion",
+                "Value": "12345678"
+            },
+            {
+                "Name": "name",
+                "Value": "Maura Lopez"
+            },
+            {
+                "Name": "phone_number_verified",
+                "Value": "false"
+            },
+            {
+                "Name": "custom:patrocinador",
+                "Value": "11"
+            },
+            {
+                "Name": "phone_number",
+                "Value": "+573105614830"
+            },
+            {
+                "Name": "email",
+                "Value": "maura.LopezBarrera@bms.com"
+            }
+        ],
+        "Enabled": true,
+        "UserCreateDate": "2022-09-01T22:39:42.853Z",
+        "UserLastModifiedDate": "2022-09-07T16:53:08.868Z",
+        "UserStatus": "CONFIRMED",
+        "Username": "maura.lopez.test",
+        "Groups": [
+            "Digitador"
+        ]
+    },
+    {
+        "Attributes": [
+            {
+                "Name": "sub",
+                "Value": "c07ae683-c5d2-4f29-8447-02318aef83ee"
+            },
+            {
+                "Name": "email_verified",
+                "Value": "true"
+            },
+            {
+                "Name": "custom:identificacion",
+                "Value": "78909090"
+            },
+            {
+                "Name": "name",
+                "Value": "Edwar Perez"
+            },
+            {
+                "Name": "phone_number_verified",
+                "Value": "false"
+            },
+            {
+                "Name": "custom:patrocinador",
+                "Value": "1"
+            },
+            {
+                "Name": "phone_number",
+                "Value": "+573214282234"
+            },
+            {
+                "Name": "email",
+                "Value": "alt.r3-fo2on1f0@yopmail.com"
+            }
+        ],
+        "Enabled": true,
+        "UserCreateDate": "2022-10-21T21:22:27.959Z",
+        "UserLastModifiedDate": "2022-10-21T21:23:07.967Z",
+        "UserStatus": "CONFIRMED",
+        "Username": "medi",
+        "Groups": [
+            "Medico"
+        ]
+    },
+    {
+        "Attributes": [
+            {
+                "Name": "sub",
+                "Value": "fa6b4e91-0ae3-47fc-bf5d-61cf36d6ae5b"
+            },
+            {
+                "Name": "email_verified",
+                "Value": "true"
+            },
+            {
+                "Name": "custom:identificacion",
+                "Value": "1032482903"
+            },
+            {
+                "Name": "name",
+                "Value": "Paula Valeria Mendoza Giraldo"
+            },
+            {
+                "Name": "phone_number_verified",
+                "Value": "false"
+            },
+            {
+                "Name": "custom:patrocinador",
+                "Value": "NA"
+            },
+            {
+                "Name": "phone_number",
+                "Value": "+573105614830"
+            },
+            {
+                "Name": "email",
+                "Value": "pmendozag@afidro.org"
+            }
+        ],
+        "Enabled": true,
+        "UserCreateDate": "2022-07-05T23:19:21.532Z",
+        "UserLastModifiedDate": "2022-07-05T23:19:21.532Z",
+        "UserStatus": "FORCE_CHANGE_PASSWORD",
+        "Username": "paula.mendoza.test",
+        "Groups": [
+            "Admin"
+        ]
+    },
+    {
+        "Attributes": [
+            {
+                "Name": "sub",
+                "Value": "54a05742-b2eb-453e-a8d9-1dd2d3efc82c"
+            },
+            {
+                "Name": "email_verified",
+                "Value": "true"
+            },
+            {
+                "Name": "custom:identificacion",
+                "Value": "5656567"
+            },
+            {
+                "Name": "name",
+                "Value": "Edwar Perez"
+            },
+            {
+                "Name": "phone_number_verified",
+                "Value": "false"
+            },
+            {
+                "Name": "custom:patrocinador",
+                "Value": "1"
+            },
+            {
+                "Name": "phone_number",
+                "Value": "+573214282234"
+            },
+            {
+                "Name": "email",
+                "Value": "alt.g7-2onh5dvt@yopmail.com"
+            }
+        ],
+        "Enabled": true,
+        "UserCreateDate": "2022-10-21T17:49:55.427Z",
+        "UserLastModifiedDate": "2022-10-26T17:50:09.976Z",
+        "UserStatus": "CONFIRMED",
+        "Username": "ric",
+        "Groups": [
+            "Supervisor"
+        ]
+    },
+    {
+        "Attributes": [
+            {
+                "Name": "sub",
+                "Value": "a6feabc3-deae-401a-84d4-6f82d4cd3778"
+            },
+            {
+                "Name": "email_verified",
+                "Value": "true"
+            },
+            {
+                "Name": "custom:identificacion",
+                "Value": "1231231"
+            },
+            {
+                "Name": "name",
+                "Value": "ser2131504"
+            },
+            {
+                "Name": "phone_number_verified",
+                "Value": "false"
+            },
+            {
+                "Name": "custom:patrocinador",
+                "Value": "1"
+            },
+            {
+                "Name": "phone_number",
+                "Value": "+573006117912"
+            },
+            {
+                "Name": "email",
+                "Value": "ser2131504@gmail.com"
+            }
+        ],
+        "Enabled": true,
+        "UserCreateDate": "2022-06-16T16:41:30.119Z",
+        "UserLastModifiedDate": "2022-06-16T16:41:30.119Z",
+        "UserStatus": "FORCE_CHANGE_PASSWORD",
+        "Username": "ser2131504",
+        "Groups": [
+            "Supervisor"
+        ]
+    },
+    {
+        "Attributes": [
+            {
+                "Name": "sub",
+                "Value": "e6991712-c75f-40b6-92c7-8a710cd94cd9"
+            },
+            {
+                "Name": "email_verified",
+                "Value": "true"
+            },
+            {
+                "Name": "custom:identificacion",
+                "Value": "53106326"
+            },
+            {
+                "Name": "name",
+                "Value": "Sonia Margarita Rodriguez Almanza"
+            },
+            {
+                "Name": "phone_number_verified",
+                "Value": "false"
+            },
+            {
+                "Name": "custom:patrocinador",
+                "Value": "19"
+            },
+            {
+                "Name": "phone_number",
+                "Value": "+573202514103"
+            },
+            {
+                "Name": "email",
+                "Value": "sonia.margarita.rodriguez.almanza@merck.com"
+            }
+        ],
+        "Enabled": true,
+        "UserCreateDate": "2022-08-12T19:52:47.360Z",
+        "UserLastModifiedDate": "2022-08-12T19:59:26.915Z",
+        "UserStatus": "CONFIRMED",
+        "Username": "sonia.rodriguez.test",
+        "Groups": [
+            "Supervisor"
+        ]
+    },
+    {
+        "Attributes": [
+            {
+                "Name": "sub",
+                "Value": "39486a8a-577f-43d2-926e-10a055530597"
+            },
+            {
+                "Name": "email_verified",
+                "Value": "true"
+            },
+            {
+                "Name": "custom:identificacion",
+                "Value": "1451779966"
+            },
+            {
+                "Name": "name",
+                "Value": "Juan Carlos Hoyos Cabarique"
+            },
+            {
+                "Name": "phone_number_verified",
+                "Value": "false"
+            },
+            {
+                "Name": "custom:patrocinador",
+                "Value": "2"
+            },
+            {
+                "Name": "phone_number",
+                "Value": "+573022135761"
+            },
+            {
+                "Name": "email",
+                "Value": "juan98765@yopmail.com"
+            }
+        ],
+        "Enabled": true,
+        "UserCreateDate": "2022-07-05T20:35:51.151Z",
+        "UserLastModifiedDate": "2022-07-05T20:35:51.151Z",
+        "UserStatus": "FORCE_CHANGE_PASSWORD",
+        "Username": "subject_ee",
+        "Groups": [
+            "Supervisor"
+        ]
+    },
+    {
+        "Attributes": [
+            {
+                "Name": "sub",
+                "Value": "3bcefed5-bf4c-4da8-b823-dcdac2ebb92c"
+            },
+            {
+                "Name": "email_verified",
+                "Value": "true"
+            },
+            {
+                "Name": "custom:identificacion",
+                "Value": "555555555"
+            },
+            {
+                "Name": "name",
+                "Value": "Tatiana Guzman"
+            },
+            {
+                "Name": "phone_number_verified",
+                "Value": "false"
+            },
+            {
+                "Name": "custom:patrocinador",
+                "Value": "1"
+            },
+            {
+                "Name": "phone_number",
+                "Value": "+5754545454"
+            },
+            {
+                "Name": "email",
+                "Value": "tatiana.guzman@integrait.co"
+            }
+        ],
+        "Enabled": true,
+        "UserCreateDate": "2022-06-16T17:03:24.075Z",
+        "UserLastModifiedDate": "2022-06-16T17:03:24.075Z",
+        "UserStatus": "FORCE_CHANGE_PASSWORD",
+        "Username": "tatiana.guzman",
+        "Groups": [
+            "Supervisor"
+        ]
+    },
+    {
+        "Attributes": [
+            {
+                "Name": "sub",
+                "Value": "3d6a5ecd-2245-4612-9a16-f4f2ec3da1c5"
+            },
+            {
+                "Name": "email_verified",
+                "Value": "true"
+            },
+            {
+                "Name": "custom:identificacion",
+                "Value": "15496362"
+            },
+            {
+                "Name": "name",
+                "Value": "Vicente Fabian Kuyoc Carrillo"
+            },
+            {
+                "Name": "phone_number_verified",
+                "Value": "false"
+            },
+            {
+                "Name": "custom:patrocinador",
+                "Value": "11"
+            },
+            {
+                "Name": "phone_number",
+                "Value": "+525548555081"
+            },
+            {
+                "Name": "email",
+                "Value": "vicente.kuyoccarrillo@bms.com"
+            }
+        ],
+        "Enabled": true,
+        "UserCreateDate": "2022-09-01T22:35:56.424Z",
+        "UserLastModifiedDate": "2022-09-02T19:33:51.694Z",
+        "UserStatus": "CONFIRMED",
+        "Username": "vicente.kuyoc.test",
+        "Groups": [
+            "Digitador"
+        ]
+    }
+]

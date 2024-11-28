@@ -1,0 +1,53 @@
+<div [ngClass]="{'container-integra' : !isModal}">
+    <h1 *ngIf="!isModal">{{editMode?'Actualizar mi CRO':'Crear CRO'}}</h1>
+    <form name="form" (ngSubmit)="onSubmit(f)" #f="ngForm">
+        <div class="p-fluid p-formgrid p-grid">
+            <div class="p-col-12" *ngIf="!isModal">
+                <h3>Datos básicos</h3>
+            </div>
+
+            <div class="p-col-12 p-md-6 p-field">
+                <label><span class="inputRequired">* </span>Nombre CRO:</label>
+                <input name="nombre" type="text" pInputText [(ngModel)]="cro.nombre" placeholder="Nombre" required #nombre="ngModel">
+                <small class="form-error" *ngIf="!nombre.valid && (f.submitted || nombre.touched)">* Campo
+                    requerido</small>
+            </div>
+
+            <div class="p-col-12 p-md-6 p-field">
+                <label>Nit:</label>
+                <input name="nit" type="text" pInputText [(ngModel)]="cro.nit" placeholder="Nit" #nit="ngModel">
+            </div>
+
+            <div class="p-col-12 p-md-6 p-field">
+                <label>Información de contacto:</label>
+                <textarea 
+                pInputTextarea
+                name="informacionContacto"
+                type="text"
+                pInputText
+                [(ngModel)]="cro.informacionContacto"
+                #informacionContacto="ngModel"
+                [rows]="5"
+                autoResize="autoResize"
+                ></textarea>
+            </div>
+
+            <div class="p-field p-col-12 p-sm-6 p-md-4 p-md-offset-4 p-xl-2 p-xl-offset-8" *ngIf="!isModal">
+                <button class="p-button-outlined p-button-secondary" pButton label="Cancelar" type="button" (click)="onCancelar()"></button>
+            </div>
+            <div class="p-field p-col-12 p-sm-6 p-md-4 p-xl-2" *ngIf="!isModal">
+                <button pButton label="{{editMode ? 'Actualizar' : 'Agregar'}}" type="submit"></button>
+            </div>
+
+            <div class="p-grid p-mt-2 p-col-12" *ngIf="isModal">
+                <div class="p-col-6">
+                    <button class="p-button-outlined p-button-secondary" pButton label="Cancelar" type="button" (click)="onCancelar()"></button>
+                </div>
+                <div class="p-col-6 p-field">
+                  <button pButton label="Guardar" type="submit"></button>
+                </div>
+            </div>
+
+        </div>
+    </form>
+</div>

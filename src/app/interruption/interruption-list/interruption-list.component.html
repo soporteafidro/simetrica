@@ -1,0 +1,84 @@
+<div class="p-grid p-fluid p-justify-end">
+  <div *ngIf="!isReader || !isMedico" class="p-col-12 p-md-6 p-xl-4">
+    <button
+      (click)="openAddEditInterruption('Crear interrupción')"
+      pButton
+      label="Crear interrupción"
+      type="button"
+      icon="pi pi-plus"
+    ></button>
+  </div>
+</div>
+
+<!-- TABLA -->
+<div class="p-col-12">
+  <p-table
+    *ngIf="interruptionsFormated.length > 0"
+    #dt
+    [columns]="columns"
+    [value]="interruptionsFormated"
+    [globalFilterFields]="[
+      'interrupcionReclutamiento',
+      'motivoInterrupcion',
+      'fechaInicialInterrupcion',
+      'fechaFinalizacionTnterrupcion'
+    ]"
+    [autoLayout]="true"
+    sortMode="multiple"
+  >
+    <ng-template pTemplate="caption">
+      <div class="table-header p-grid p-jc-between">
+        <span></span>
+        <span class="p-col p-lg-4">
+          <i class="pi pi-search" style="margin-right: 10px"></i>
+          <input
+            style="width: 90%"
+            pInputText
+            type="text"
+            (input)="dt.filterGlobal($event.target.value, 'contains')"
+            placeholder="Filtro global"
+          />
+        </span>
+      </div>
+    </ng-template>
+
+    <ng-template pTemplate="header" let-columns>
+      <tr>
+        <th *ngIf="!isReader || !isMedico"></th>
+        <th *ngFor="let col of columns" [pSortableColumn]="col.key">
+          {{ col.value }}
+          <p-sortIcon [field]="col.key"></p-sortIcon>
+        </th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
+      <tr>
+        <td
+          *ngIf="!isReader || !isMedico"
+          style="text-align: center; cursor: pointer"
+        >
+          <p-menu #menu [popup]="true" [model]="items" appendTo="body"></p-menu>
+          <p
+            class="pi pi-ellipsis-v"
+            (click)="selectInterrupcion(rowData)"
+            (click)="menu.toggle($event)"
+          ></p>
+        </td>
+        <td *ngFor="let col of columns">
+          {{ rowData[col.key] }}
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="7">No se encontraron resultados.</td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+  <warning-message
+    [ifCondition]="interruptionsFormated.length === 0"
+    [message]="'No se encontraron interrupciones registradas.'"
+  ></warning-message>
+</div>

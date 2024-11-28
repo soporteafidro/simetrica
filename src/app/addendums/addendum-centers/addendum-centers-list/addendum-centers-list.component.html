@@ -1,0 +1,58 @@
+<div class="p-grid p-fluid p-justify-end">
+  <div *ngIf="!isReader" class="p-col-12 p-md-6 p-xl-4">
+    <button
+      (click)="openAddAddendumStudyCenter()"
+      pButton
+      label="Asociar Centro"
+      type="button"
+      icon="pi pi-plus"
+    ></button>
+  </div>
+</div>
+<div class="p-col-12">
+  <p-table
+    *ngIf="addendumStudyCenters.length > 0"
+    #dt
+    [value]="addendumStudyCenters"
+    [autoLayout]="true"
+    sortMode="multiple"
+  >
+    <ng-template pTemplate="caption">
+      <div class="table-header p-grid p-jc-between">
+        <span>Lista de centros asociados</span>
+      </div>
+    </ng-template>
+
+    <ng-template pTemplate="header" let-columns>
+      <tr>
+        <th *ngIf="!isReader"></th>
+        <th>Centro</th>
+        <th>Fecha de envío a centro</th>
+        <th>Fecha recepción centro</th>
+        <th>Fecha de implementación</th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-rowData>
+      <tr>
+        <td *ngIf="!isReader || !isMedico">
+          <p-menu #menu [popup]="true" [model]="items" appendTo="body"></p-menu>
+          <p
+            class="pi pi-ellipsis-v"
+            (click)="selectCenter(rowData)"
+            (click)="menu.toggle($event)"
+          ></p>
+        </td>
+        <td>{{ rowData.studyCenter.center.nombre }}</td>
+        <td>{{ dateIITPipe.transform(rowData.fechaEnvioCentro) }}</td>
+        <td>{{ dateIITPipe.transform(rowData.fechaReciboCentro) }}</td>
+        <td>{{ dateIITPipe.transform(rowData.fechaImplementacionCentro) }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+  <warning-message
+    [ifCondition]="addendumStudyCenters.length === 0"
+    [message]="'No se encontraron enmiendas asociadas.'"
+  ></warning-message>
+</div>

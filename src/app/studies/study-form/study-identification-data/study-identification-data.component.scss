@@ -1,0 +1,43 @@
+.fieldset .p-fieldset .p-fieldset-legend {
+    padding: 0.6rem;
+    border-color: #d3dbe3;
+    background: transparent;
+}
+
+.fieldset .p-fieldset-content {
+    padding: 0;
+}
+
+.fieldset .p-fieldset {
+    border-color: #d3dbe3;
+}
+
+.elipsis {
+    display: block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.elipsis-overflow:hover {
+    overflow: visible
+}
+
+.p-button.p-button-icon-only.p-button-rounded {
+    width: 1.6rem;
+    height: 1rem;
+}
+
+.pi-info-circle {
+    font-size: 20px;
+}
+
+::ng-deep {
+
+    .form-study input {
+
+        width: 100%;
+
+    }
+
+}

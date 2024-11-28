@@ -1,0 +1,40 @@
+<div class="p-fluid p-formgrid p-grid">
+  <div class="p-col-12 p-md-8" *ngIf="sponsorFilterView">
+    <label>Patrocinador</label>
+    <p-dropdown
+      [disabled]="!selectPatrocinadorComite"
+      class="iText"
+      name="sponsorID"
+      [(ngModel)]="sponsor"
+      [options]="sponsors"
+      [filter]="true"
+      placeholder="Seleccione un patrocinador..."
+      (onChange)="filtrar()"
+    ></p-dropdown>
+  </div>
+
+  <div class="p-col-12 p-md-8" *ngIf="committeeFilterView">
+    <label>Comités</label>
+    <p-dropdown
+      class="iText"
+      name="committeeID"
+      [(ngModel)]="committee"
+      [options]="committees"
+      [filter]="true"
+      placeholder="Seleccione un comité..."
+      (onChange)="filtrar()"
+    ></p-dropdown>
+  </div>
+
+  <div class="p-col-12 p-md-4">
+    <label>Año</label>
+    <p-dropdown
+      class="iText"
+      name="filtroYear"
+      [(ngModel)]="filtroYear"
+      [options]="years"
+      placeholder="Seleccione un año para filtrar..."
+      (onChange)="filtrar()"
+    ></p-dropdown>
+  </div>
+</div>

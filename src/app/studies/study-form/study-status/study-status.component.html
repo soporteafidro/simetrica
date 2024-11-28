@@ -1,0 +1,57 @@
+<form name="form" (ngSubmit)="onSubmit(f)" #f="ngForm" *ngIf="study">
+    <div class="p-fluid p-formgrid p-grid">
+        <div class="p-col-12 p-md-6 p-field" >
+            <label>Estado</label>
+            <p-dropdown [showClear]="true" [options]="estados" (onChange)="onEstadoChange()" name="estado" [(ngModel)]="study.estado" placeholder="- Seleccione -" required #estado="ngModel"></p-dropdown>
+            <small class="form-error" *ngIf="!estado.valid && f.submitted">* Campo requerido</small>
+        </div>
+        <div class="p-col-12 p-md-6 p-field" *ngIf="study.estado === 'SUSPENDIDO'">
+            <label>Motivo de suspensión</label>
+            <p-dropdown [showClear]="true" [options]="motivosSuspension" name="motivoDeSuspension" [(ngModel)]="study.motivoDeSuspension" placeholder="- Seleccione -" [required]="study.estado === 'SUSPENDIDO'" #tipoIt="ngModel"></p-dropdown>
+            <small class="form-error" *ngIf="!tipoIt.valid && f.submitted">* Campo requerido</small>
+        </div>
+        <div class="p-col-12 p-md-6 p-field" *ngIf="study.estado === 'SUSPENDIDO' && study.motivoDeSuspension === 'Otro'">
+            <label>Otro motivo de suspensión</label>
+            <input class="iText" type="text" pInputText name="otroMotivoDeSuspension" [(ngModel)]="study.otroMotivoDeSuspension" [required]="study.estado === 'SUSPENDIDO' && study.motivoDeSuspension === 'Otro'" #otroReq="ngModel">
+            <small class="form-error" *ngIf="!otroReq.valid && f.submitted">* Campo requerido</small>
+        </div>
+        <div class="p-col-12 p-md-6 p-field">
+            <label>Link de publicación</label>
+            <input class="iText" type="text" pInputText name="linkDePublicacion" [(ngModel)]="study.linkDePublicacion"  #otroReq="ngModel">
+            <small class="form-error" *ngIf="!otroReq.valid && f.submitted">* Campo requerido</small>
+        </div>
+
+        <div class="p-col-12 p-md-6" *ngIf="study.estado === 'FINALIZADO'">
+            <label>Fue terminado satisfactoriamente?</label>
+            <div class="p-grid p-field" style="margin-top:10px">
+                <div *ngFor="let siNo of siNoRespuesta" class="p-field-radiobutton p-col-3">
+                    <p-radioButton [(ngModel)]="study.terminadoSatisfactoriamente" inpudIt="siNo.key" name="terminadoSatisfactoriamente" [value]="siNo.key" [required]="study.estado === 'FINALIZADO'"></p-radioButton>
+                    <label [for]="siNo.key ">{{siNo.name}}</label>
+                </div>
+                <small class="form-error" *ngIf="!study.terminadoSatisfactoriamente && f.submitted">* Campo requerido</small>
+            </div>
+        </div>
+
+        <div class="p-col-12 p-md-6 p-field" *ngIf="study.terminadoSatisfactoriamente === 'No'">
+            <label>Motivo de terminación</label>
+            <p-dropdown [showClear]="true" name="motivoDeTerminacion" [(ngModel)]="study.motivoDeTerminacion" [options]="motivosTerminacion" required placeholder="-- Seleccione --" #motivoT="ngModel"></p-dropdown>
+          <small class="form-error" *ngIf="!motivoT.valid && f.submitted">* Campo requerido</small>
+        </div>
+
+        <div class="p-col-12 p-md-6 p-field" *ngIf="study.terminadoSatisfactoriamente === 'No' && study.motivoDeTerminacion === 'Otro'" >
+            <label>Otro motivo de terminación</label>
+            <input class="iText" type="text" pInputText name="otroMotivoDeTerminacion" [(ngModel)]="study.otroMotivoDeTerminacion" required #otroReq="ngModel">
+            <small class="form-error" *ngIf="!otroReq.valid && f.submitted">* Campo requerido</small>
+        </div>
+
+        <div class="p-grid p-col-12">
+            <div class="p-col-12 p-md-6 p-field">
+                <button class="p-button-outlined p-button-secondary" pButton label="Cancelar" type="button" (click)="onCancelar()"></button>
+            </div>
+            <div class="p-col-12 p-md-6 p-field">
+                <button pButton label="Guardar" type="submit"></button>
+            </div>
+        </div>
+
+    </div>
+</form>

@@ -1,0 +1,22 @@
+[
+  {
+    "groupName": "Admin",
+    "precedence": 1
+  },
+  {
+    "groupName": "Supervisor",
+    "precedence": 2
+  },
+  {
+    "groupName": "Digitador",
+    "precedence": 3
+  },
+  {
+    "groupName": "Lector",
+    "precedence": 4
+  },
+  {
+    "groupName": "Medico",
+    "precedence": 5
+  }
+]

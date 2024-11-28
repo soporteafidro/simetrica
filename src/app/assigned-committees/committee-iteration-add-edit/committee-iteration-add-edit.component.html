@@ -1,0 +1,84 @@
+<form name="form" (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <div class="p-fluid p-formgrid p-grid">
+        <div *ngIf="iteracion.tipoIteracion === 'Respuesta aclaración'" class="p-col-12 p-md-4 p-field">
+            <label>Tipo de interacción</label>
+            <input class="iText" name="tipoIteracion" disabled placeholder="" type="text" pInputText [(ngModel)]="iteracion.tipoIteracion">
+        </div>
+        <div class="p-col-12 p-md-4 p-field" *ngIf="iteracion.tipoIteracion === 'Respuesta aclaración'">
+            <label><span class="inputRequired">* </span>Tipo de aclaración</label>
+            <p-multiSelect name="tipoAclaracion" (onChange)="onTipoAclaracionSelected()" [options]="tiposDeAclaracion" [(ngModel)]="iteracion.tipoAclaracion" placeholder="- Seleccione -" required #tipoIt="ngModel"></p-multiSelect>
+            <small class="form-error" *ngIf="!tipoIt.valid && f.submitted">* Campo requerido</small>
+        </div>
+        <div class="p-col-12 p-md-4 p-field" *ngIf="showOtroTipoAclaracion">
+            <label>Otro tipo de aclaración</label>
+            <input class="iText" type="text" pInputText name="otroTipoAclaracion" [(ngModel)]="iteracion.otroTipoAclaracion" required #otroReq="ngModel">
+            <small class="form-error" *ngIf="!otroReq.valid && f.submitted">* Campo requerido</small>
+        </div>
+
+        <div class="p-col-12 p-md-4 p-field">
+            <label><span class="inputRequired">* </span>Fecha de sometimiento CE</label>
+            <p-calendar inputStyleClass="iText" name="fechaDeSometimientoCE" [minDate]="minFechaDeSometimientoCE" [showIcon]="true" [maxDate]="todayDate" (onSelect)="onDateChanged()" [(ngModel)]="fechaDeSometimientoCE" inputId="icon" placeholder="DD/MM/YYYY" dateFormat="dd/mm/yy"
+                [locale]="es" required #fSometimiento="ngModel" appendTo="body">
+            </p-calendar>
+            <label *ngIf="tiempoPatrocinador !== null && fSometimiento.valid && iteracion.tipoIteracion !== 'Sometimiento inicial'">Dias patrocinador : <strong>{{tiempoPatrocinador}}</strong></label>
+            <small class="form-error" *ngIf="!fSometimiento.valid && f.submitted && fSometimiento.errors && !fSometimiento.errors['errorFecha']">* Campo requerido</small>
+            <small class="form-error" *ngIf="!fSometimiento.valid && f.submitted && fSometimiento.errors && fSometimiento.errors['errorFecha']">* {{fSometimiento.errors['errorFecha']}}</small>
+
+        </div>
+        <div class="p-col-12 p-md-4 p-field">
+            <label><span class="inputRequired">* </span>Fecha de contestación CE</label>
+            <p-calendar tooltipPosition="top" pTooltip="Es la fecha de la carta de respuesta del Comité de Ética" tooltipPosition="top" inputStyleClass="iText" name="fechaRespuestaCE" [disabled]="!fechaDeSometimientoCE" (onSelect)="onDateChanged()" [maxDate]="todayDate"
+                [minDate]="fechaDeSometimientoCE" [(ngModel)]="fechaRespuestaCE" [showIcon]="true" inputId="icon" placeholder="DD/MM/YYYY" dateFormat="dd/mm/yy" [locale]="es" required #fRespuesta="ngModel" appendTo="body">
+            </p-calendar>
+            <label *ngIf="tiempoResolucionCE !== null && fRespuesta.valid">Dias resolución Comité : <strong>{{tiempoResolucionCE}}</strong></label>
+            <small class="form-error" *ngIf="!fRespuesta.valid && f.submitted && fRespuesta.errors && !fRespuesta.errors['errorFecha']">* Campo requerido</small>
+            <small class="form-error" *ngIf="!fRespuesta.valid && f.submitted && fRespuesta.errors && fRespuesta.errors['errorFecha']">* {{fRespuesta.errors['errorFecha']}}</small>
+
+        </div>
+        <div class="p-col-12 p-md-4 p-field">
+            <label><span class="inputRequired">* </span>Estado</label>
+            <p-dropdown [showClear]="true" [options]="estados" name="estadoIteracion" [(ngModel)]="iteracion.estadoIteracion" placeholder="- Seleccione -" required #estado="ngModel"></p-dropdown>
+            <small class="form-error" *ngIf="!estado.valid && f.submitted">* Campo requerido</small>
+        </div>
+
+        <div class="p-col-12 p-md-4 p-field">
+            <label>Causal retraso</label>
+            <p-dropdown
+            appendTo="body"
+            [group]="true"
+            [options]="causalesDeRetraso"
+            (onChange)="onCausalRetrasoSelected()"
+            name="causalRetrasoPatrocinador"
+            [(ngModel)]="iteracion.causalRetrasoPatrocinador"
+            placeholder="- Seleccione -"
+            [showClear]="true"
+            >
+                <ng-template let-i pTemplate="item">
+                    <div class="p-d-flex p-ai-center">
+                        <span [pTooltip]="i.label">{{(i.label.length > 70) ? (i.label | slice:0:70) + '...' : (i.label)}}</span>
+                    </div>
+                </ng-template>
+            </p-dropdown>
+        </div>
+        <div class="p-col-12 p-field" *ngIf="iteracion.causalRetrasoPatrocinador === 'Otro'">
+            <label>Otra causal</label>
+            <input class="iText" name="otroCausalRetrasoPatrocinador" placeholder="" type="text" pInputText [(ngModel)]="iteracion.otroCausalRetrasoPatrocinador" required #otroCausal="ngModel">
+            <small class="form-error" *ngIf="!otroCausal.valid && f.submitted">* Campo requerido</small>
+        </div>
+        <div class="p-col-12 p-md-8 p-field" [ngClass]="{'p-md-12' : iteracion.tipoIteracion === 'Respuesta aclaración'}">
+            <label>Información carta respuesta CE</label>
+            <input class="iText" name="informacionCarta" placeholder="Repuesta otorgada por el comité ético" type="text" pInputText [(ngModel)]="iteracion.informacionCarta" #otroCausal="ngModel">
+        </div>
+        <div class="p-col-12 p-md-12 p-field">
+            <label>Notas de seguimiento</label>
+            <textarea class="iText" name="notasDeSeguimiento" placeholder="Escriba aquí un comentario..." [(ngModel)]="iteracion.notasDeSeguimiento" [rows]="3" [cols]="30" style="resize: none;" pInputTextarea></textarea>
+        </div>
+
+        <div class="p-col-12 p-md-6 p-field">
+            <button class="p-button-outlined p-button-secondary" pButton label="Cancelar" type="button" (click)="onCancelar()"></button>
+        </div>
+        <div class="p-col-12 p-md-6 p-field">
+            <button pButton label="Guardar" type="submit"></button>
+        </div>
+    </div>
+</form>

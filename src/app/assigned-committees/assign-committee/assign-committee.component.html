@@ -1,0 +1,40 @@
+<form name="form" (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <div class="p-fluid p-formgrid p-grid">
+        <div class="p-col-12 p-md-6 p-field">
+            <label><span class="inputRequired">* </span>Comité de Ética</label>
+            <div style="display:flex">
+                <p-dropdown [showClear]="true" [filter]="true" [options]="committees" name="committeeID" [(ngModel)]="studyCenterCommittee.committeeID" required #committeeID="ngModel" class="centerSelection" (onChange)="onCommitteeSelectionChanged()" placeholder="-- seleccionar --"
+                    pTooltip="Nombre del Comité de Ética" tooltipPosition="top">
+                </p-dropdown>
+                <button type="button" pButton pRipple icon="pi pi-plus" styleClass="p-button-warn" class="p-button-icon-only" (click)="openCreateCommitteeModal()"></button>
+            </div>
+            <small class="form-error" *ngIf="!committeeID.valid && f.submitted">* Campo requerido</small>
+        </div>
+
+        <div class="p-col-12 p-md-6 p-field">
+            <label><span class="inputRequired">* </span>Centros</label>
+            <div style="display:flex">
+                <p-dropdown [showClear]="true" [filter]="true" [disabled]="!studyCenterCommittee.committeeID || centerOptions.length <= 0" [options]="centerOptions" name="studyCenterID" [(ngModel)]="studyCenterCommittee.studyCenterID" required #studyCenterID="ngModel"
+                    class="centerSelection" placeholder="-- seleccionar --">
+                </p-dropdown>
+                <button [disabled]="centerOptions.length > 0" pButton pRipple type="button" icon="pi pi-info-circle" class="p-button-rounded p-button-help p-button-text" (click)="showDialog()"></button>
+            </div>
+            <small class="form-error" *ngIf="!studyCenterID.valid && f.submitted">* Campo requerido</small>
+        </div>
+
+        <p-dialog header="Ayuda" [(visible)]="displayDialog" [style]="{width: '40vw'}" [baseZIndex]="10000">
+            <p style="text-align: center;">Se debe asociar un centro primero para asociar un comité de ética al estudio.</p>
+            <ng-template pTemplate="footer">
+                <p-button icon="pi pi-check" (click)="displayDialog=false" label="Ok" styleClass="p-button-text">
+                </p-button>
+            </ng-template>
+        </p-dialog>
+
+        <div class="p-col-12 p-md-6 p-field">
+            <button class="p-button-outlined p-button-secondary" pButton label="Cancelar" type="button" (click)="onCancelar()"></button>
+        </div>
+        <div class="p-col-12 p-md-6 p-field">
+            <button pButton label="Guardar" type="submit"></button>
+        </div>
+    </div>
+</form>

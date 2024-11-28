@@ -1,0 +1,44 @@
+<form name="form" (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <div class="p-fluid p-formgrid p-grid">
+        <div class="p-col-12 p-md-6 p-field">
+            <label><span class="inputRequired">* </span>Centro</label>
+            <p-dropdown [showClear]="true" [filter]="true" [options]="studyCenters" placeholder="-seleccione-" name="studyCenterId" [(ngModel)]="addendumStudyCenter.studyCenterID" [disabled]="editMode" [filter]="true" filterBy="label" required #studyCenterId="ngModel"
+                class="centerSelection" pTooltip="Seleccione nombre del centro autorizado por INVIMA." tooltipPosition="top">
+            </p-dropdown>
+            <small class="form-error" *ngIf="!studyCenterId.valid && f.submitted && !editMode">* Campo requerido</small>
+        </div>
+
+        <div class="p-col-12 p-md-6 p-field">
+            <label>Fecha de envío al centro</label>
+            <p-calendar pTooltip="Fecha de envío por parte del patrocinador al centro" tooltipPosition="top" inputStyleClass="iText" name="fechaEnvioCentro" [(ngModel)]="fechaEnvioCentro" [maxDate]="currentDate" [showIcon]="true" inputId="fechaEnvioCentro" appendTo="body"
+                placeholder="DD/MM/YYYY" dateFormat="dd/mm/yy" [locale]="es" #fEC="ngModel">
+            </p-calendar>
+            <small class="form-error" *ngIf="!fEC.valid && f.submitted && fEC.errors && fEC.errors['errorFecha']">*
+              {{fEC.errors['errorFecha']}}</small>
+        </div>
+        <div class="p-col-12 p-md-6 p-field">
+            <label>Fecha de recepción</label>
+            <p-calendar pTooltip="Fecha de recepción del paquete de la enmienda, por el centro" tooltipPosition="top" inputStyleClass="iText" name="fechaReciboCentro" [(ngModel)]="fechaReciboCentro" [maxDate]="currentDate" [showIcon]="true" inputId="fechaReciboCentro"
+                appendTo="body" placeholder="DD/MM/YYYY" dateFormat="dd/mm/yy" [locale]="es" #fRC="ngModel">
+            </p-calendar>
+            <small class="form-error" *ngIf="!fRC.valid && f.submitted && fRC.errors && fRC.errors['errorFecha']">*
+              {{fRC.errors['errorFecha']}}</small>
+        </div>
+        <div class="p-col-12 p-md-6 p-field">
+            <label>Fecha de implementación</label>
+            <p-calendar pTooltip="Fecha de implementación de enmienda en el centro" tooltipPosition="top" inputStyleClass="iText" name="fechaImplementacionCentro" [(ngModel)]="fechaImplementacionCentro" [maxDate]="currentDate" [showIcon]="true" inputId="fechaImplementacionCentro"
+                appendTo="body" placeholder="DD/MM/YYYY" dateFormat="dd/mm/yy" [locale]="es" #fIC="ngModel">
+            </p-calendar>
+            <small class="form-error" *ngIf="!fIC.valid && f.submitted && fIC.errors && fIC.errors['errorFecha']">*
+              {{fIC.errors['errorFecha']}}</small>
+        </div>
+
+
+        <div class="p-col-12 p-md-6 p-field">
+            <button class="p-button-outlined p-button-secondary" pButton label="Cancelar" type="button" (click)="onCancelar()"></button>
+        </div>
+        <div class="p-col-12 p-md-6 p-field">
+            <button pButton label="Guardar" type="submit"></button>
+        </div>
+    </div>
+</form>

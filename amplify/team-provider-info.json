@@ -1,0 +1,176 @@
+{
+  "master": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-sisec-master-180749-authRole",
+      "UnauthRoleArn": "arn:aws:iam::704766592508:role/amplify-sisec-master-180749-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::704766592508:role/amplify-sisec-master-180749-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-sisec-master-180749-deployment",
+      "UnauthRoleName": "amplify-sisec-master-180749-unauthRole",
+      "StackName": "amplify-sisec-master-180749",
+      "StackId": "arn:aws:cloudformation:us-east-1:704766592508:stack/amplify-sisec-master-180749/bc678b60-1fbb-11eb-af11-0e3e179d38e3",
+      "AmplifyAppId": "dthjvrppwi78t"
+    },
+    "categories": {
+      "auth": {
+        "userPoolGroups": {},
+        "sisec": {}
+      },
+      "function": {
+        "AdminQueriesa7804e51": {
+          "deploymentBucketName": "amplify-sisec-master-180749-deployment",
+          "s3Key": "amplify-builds/AdminQueriesa7804e51-50544b71793741424250-build.zip"
+        },
+        "sisecNotifications": {
+          "deploymentBucketName": "amplify-sisec-master-180749-deployment",
+          "s3Key": "amplify-builds/sisecNotifications-4a46384b37724c75746e-build.zip"
+        },
+        "sisecAuditTrace": {
+          "deploymentBucketName": "amplify-sisec-master-180749-deployment",
+          "s3Key": "amplify-builds/sisecAuditTrace-3257384e30683957374f-build.zip"
+        },
+        "getStudies": {
+          "deploymentBucketName": "amplify-sisec-master-180749-deployment",
+          "s3Key": "amplify-builds/getStudies-626b345846686c786a43-build.zip"
+        },
+        "getCenters": {
+          "deploymentBucketName": "amplify-sisec-master-180749-deployment",
+          "s3Key": "amplify-builds/getCenters-57547965335332766e71-build.zip"
+        },
+        "sisec": {}
+      }
+    }
+  },
+  "sisecnewqa": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-sisec-sisecnewqa-95332-authRole",
+      "UnauthRoleArn": "arn:aws:iam::436241418863:role/amplify-sisec-sisecnewqa-95332-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::436241418863:role/amplify-sisec-sisecnewqa-95332-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-sisec-sisecnewqa-95332-deployment",
+      "UnauthRoleName": "amplify-sisec-sisecnewqa-95332-unauthRole",
+      "StackName": "amplify-sisec-sisecnewqa-95332",
+      "StackId": "arn:aws:cloudformation:us-east-2:436241418863:stack/amplify-sisec-sisecnewqa-95332/e1815980-1c0c-11ee-b726-02411d49236f",
+      "AmplifyAppId": "dmvtr9commvea"
+    },
+    "categories": {
+      "auth": {
+        "sisec": {},
+        "userPoolGroups": {}
+      },
+      "function": {
+        "AdminQueriesa7804e51": {
+          "deploymentBucketName": "amplify-sisec-sisecnewqa-95332-deployment",
+          "s3Key": "amplify-builds/AdminQueriesa7804e51-50544b71793741424250-build.zip"
+        },
+        "getCenters": {
+          "deploymentBucketName": "amplify-sisec-sisecnewqa-95332-deployment",
+          "s3Key": "amplify-builds/getCenters-57547965335332766e71-build.zip"
+        },
+        "getStudies": {
+          "deploymentBucketName": "amplify-sisec-sisecnewqa-95332-deployment",
+          "s3Key": "amplify-builds/getStudies-626b345846686c786a43-build.zip"
+        },
+        "sisecAuditTrace": {
+          "deploymentBucketName": "amplify-sisec-sisecnewqa-95332-deployment",
+          "s3Key": "amplify-builds/sisecAuditTrace-3257384e30683957374f-build.zip"
+        },
+        "sisecNotifications": {
+          "deploymentBucketName": "amplify-sisec-sisecnewqa-95332-deployment",
+          "s3Key": "amplify-builds/sisecNotifications-4a46384b37724c75746e-build.zip"
+        }
+      }
+    }
+  },
+  "sisecdemo": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-sisec-sisecdemo-130557-authRole",
+      "UnauthRoleArn": "arn:aws:iam::436241418863:role/amplify-sisec-sisecdemo-130557-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::436241418863:role/amplify-sisec-sisecdemo-130557-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-sisec-sisecdemo-130557-deployment",
+      "UnauthRoleName": "amplify-sisec-sisecdemo-130557-unauthRole",
+      "StackName": "amplify-sisec-sisecdemo-130557",
+      "StackId": "arn:aws:cloudformation:us-east-2:436241418863:stack/amplify-sisec-sisecdemo-130557/c3880e40-1c27-11ee-b6bd-027dca2c1b3d",
+      "AmplifyAppId": "dmvtr9commvea"
+    },
+    "categories": {
+      "auth": {
+        "sisec": {},
+        "userPoolGroups": {}
+      },
+      "function": {
+        "AdminQueriesa7804e51": {
+          "deploymentBucketName": "amplify-sisec-sisecdemo-130557-deployment",
+          "s3Key": "amplify-builds/AdminQueriesa7804e51-50544b71793741424250-build.zip"
+        },
+        "getCenters": {
+          "deploymentBucketName": "amplify-sisec-sisecdemo-130557-deployment",
+          "s3Key": "amplify-builds/getCenters-57547965335332766e71-build.zip"
+        },
+        "getStudies": {
+          "deploymentBucketName": "amplify-sisec-sisecdemo-130557-deployment",
+          "s3Key": "amplify-builds/getStudies-344c533234663073505a-build.zip"
+        },
+        "sisecAuditTrace": {
+          "deploymentBucketName": "amplify-sisec-sisecdemo-130557-deployment",
+          "s3Key": "amplify-builds/sisecAuditTrace-3257384e30683957374f-build.zip"
+        },
+        "sisecNotifications": {
+          "deploymentBucketName": "amplify-sisec-sisecdemo-130557-deployment",
+          "s3Key": "amplify-builds/sisecNotifications-4a46384b37724c75746e-build.zip"
+        }
+      }
+    }
+  },
+  "prod": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-sisec-prod-0393f-authRole",
+      "UnauthRoleArn": "arn:aws:iam::557690593061:role/amplify-sisec-prod-0393f-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::557690593061:role/amplify-sisec-prod-0393f-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-sisec-prod-0393f-deployment",
+      "UnauthRoleName": "amplify-sisec-prod-0393f-unauthRole",
+      "StackName": "amplify-sisec-prod-0393f",
+      "StackId": "arn:aws:cloudformation:us-east-1:557690593061:stack/amplify-sisec-prod-0393f/955fa950-a6c4-11ef-b5e3-12ef115b7161",
+      "AmplifyAppId": "dthjvrppwi78t"
+    },
+    "categories": {
+      "auth": {
+        "sisec": {},
+        "userPoolGroups": {}
+      },
+      "function": {
+        "AdminQueriesa7804e51": {
+          "deploymentBucketName": "amplify-sisec-prod-0393f-deployment",
+          "s3Key": "amplify-builds/AdminQueriesa7804e51-6a48304e6c307550546f-build.zip"
+        },
+        "getCenters": {
+          "deploymentBucketName": "amplify-sisec-prod-0393f-deployment",
+          "s3Key": "amplify-builds/getCenters-4b587339625145382f35-build.zip"
+        },
+        "getStudies": {
+          "deploymentBucketName": "amplify-sisec-prod-0393f-deployment",
+          "s3Key": "amplify-builds/getStudies-78444b6232565770492f-build.zip"
+        },
+        "sisecAuditTrace": {
+          "deploymentBucketName": "amplify-sisec-prod-0393f-deployment",
+          "s3Key": "amplify-builds/sisecAuditTrace-3257384e30683957374f-build.zip"
+        },
+        "sisecNotifications": {
+          "deploymentBucketName": "amplify-sisec-prod-0393f-deployment",
+          "s3Key": "amplify-builds/sisecNotifications-4a46384b37724c75746e-build.zip"
+        },
+        "sisec": {}
+      },
+      "api": {
+        "AdminQueries": {},
+        "getStudies": {},
+        "sisec": {}
+      },
+      "storage": {
+        "sisecHelpFiles": {}
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+image: node:10.15.3
+pipelines:
+  default:
+    - parallel:
+        - step:
+            name: Build, Test and Code linting
+            caches:
+              - node
+            script:
+              - npm install
+              - >
+                wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \
+                  sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' && \
+                  apt-get update && \
+                  apt-get install -y google-chrome-stable xvfb procps 
+              - npm run test:ci
+              #- npm run e2e:ci
+              #- npm run build:prod #no se puede por el que hace falta ampliy init.
+              - npm run lint
+              - npm run lint:sass:fix
+              - npm run lint:sass        
+        - step:
+            name: Security Scan
+            script:
+              - pipe: atlassian/git-secrets-scan:0.4.3

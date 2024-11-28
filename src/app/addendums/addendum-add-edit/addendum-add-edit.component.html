@@ -1,0 +1,155 @@
+<form name="form" (ngSubmit)="onSubmit(f)" #f="ngForm">
+  <div class="p-fluid p-formgrid p-grid">
+    <div class="p-col-12 p-md-12 p-field">
+      <label><span class="inputRequired">* </span>Descripción enmienda</label>
+      <textarea
+        placeholder="Escriba aquí la descripción de la enmienda..."
+        pInputTextarea
+        name="descripcion"
+        type="text"
+        pInputText
+        [(ngModel)]="addendum.descripcion"
+        [rows]="3"
+        autoResize="autoResize"
+        required
+        #descEnm="ngModel"
+      ></textarea>
+      <small class="form-error" *ngIf="!descEnm.valid && f.submitted"
+        >* Campo requerido</small
+      >
+    </div>
+    <div class="p-col-12 p-md-6 p-field">
+      <label>Fecha de enmienda casa matriz</label>
+      <p-calendar
+        inputStyleClass="iText"
+        name="fechaCasaMatriz"
+        [(ngModel)]="fechaCasaMatriz"
+        [maxDate]="currentDate"
+        [showIcon]="true"
+        inputId="fechaCasaMatriz"
+        appendTo="body"
+        placeholder="DD/MM/YYYY"
+        dateFormat="dd/mm/yy"
+        [locale]="es"
+        pTooltip="Fecha de la versión en Inglés de la enmienda "
+        tooltipPosition="top"
+        #fECM="ngModel"
+      >
+      </p-calendar>
+      <small
+        class="form-error"
+        *ngIf="
+          !fECM.valid && f.submitted && fECM.errors && fECM.errors['errorFecha']
+        "
+        >* {{ fECM.errors["errorFecha"] }}</small
+      >
+    </div>
+    <div class="p-col-12 p-md-6 p-field">
+      <label>Fecha de recepción del paquete</label>
+      <p-calendar
+        inputStyleClass="iText"
+        name="fechaRecepcionPaquete"
+        [(ngModel)]="fechaRecepcionPaquete"
+        [maxDate]="currentDate"
+        [showIcon]="true"
+        inputId="fechaRecepcionPaquete"
+        appendTo="body"
+        placeholder="DD/MM/YYYY"
+        dateFormat="dd/mm/yy"
+        [locale]="es"
+        pTooltip="Fecha de recepción del paquete regulatorio de la enmienda"
+        tooltipPosition="top"
+        #fRP="ngModel"
+      >
+      </p-calendar>
+      <small
+        class="form-error"
+        *ngIf="
+          !fRP.valid && f.submitted && fRP.errors && fRP.errors['errorFecha']
+        "
+        >* {{ fRP.errors["errorFecha"] }}</small
+      >
+    </div>
+    <div class="p-col-12 p-md-6 p-field">
+      <label>Fecha de versión en español</label>
+      <p-calendar
+        inputStyleClass="iText"
+        name="fechaVersionEspanol"
+        [(ngModel)]="fechaVersionEspanol"
+        [maxDate]="currentDate"
+        [showIcon]="true"
+        inputId="fechaVersionEspanol"
+        appendTo="body"
+        placeholder="DD/MM/YYYY"
+        dateFormat="dd/mm/yy"
+        [locale]="es"
+        pTooltip="Fecha de recepción del paquete regulatorio en Español, por el patrocinador"
+        tooltipPosition="top"
+        #fVE="ngModel"
+      >
+      </p-calendar>
+      <small
+        class="form-error"
+        *ngIf="
+          !fVE.valid && f.submitted && fVE.errors && fVE.errors['errorFecha']
+        "
+        >* {{ fVE.errors["errorFecha"] }}</small
+      >
+    </div>
+
+    <div class="p-col-12 p-md-6 p-field">
+      <label>Primer país en implementar enmienda</label>
+      <p-dropdown
+        [showClear]="true"
+        class="input"
+        placeholder="Primer país"
+        name="primerPaisImplementacion"
+        [options]="listaPaises"
+        [(ngModel)]="addendum.primerPaisImplementacion"
+        pTooltip="¿Cuál fue el primer país en implementar la enmienda?, Lo alimenta el patrocinador/CRO"
+        tooltipPosition="top"
+      ></p-dropdown>
+    </div>
+    <div class="p-col-12 p-md-6 p-field">
+      <label>Fecha de implementación enmienda en país</label>
+      <p-calendar
+        inputStyleClass="iText"
+        name="fechaImplementacionPais"
+        [(ngModel)]="fechaImplementacionPais"
+        [maxDate]="currentDate"
+        [showIcon]="true"
+        inputId="fechaImplementacionPais"
+        appendTo="body"
+        placeholder="DD/MM/YYYY"
+        dateFormat="dd/mm/yy"
+        [locale]="es"
+        pTooltip="Fecha de implementación de enmienda en el primer país que la implementó"
+        tooltipPosition="top"
+        #fIEP="ngModel"
+      >
+      </p-calendar>
+      <small
+        class="form-error"
+        *ngIf="
+          !fIEP.valid && f.submitted && fIEP.errors && fIEP.errors['errorFecha']
+        "
+        >* {{ fIEP.errors["errorFecha"] }}</small
+      >
+    </div>
+
+    <div class="p-col-12 p-md-6 p-field"></div>
+
+    <div class="p-col-12 p-md-6 p-field">
+      <button
+        class="p-button-outlined p-button-secondary"
+        pButton
+        label="Cancelar"
+        type="button"
+        (click)="onCancelar()"
+      ></button>
+    </div>
+    <div class="p-col-12 p-md-6 p-field">
+      <button pButton label="Guardar" type="submit"></button>
+    </div>
+  </div>
+</form>

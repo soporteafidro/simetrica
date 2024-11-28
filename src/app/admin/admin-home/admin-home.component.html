@@ -1,0 +1,13 @@
+<studies-list style="margin: auto"></studies-list>
+
+<p-dialog
+  (onHide)="closeModal()"
+  modal="true"
+  [header]="sisecService.MessageHelpHome.title"
+  [(visible)]="display"
+  [style]="{ width: '80vw' }"
+>
+  <p style="text-align: justify">
+    {{ sisecService.MessageHelpHome.content }}
+  </p>
+</p-dialog>

@@ -1,0 +1,82 @@
+.p-badge {
+    margin-top: 5px;
+}
+
+.dataBox {
+    background-color: #dceee1;
+    height: 100px;
+}
+
+.coloredTile {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.coloredOne {
+    padding: 19px;
+    background-color: #dceee1;
+    height: 100px;
+}
+
+.infoNumber {
+    margin: 0;
+    padding: 0;
+    font-size: 35px;
+    text-align: center;
+}
+
+.p0 {
+    padding: 0;
+}
+
+.pb0 {
+    padding-bottom: 0px !important
+}
+
+.m0 {
+    margin: 0;
+}
+
+.p-tabview-nav li {
+    text-align: center;
+}
+
+.p-tabview-title {
+    margin: auto;
+}
+
+.p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link span {
+    color: #f3704b !important;
+}
+
+.p-tabview .p-tabview-nav li .p-tabview-nav-link:not(.p-disabled):focus {
+    box-shadow: none !important;
+}
+
+.p-datatable .p-datatable-tbody>tr>td {
+    border-width: 1px 1px 1px 1px !important;
+    border-color: #cdd3d9;
+}
+
+.p-datatable .p-datatable-tbody>tr {
+    height: 45px !important;
+}
+
+canvas {}
+
+.indicador {
+    text-align: center;
+    h3 {
+        font-size: 15px;
+        margin: 0px;
+    }
+}
+
+.btnTiempos {
+    height: 1rem;
+    width: 100%;
+    max-width: 200px;
+    position: absolute;
+    right: 4px;
+    bottom: 12px;
+}

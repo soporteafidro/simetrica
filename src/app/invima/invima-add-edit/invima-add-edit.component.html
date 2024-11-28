@@ -1,0 +1,85 @@
+<form name="form" (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <div class="p-fluid p-formgrid p-grid">
+        <div class="p-col-12 p-md-4 p-field" *ngIf="(iteraciones.length > 0) && !isSometimientoInicial">
+            <label><span class="inputRequired">* </span>Tipo de interacción</label>
+            <p-dropdown [showClear]="true" [options]="tipoDeIteracion" name="tipoIteracion" (onChange)="onTipoIteracionSelected()" [(ngModel)]="iteracion.tipoIteracion" placeholder="- Seleccione -" required #tipoIt="ngModel"></p-dropdown>
+            <small class="form-error" *ngIf="!tipoIt.valid && f.submitted">* Campo requerido</small>
+        </div>
+        <div class="p-col-12 p-md-4 p-field" *ngIf="iteracion.tipoIteracion === 'Respuesta requerimiento'">
+            <label><span class="inputRequired">* </span>Tipo de requerimiento</label>
+            <p-multiSelect name="tipoRequerimiento" (onChange)="onTipoRequerimientoSelected()" [options]="tipoDeRequerimiento" [(ngModel)]="tipoDeRequerimientosSeleccionados" placeholder="- Seleccione -" required #tipoIt="ngModel"></p-multiSelect>
+            <small class="form-error" *ngIf="!tipoIt.valid && f.submitted">* Campo requerido</small>
+        </div>
+        <div class="p-col-12 p-md-4 p-field" *ngIf="showOtroTipoRequerimiento">
+            <label><span class="inputRequired">* </span>Otro tipo de requerimiento</label>
+            <input class="iText" type="text" pInputText name="otroTipoRequerimiento" [(ngModel)]="iteracion.otroTipoRequerimiento" required #otroReq="ngModel">
+            <small class="form-error" *ngIf="!otroReq.valid && f.submitted">* Campo requerido</small>
+        </div>
+
+        <div class="p-col-12 p-md-4 p-field">
+            <label><span class="inputRequired">* </span>Fecha de radicación</label>
+            <p-calendar tooltipPosition="top" pTooltip="Fecha de sometimiento al INVIMA, tomada del sello de radicación" inputStyleClass="iText" name="fechaDeSometimiento" [showIcon]="true" [minDate]="minFechaDeSometimiento" [maxDate]="todayDate" (onSelect)="onFechaSometimientoSelected()"
+                [(ngModel)]="fechaDeSometimiento" inputId="icon" placeholder="DD/MM/YYYY" dateFormat="dd/mm/yy"
+                [locale]="es" required #fSometimiento="ngModel" appendTo="body">
+            </p-calendar>
+            <small class="form-error" *ngIf="!fSometimiento.valid && f.submitted  && fSometimiento.errors && !fSometimiento.errors['errorFecha']">* Campo requerido</small>
+            <small class="form-error" *ngIf="!fSometimiento.valid && f.submitted && fSometimiento.errors && fSometimiento.errors['errorFecha']">* {{fSometimiento.errors['errorFecha']}}</small>
+
+            <label *ngIf="tiempoPatrocinador !== null && fSometimiento.valid">Dias patrocinador : <strong>{{tiempoPatrocinador}}</strong></label>
+        </div>
+        <div class="p-col-12 p-md-4 p-field">
+            <label><span class="inputRequired">* </span>Fecha de resolución INVIMA</label>
+            <p-calendar tooltipPosition="top" pTooltip="Es la fecha estipulada en la resolución oficial del INVIMA" inputStyleClass="iText" name="fechaRespuestaInvima" [disabled]="!fechaDeSometimiento" (onSelect)="onFechaRespuestaInvimaSelected()" [minDate]="minFechaRespuestaInvima"
+                [maxDate]="todayDate" [(ngModel)]="fechaRespuestaInvima" [showIcon]="true" inputId="icon"
+                placeholder="DD/MM/YYYY" dateFormat="dd/mm/yy" [locale]="es" required #fRespuesta="ngModel"
+                appendTo="body"></p-calendar>
+            <small class="form-error" *ngIf="!fRespuesta.valid && f.submitted  && fRespuesta.errors && !fRespuesta.errors['errorFecha']">* Campo requerido</small>
+            <small class="form-error" *ngIf="!fRespuesta.valid && f.submitted && fRespuesta.errors && fRespuesta.errors['errorFecha']">* {{fRespuesta.errors['errorFecha']}}</small>
+            <label *ngIf="tiempoInvima !== null && fRespuesta.valid">Dias resolución INVIMA : <strong>{{tiempoInvima}}</strong></label>
+        </div>
+        <div class="p-col-12 p-md-4 p-field">
+            <label>Fecha de notificación INVIMA</label>
+            <p-calendar tooltipPosition="top" pTooltip="Es la fecha en la cual el patrocinador-CRO se notifica de la resolución" inputStyleClass="iText" name="fechaDeNotificacion" [disabled]="!fechaRespuestaInvima" [(ngModel)]="fechaDeNotificacion" (onSelect)="onFechaNotificacionInvimaSelected()"
+                [minDate]="minFechaDeNotificacion" [showIcon]="true" [maxDate]="todayDate" inputId="icon"
+                placeholder="DD/MM/YYYY" dateFormat="dd/mm/yy" [locale]="es" #fN="ngModel" appendTo="body"></p-calendar>
+            <small class="form-error" *ngIf="!fN.valid && f.submitted && fN.errors && fN.errors['errorFecha']">* {{fN.errors['errorFecha']}}</small>
+            <label *ngIf="tiempoNotificacion !== null && fN.valid">Dias de notificación INVIMA : <strong>{{tiempoNotificacion}}</strong></label>
+        </div>
+        <div class="p-col-12 p-md-4 p-field">
+            <label><span class="inputRequired">* </span>Estado</label>
+            <p-dropdown [showClear]="true" [options]="estados" name="estadoIteracion" [(ngModel)]="iteracion.estadoIteracion" placeholder="- Seleccione -" required #estado="ngModel"></p-dropdown>
+            <small class="form-error" *ngIf="!estado.valid && f.submitted">* Campo requerido</small>
+        </div>
+
+        <div class="p-col-12 p-md-8 p-sm-4 p-field">
+            <label>Resolución o acto administrativo</label>
+            <input class="iText" name="resolucion" placeholder="Ingrese la resolución que aplique a esta Interacción..." type="text" pInputText [(ngModel)]="iteracion.resolucion">
+        </div>
+        <div class="p-col-12 p-md-4 p-field" *ngIf="iteraciones.length > 0">
+            <label>Causal retraso</label>
+            <p-dropdown appendTo="body" [group]="true" [options]="causalesDeRetraso" (onChange)="onCausalRetrasoSelected()" name="causalRetrasoPatrocinador" [(ngModel)]="iteracion.causalRetrasoPatrocinador" placeholder="- Seleccione -" [showClear]="true">
+                <ng-template let-i pTemplate="item">
+                    <div class="p-d-flex p-ai-center">
+                        <span [pTooltip]="i.label">{{(i.label.length > 70) ? (i.label | slice:0:70) + '...' : (i.label)}}</span>
+                    </div>
+                </ng-template>
+            </p-dropdown>
+        </div>
+        <div class="p-col-12 p-field" *ngIf="iteracion.causalRetrasoPatrocinador === 'Otro'">
+            <label><span class="inputRequired">* </span>Otra causal</label>
+            <input class="iText" name="otroCausalRetrasoPatrocinador" placeholder="" type="text" pInputText [(ngModel)]="iteracion.otroCausalRetrasoPatrocinador" required #otroCausal="ngModel">
+            <small class="form-error" *ngIf="!otroCausal.valid && f.submitted">* Campo requerido</small>
+        </div>
+        <div class="p-col-12 p-md-12 p-field">
+            <label>Notas de seguimiento</label>
+            <textarea class="iText" name="notasDeSeguimiento" placeholder="Escriba aquí un comentario..." [(ngModel)]="iteracion.notasDeSeguimiento" [rows]="3" [cols]="30" style="resize: none;" pInputTextarea></textarea>
+        </div>
+
+        <div class="p-col-12 p-md-6 p-field">
+            <button class="p-button-outlined p-button-secondary" pButton label="Cancelar" type="button" (click)="onCancelar()"></button>
+        </div>
+        <div class="p-col-12 p-md-6 p-field">
+            <button pButton label="Guardar" type="submit"></button>
+        </div>
+    </div>
+</form>

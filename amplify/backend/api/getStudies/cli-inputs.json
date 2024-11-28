@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "paths": {
+    "/getStudies": {
+      "name": "/getStudies",
+      "lambdaFunction": "getStudies",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/getCenters": {
+      "name": "/getCenters",
+      "lambdaFunction": "getCenters",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

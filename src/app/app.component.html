@@ -1,0 +1,17 @@
+  <p-blockUI [blocked]="sisec.spinnerState.show">
+    <div class="p-grid p-justify-between p-align-center" style="height: 100%;z-index: 1;">
+      <div class="p-col-12 center" style="height: 100%;">
+        <p-progressSpinner name="spinner" id="spinner" [style]="{width: '70px', height: '70px'}" class="spinner-pos"
+          strokeWidth="8" fill="#EEEEEE" animationDuration=".5s"></p-progressSpinner>
+        <span class="spinner-label">
+          {{sisec.spinnerState.text}} </span>
+      </div>
+    </div>
+  </p-blockUI>
+  <p-toast position="top-center" closable="true" life="8000"></p-toast>
+  <navbar></navbar>
+  <router-outlet ></router-outlet>
+<p-confirmDialog header="¿Estás Seguro?" icon="pi pi-exclamation-triangle" acceptLabel="Confirmo" rejectLabel="Cancelar" acceptButtonStyleClass="p-button-secondary">
+</p-confirmDialog>
+
+  <!--div class="footer" *ngIf="authService.token"></div-->

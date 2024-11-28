@@ -1,0 +1,50 @@
+<div class="container-integra">
+    <div class="p-grid p-jc-end" style="margin: 20px;" *ngIf="rol === 'Admin'">
+        <label for="file-upload" class="subir">
+            <p class="button-top button-upload-template">
+                <i class="pi pi-upload"></i>
+                CARGAR ARCHIVO
+            </p>
+        </label>
+        <input (change)="validatedFile($event.target.files)" type="file" id="file-upload" multiple/>
+    </div>
+
+    <!-- TABLA -->
+    <div class="p-col-12">
+        <p-table
+            *ngIf="listFiles.length > 0"
+            #dt
+            [columns]="columns"
+            [value]="listFiles"
+            [paginator]="true"
+            [rows]="10"
+            [showCurrentPageReport]="true"
+            currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} archivos"
+            [rowsPerPageOptions]="[5, 10,25,50]">
+
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th style="text-align: center; cursor: pointer; width: 2.5%;"></th>
+                    <th *ngFor="let col of columns" [pSortableColumn]="col.key">
+                        {{col.value}}
+                    </th>
+                </tr>
+            </ng-template>
+
+            <ng-template pTemplate="body" let-rowData let-columns="columns">
+                <tr class="prewrap_text_justified">
+                    <td style="text-align: center; cursor: pointer; width: 2.5%;">
+                        <p-menu #menu [popup]="true" [model]="items" appendTo="body"></p-menu>
+                        <p class="pi pi-ellipsis-v" (click)="selectFile(rowData)" (click)="menu.toggle($event)"></p>
+                    </td>
+                    <td *ngFor="let col of columns" style="cursor: pointer;" (click)="openPreview(rowData)">
+                        {{rowData[col.key]}}
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+        <div *ngIf="listFiles.length === 0" style="width: 100%; text-align: center;">
+            <h3>No se han encontrado resultados</h3>
+        </div>
+    </div>
+</div>

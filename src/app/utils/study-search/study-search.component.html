@@ -1,0 +1,24 @@
+<span class="p-input-icon-left p-fluid" style="width:300px">
+  <p-autoComplete [(ngModel)]="selected" [minLength]="3" [emptyMessage]="'No se encontraron resultados.'"
+    dropdownIcon="pi pi-search" [suggestions]="results" (completeMethod)="search($event)" (onSelect)="onSelect($event)"
+    field="identificador" dropdown="true" [scrollHeight]="'600px'">
+    <ng-template let-study pTemplate="item">
+      <div class="p-grid" style="max-width:400px;">
+        <div class="p-col-6 p-md-6">
+          <span style="display:block"><strong>Id.</strong></span>
+<span class="breakAll">{{study.identificador}}</span>
+</div>
+<div class="p-col-6 p-md-6">
+    <span style="display:block"><strong>Id. NCT</strong></span>
+    <span class="breakAll">{{study.identificadorNCT}}</span>
+</div>
+<div class="p-col-12 p-md-12">
+    <span style="display:block;"><strong>Título</strong></span>
+    <span class="breakAll">{{study.titulo}}</span>
+</div>
+</div>
+<hr>
+</ng-template>
+
+</p-autoComplete>
+</span>

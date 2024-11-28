@@ -1,0 +1,76 @@
+<div class="container-integra">
+  <a class="login" href="https://afidro.org/"
+    ><span class="pi pi-chevron-left"></span>Volver a Afidro</a
+  >
+  <h2 class="p-text-center p-mb-5 title-consult">Consulta de estudios registrados en SIMÉTRICA</h2>
+  <form
+    class="p-grid form-consult p-mb-5"
+    (ngSubmit)="onSubmit(form)"
+    #form="ngForm"
+  >
+    <div class="p-col-12 p-grid">
+      <div class="p-md-6">
+        <label for="cie10" class="label-consult">Enfermedad</label>
+      </div>
+      <div class="p-md-6 p-col-12">
+        <p-autoComplete id="cie10" name="cie10" appendTo="body" [(ngModel)]="selectedCie10" [suggestions]="cie10s"
+          [emptyMessage]="'No se han encontrado resultados'" (completeMethod)="searchCIE10($event)"
+          [forceSelection]="true" [minLength]="2" #cie="ngModel"
+          placeholder="Ingrese el código o una palabra clave para buscar">
+        </p-autoComplete>
+      </div>
+    </div>
+
+    <div class="p-col-12 p-grid">
+      <div class="p-md-6">
+        <label for="name" class="label-consult">Nombre del estudio (Palabra clave)</label>
+      </div>
+      <div class="p-md-6 p-col-12">
+        <input name="name" id="name" #name ngModel class="p-inputtext" type="text" pInputText
+          placeholder="Ingrese el nombre del estudio" />
+      </div>
+    </div>
+
+    <div class="p-col-12 p-grid">
+      <div class="p-md-6">
+        <label for="center" class="label-consult">Nombre del centro</label>
+      </div>
+      <div class="p-md-6 p-col-12">
+        <p-dropdown 
+          [showClear]="true" 
+          placeholder="Seleccionar un centro" 
+          #center="ngModel" 
+          name="center"
+          optionLabel="label"
+          optionValue="value"
+          [(ngModel)]="selectedCenter" 
+          [filter]="true" 
+          filterBy="label"
+          [options]="centers"
+          emptyFilterMessage="No se encontraron resultados">
+        </p-dropdown>
+      </div>
+    </div>
+
+    <div class="p-col-12 p-grid">
+      <div class="p-md-6">
+        <label for="center" class="label-consult">Ciudad del centro</label>
+      </div>
+      <div class="p-md-6 p-col-12 p-mb-5">
+        <p-dropdown [showClear]="true" placeholder="Seleccione una ciudad" #city="ngModel" name="city"
+          [(ngModel)]="ciudad" [filter]="true" [options]="locationOpction"
+          emptyFilterMessage="No se encontraron resultados"></p-dropdown>
+      </div>
+    </div>
+
+    <div class="buttons grid p-col-12">
+      <button pButton type="submit" class="p-button-secondary" label="Consultar"></button>
+      <button pButton type="button" class="p-button-primary" label="Limpiar filtros" (click)="clear()"></button>
+    </div>
+  </form>
+
+  <h2 class="p-text-center p-mb-5 title-consult">
+    Lista de estudios en Colombia
+  </h2>
+  <app-study-list [studies]="studies"></app-study-list>
+</div>

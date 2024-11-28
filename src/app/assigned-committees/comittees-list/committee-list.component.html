@@ -1,0 +1,171 @@
+<div *ngIf="!isEnmienda" class="p-grid p-fluid p-justify-end">
+  <div *ngIf="!isReader || !isMedico" class="p-col-12 p-md-6 p-xl-4">
+    <button
+      pButton
+      label="Asociar Comité"
+      type="button"
+      (click)="openAssignComiteeModal()"
+      icon="pi pi-plus"
+    ></button>
+  </div>
+</div>
+
+<div class="p-col-12">
+  <div
+    *ngFor="let scm of studyCenterCommittees; let i = index"
+    class="p-card p-col-12"
+    style="min-height: 100px; margin-bottom: 20px"
+  >
+    <div class="p-grid p-fluid">
+      <div class="p-col-12">
+        <h3>Comité: {{ scm.nombreComite }}</h3>
+      </div>
+    </div>
+    <div class="p-grid p-fluid">
+      <div class="p-col-7 p-md-7">
+        <span style="display: block"
+          ><strong>Centro: </strong>{{ scm.centro }}</span
+        >
+        <div
+          *ngIf="!isEnmienda && (!isReader || !isMedico)"
+          style="margin-top: 10px"
+        >
+          <button
+            pButton
+            label="Borrar"
+            type="button"
+            icon="pi pi-trash"
+            style="max-width: 240px"
+            (click)="deleteStudyCenterCommittee(scm)"
+          ></button>
+        </div>
+        <div *ngIf="!isReader || !isMedico" style="margin-top: 10px">
+          <button
+            pButton
+            label="Interacción"
+            type="button"
+            icon="pi pi-plus"
+            style="max-width: 240px"
+            (click)="openCommitteeIterationModal(scm.studyCenterCommitteeID)"
+          ></button>
+        </div>
+      </div>
+      <div class="p-col-5 p-md-5">
+        <p-chart
+          type="doughnut"
+          [data]="scm.data"
+          [options]="options"
+          height="140px"
+        ></p-chart>
+      </div>
+    </div>
+
+    <div class="p-col-12" style="margin-top: 10px">
+      <p-table
+        *ngIf="scm.iteraciones.length > 0"
+        #dt
+        [value]="scm.iteraciones"
+        [autoLayout]="true"
+        sortMode="multiple"
+      >
+        <ng-template pTemplate="caption">
+          <div class="table-header p-grid p-jc-between">
+            <span>Lista de interacciones</span>
+          </div>
+        </ng-template>
+
+        <ng-template pTemplate="header" let-columns>
+          <tr>
+            <th *ngIf="!isReader || !isMedico"></th>
+            <th>Tipo Interacción</th>
+            <th>Tipo aclaración</th>
+            <th>Fecha de sometimiento CE</th>
+            <th>Fecha de contestación CE</th>
+            <th>Estado</th>
+            <th>Causal retraso</th>
+            <th>Carta respuesta CE</th>
+            <th>Notas</th>
+          </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-rowData>
+          <tr>
+            <td *ngIf="!isReader || !isMedico" style="width: 50px">
+              <div *ngIf="!rowData.editable">
+                <p-menu
+                  #menu
+                  [popup]="true"
+                  [model]="itemsSinEdit"
+                  appendTo="body"
+                ></p-menu>
+                <p
+                  class="pi pi-ellipsis-v"
+                  (click)="selectIteration(rowData, scm)"
+                  (click)="menu.toggle($event)"
+                ></p>
+              </div>
+
+              <div *ngIf="rowData.editable">
+                <p-menu
+                  #menuAux
+                  [popup]="true"
+                  [model]="items"
+                  appendTo="body"
+                ></p-menu>
+                <p
+                  class="pi pi-ellipsis-v"
+                  (click)="selectIteration(rowData, scm)"
+                  (click)="menuAux.toggle($event)"
+                ></p>
+              </div>
+            </td>
+            <td>{{ sisec.printValue(rowData.tipoIteracion) }}</td>
+            <td>
+              {{
+                sisec.printValue(
+                  getTipoAclaracion(
+                    rowData.tipoAclaracion,
+                    rowData.otroTipoAclaracion
+                  )
+                )
+              }}
+            </td>
+            <td>
+              {{
+                sisec.printValue(
+                  dateIITPipe.transform(rowData.fechaDeSometimientoCE)
+                )
+              }}
+            </td>
+            <td>
+              {{
+                sisec.printValue(
+                  dateIITPipe.transform(rowData.fechaRespuestaCE)
+                )
+              }}
+            </td>
+            <td>{{ sisec.printValue(rowData.estadoIteracion) }}</td>
+            <td>
+              <span *ngIf="rowData.causalRetrasoPatrocinador !== 'Otro'">{{
+                sisec.printValue(rowData.causalRetrasoPatrocinador)
+              }}</span>
+              <span *ngIf="rowData.causalRetrasoPatrocinador === 'Otro'">{{
+                sisec.printValue(rowData.otroCausalRetrasoPatrocinador)
+              }}</span>
+            </td>
+            <td>{{ sisec.printValue(rowData.informacionCarta) }}</td>
+            <td>{{ sisec.printValue(rowData.notasDeSeguimiento) }}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+      <warning-message
+        [ifCondition]="scm.iteraciones.length === 0"
+        [message]="'No se encontraron interacciones.'"
+      ></warning-message>
+    </div>
+  </div>
+  <warning-message
+    [ifCondition]="studyCenterCommittees.length === 0"
+    [message]="'No se encontraron interacciones.'"
+  ></warning-message>
+</div>

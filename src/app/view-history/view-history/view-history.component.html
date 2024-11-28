@@ -1,0 +1,36 @@
+<div class="container-integra">
+    <!-- TABLA -->
+    <div class="p-col-12">
+        <p-table *ngIf="data.length > 0" #dt [columns]="columns" [value]="data" [globalFilterFields]="['fecha', 'usuario', 'cambios','variable','valorAnterior','valorNuevo']" [paginator]="true" [rows]="10" [showCurrentPageReport]="true" currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} registros"
+            [rowsPerPageOptions]="[10,25,50]" [autoLayout]="true" sortMode="multiple">
+            <ng-template pTemplate="caption">
+                <div class="table-header p-grid p-jc-between">
+                    <span></span>
+                    <span class="p-col p-lg-4">
+              <i class="pi pi-search" style="margin-right: 10px;"></i>
+              <input style="width: 90%;" pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+                placeholder="Filtro global" />
+            </span>
+                </div>
+            </ng-template>
+
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th *ngFor="let col of columns" [pSortableColumn]="col.key">
+                        {{col.value}}
+                        <p-sortIcon [field]="col.key"></p-sortIcon>
+                    </th>
+                </tr>
+            </ng-template>
+
+            <ng-template pTemplate="body" let-rowData let-columns="columns">
+                <tr>
+                    <td *ngFor="let col of columns">
+                        <span [innerHTML]="rowData[col.key]"></span>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+        <p-messages *ngIf="data.length === 0 && !isLoading" [(value)]="msgs" [closable]="false"></p-messages>
+    </div>
+</div>

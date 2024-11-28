@@ -1,0 +1,93 @@
+<form name="form" (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <div class="p-fluid p-formgrid p-grid">
+        <div class="p-col-12 p-md-6 p-field">
+            <label><span class="inputRequired">* </span>Centro</label>
+            <div style="display:flex">
+                <p-dropdown [showClear]="true" [options]="centers" placeholder="-seleccione-" name="centerID" [(ngModel)]="studyCenter.centerID" [disabled]="isEdit" [filter]="true" filterBy="label" required #centerID="ngModel" class="centerSelection" pTooltip="Seleccione nombre del centro autorizado por INVIMA."
+                    tooltipPosition="top">
+                </p-dropdown>
+                <button type="button" pButton pRipple [disabled]="isEdit" icon="pi pi-plus" styleClass="p-button-warn" class="p-button-icon-only" (click)="openCreateCenterModal()"></button>
+            </div>
+            <small class="form-error" *ngIf="!centerID.valid && f.submitted && !isEdit">* Campo requerido</small>
+        </div>
+
+        <div class="p-col-12 p-md-6 p-field">
+            <label>Costo por paciente</label>
+            <p-inputNumber name="costoPorPaciente" :min="0" mode="decimal" placeholder="Ingrese el costo por unidad de un paciente" [(ngModel)]="studyCenter.costoPorPaciente" #costoPorPaciente="ngModel" pTooltip="Costo por paciente en el estudio." tooltipPosition="top"></p-inputNumber>
+
+        </div>
+
+        <div class="p-col-12 p-md-6 p-field">
+            <label>Cantidad de pacientes previstos</label>
+            <p-inputNumber name="cantidadPacientesPrevistos" :min="0" mode="decimal" placeholder="Cantidad de pacientes esperados" [(ngModel)]="studyCenter.cantidadPacientesPrevistos" #cantPacPrevistos="ngModel"></p-inputNumber>
+        </div>
+
+        <div class="p-col-12 p-md-6 p-field">
+            <label>Cantidad de pacientes incluidos</label>
+            <p-inputNumber name="cantidadPacientesIncluidos" :min="0" mode="decimal" placeholder="Pacientes que incluye el centro al estudio" [(ngModel)]="studyCenter.cantidadPacientesIncluidos" #cantPacIncluidos="ngModel"></p-inputNumber>
+        </div>
+
+        <div class="p-col-12 p-md-6 p-field">
+            <label>Fecha de envío de paquete</label>
+            <p-calendar tooltipPosition="top" pTooltip="Fecha de recepción del paquete del estudio, por el centro." inputStyleClass="iText" name="fechaRecepcionPaquete" [(ngModel)]="fechaRecepcionPaquete" [maxDate]="currentDate" [showIcon]="true" inputId="fechaRecepcionPaquete"
+                appendTo="body" placeholder="DD/MM/YYYY" dateFormat="dd/mm/yy" [locale]="es" pTooltip="Fecha de recepción del paquete del estudio, por el centro" tooltipPosition="top">
+            </p-calendar>
+        </div>
+
+        <div class="p-col-12 p-md-6 p-field">
+            <label>Fecha de recepción de contrato</label>
+            <p-calendar tooltipPosition="top" pTooltip="Fecha de recepción del contrato propuesto, por el centro" inputStyleClass="iText" name="fechaRecepcionContrato" [(ngModel)]="fechaRecepcionContrato" [maxDate]="currentDate" [showIcon]="true" inputId="fechaRecepcionContrato"
+                appendTo="body" placeholder="DD/MM/YYYY" dateFormat="dd/mm/yy" [locale]="es" pTooltip="Fecha de recepción del contrato propuesto, por el centro" tooltipPosition="top" #fRC="ngModel"></p-calendar>
+            <small class="form-error" *ngIf="!fRC.valid && f.submitted && fRC.errors && fRC.errors['errorFecha']">* {{fRC.errors['errorFecha']}}</small>
+        </div>
+
+        <div class="p-col-12 p-md-6 p-field">
+            <label>Fecha firma de contrato</label>
+            <p-calendar tooltipPosition="top" pTooltip="Fecha de firma del contrato por el centro" inputStyleClass="iText" name="fechaFirmaContrato" [(ngModel)]="fechaFirmaContrato" [maxDate]="currentDate" [showIcon]="true" inputId="fechaFirmaContrato" appendTo="body"
+                placeholder="DD/MM/YYYY" dateFormat="dd/mm/yy" [locale]="es" #fFC="ngModel"></p-calendar>
+            <small class="form-error" *ngIf="!fFC.valid && f.submitted && fFC.errors && fFC.errors['errorFecha']">* {{fFC.errors['errorFecha']}}</small>
+        </div>
+
+        <div class="p-col-12 p-md-6 p-field">
+            <label> Fecha firma de contrato del patrocinador</label>
+            <p-calendar tooltipPosition="top" pTooltip="Fecha de firma del contrato por el patrocinador" inputStyleClass="iText" name="fechaFirmaContratoPatrocinador" [(ngModel)]="fechaFirmaContratoPatrocinador" [maxDate]="currentDate" [showIcon]="true" inputId="fechaFirmaContratoPatrocinador"
+                appendTo="body" placeholder="DD/MM/YYYY" dateFormat="dd/mm/yy" [locale]="es" #fFCP="ngModel"></p-calendar>
+            <small class="form-error" *ngIf="!fFCP.valid && f.submitted && fFCP.errors && fFCP.errors['errorFecha']">* {{fFCP.errors['errorFecha']}}</small>
+        </div>
+
+        <div class="p-col-12 p-md-6 p-field">
+            <label>Fecha aprobación centro INVIMA</label>
+            <p-calendar tooltipPosition="top" pTooltip="Fecha en la cual el INVIMA aprueba el centro para la realización del estudio." inputStyleClass="iText" name="fechaAprobacionInvima" [(ngModel)]="fechaAprobacionInvima" [maxDate]="currentDate" [showIcon]="true"
+                inputId="fechaAprobacionInvima" appendTo="body" placeholder="DD/MM/YYYY" dateFormat="dd/mm/yy" [locale]="es" pTooltip="Fecha en la cual el invíma aprueba el centro para la realización del estudio." tooltipPosition="top" #fAI="ngModel"></p-calendar>
+            <small class="form-error" *ngIf="!fAI.valid && f.submitted && fAI.errors && fAI.errors['errorFecha']">* {{fAI.errors['errorFecha']}}</small>
+        </div>
+
+        <div class="p-col-12 p-md-6 p-field">
+            <label>Fecha de activación del centro</label>
+            <p-calendar tooltipPosition="top" pTooltip="Fecha en la cual el patrocinador hace entrega de medicamentos,insumos y equipos al centro para iniciar el estudio." inputStyleClass="iText" name="fechaActivacionCentro" [(ngModel)]="fechaActivacionCentro" [maxDate]="currentDate"
+                [showIcon]="true" inputId="fechaActivacionCentro" appendTo="body" placeholder="DD/MM/YYYY" dateFormat="dd/mm/yy" [locale]="es" #fAC="ngModel"></p-calendar>
+            <small class="form-error" *ngIf="!fAC.valid && f.submitted && fAC.errors && fAC.errors['errorFecha']">* {{fAC.errors['errorFecha']}}</small>
+        </div>
+
+        <div class="p-col-12 p-md-6 p-field">
+            <label>Fecha de primer paciente seleccionado</label>
+            <p-calendar tooltipPosition="top" pTooltip="Fecha de potencial candidato para participar en el estudio." inputStyleClass="iText" name="fechaPrimerPacienteSeleccionado" [(ngModel)]="fechaPrimerPacienteSeleccionado" [maxDate]="currentDate" [showIcon]="true"
+                inputId="fechaPrimerPacienteSeleccionado" appendTo="body" placeholder="DD/MM/YYYY" dateFormat="dd/mm/yy" [locale]="es" #fPPS="ngModel"></p-calendar>
+            <small class="form-error" *ngIf="!fPPS.valid && f.submitted && fPPS.errors && fPPS.errors['errorFecha']">* {{fPPS.errors['errorFecha']}}</small>
+        </div>
+
+        <div class="p-col-12 p-md-6 p-field">
+            <label>Fecha de primer paciente aleatorizado</label>
+            <p-calendar tooltipPosition="top" pTooltip="Fecha en que efectivamente el paciente inicia el estudio." inputStyleClass="iText" name="fechaPrimerPacienteAleatorizado" [(ngModel)]="fechaPrimerPacienteAleatorizado" [minDate]="minFechaPrimerPacienteAleatorizado"
+                [maxDate]="currentDate" [showIcon]="true" inputId="fechaPrimerPacienteAleatorizado" appendTo="body" placeholder="DD/MM/YYYY" dateFormat="dd/mm/yy" [locale]="es" #fPPA="ngModel"></p-calendar>
+            <small class="form-error" *ngIf="!fPPA.valid && f.submitted && fPPA.errors && fPPA.errors['errorFecha']">* {{fPPA.errors['errorFecha']}}</small>
+        </div>
+
+        <div class="p-col-12 p-md-6 p-field">
+            <button class="p-button-outlined p-button-secondary" pButton label="Cancelar" type="button" (click)="onCancelar()"></button>
+        </div>
+        <div class="p-col-12 p-md-6 p-field">
+            <button pButton label="Guardar" type="submit"></button>
+        </div>
+    </div>
+</form>

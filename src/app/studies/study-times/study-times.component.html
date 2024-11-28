@@ -1,0 +1,27 @@
+<p-card style="height: 400px">
+  <p>
+    En esta línea de tiempo se visualizarán los tiempos de inicio del estudio,
+    los tiempos de generación y aprobación de centros y su contrato, los tiempos
+    de las enmiendas y las interacciones con los comités.
+  </p>
+  <google-chart
+    #chart
+    *ngIf="showChart"
+    [data]="timelineChartData"
+  ></google-chart>
+  <p-fieldset
+    *ngIf="showErrors.length > 0"
+    legend="Tiempos pendientes"
+    [toggleable]="true"
+  >
+    <ul style="list-style-type: none" class="p-pl-0">
+      <li *ngFor="let error of showErrors" class="errors p-px-0 p-py-1">
+        {{ error }}
+      </li>
+    </ul>
+  </p-fieldset>
+</p-card>
+<warning-message
+  [ifCondition]="study && timelineChartData.dataTable.rows === 0"
+  [message]="'Aun no hay tiempos para mostrar'"
+></warning-message>

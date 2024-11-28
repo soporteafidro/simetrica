@@ -1,0 +1,232 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body,
+app-root {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    background-color: #eff3f8;
+    font-family: 'Open Sans';
+}
+
+h1,
+h2,
+h3,
+strong {
+    color: #2d327e;
+}
+
+h4,
+label {
+    margin: 0;
+    color: #2d327e;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.container-integra,
+.container-integra-gray {
+    width: 90%;
+    margin: 0;
+    margin: auto;
+    padding: 1rem;
+    background-color: #fff;
+    overflow: auto;
+}
+
+.container-integra-gray {
+    background-color: #eff3f8 !important;
+}
+
+.spinner-pos {
+    position: fixed;
+    top: calc(50% - 12.5px);
+    left: calc(50% - 12.5px);
+}
+
+.spinner-label {
+    position: absolute;
+    top: calc(50% + 100px);
+    left: 50%;
+    width: 100%;
+    height: 30px;
+    padding-top: 10px;
+    transform: translate(-50%, -50%);
+    background-color: #f0f0f7;
+    color: #2d327e;
+    text-align: center;
+    -ms-transform: translate(-50%, -50%);
+}
+
+.ui-blockui-document {
+    position: fixed;
+    z-index: 1;
+}
+
+.form-error {
+    color: #ea5455;
+}
+
+.agm-info-window-content {
+    color: #000000;
+}
+
+.p-menubar {
+    border: 1px solid #211c54;
+    border-radius: 0;
+    background: #211c54 !important;
+    color: #fff;
+}
+
+.p-menubar .p-menubar-root-list>.p-menuitem>.p-menuitem-link span {
+    color: #ffffff !important;
+}
+
+.p-menubar .p-menubar-root-list>.p-menuitem>.p-menuitem-link:not(.p-disabled):hover {
+    background: transparent !important;
+}
+
+.p-menubar .p-menubar-root-list>.p-menuitem>.p-menuitem-link span:hover {
+    color: #f3704b !important;
+}
+
+.p-menubar .p-menubar-root-list>.p-menuitem>.p-menuitem-link :focus {
+    border-radius: 0;
+}
+
+.p-menubar .p-menuitem-link:focus {
+    box-shadow: none !important;
+}
+
+.stepper {
+    .p-progressbar-label {
+        display: none !important;
+    }
+    .p-progressbar {
+        height: 1rem !important;
+    }
+}
+
+.bgW {
+    background-color: #ffffff;
+}
+
+.pb0 {
+    padding-bottom: 0 !important;
+}
+
+html {
+    // the html overflow was preventing body to take 100% height, and this was causing weird page effects
+    overflow: auto;
+}
+
+.ma {
+    margin: auto;
+}
+
+.c-card {
+    //this style is for the card/container styles
+    border-radius: 5px;
+    box-shadow: 0 4px 3px #8d90ba42;
+}
+
+//css fix for Calendar inputs to have correct height
+.p-fluid .p-calendar .p-inputtext .p-autoComplete,
+.p-calendar-w-btn .p-datepicker-trigger {
+    max-height: 45px;
+}
+
+.p-inputtext,
+.p-multiselect,
+label {
+    font-size: 12px;
+}
+
+.pad {
+    padding: 18px;
+    padding-top: 23px;
+    padding-bottom: 23px
+}
+
+.p-accordion-header-text {
+    color: #f3704b !important;
+}
+
+.table1 {
+    .p-datatable .p-datatable-tbody>tr>td {
+        border: 1px solid #cdd3d9 !important;
+    }
+    .p-datatable .p-datatable-thead>tr>th {
+        border: 1px solid #cdd3d9 !important;
+        background: #ffffff !important;
+        color: #211c54 !important;
+    }
+}
+
+// esto arregla el problema de los dropdowns / date pickers no mostrantose correctamente en los modals
+.p-dialog-content {
+    overflow: visible !important;
+}
+
+input.p-autocomplete-input,
+button.p-autocomplete-dropdown {
+    max-height: 43px !important;
+}
+
+.hidden {
+    display: none !important;
+}
+
+// esto resuelve que cuando los modals quedan cortados por la pantalla, se pueda scrollear hacia abajo para verlo entero
+.p-dialog-mask.p-component-overlay {
+    overflow: auto;
+}
+
+// acomoda el tamano de los multiselect
+.p-multiselect-label-container {
+    max-height: 43px;
+}
+
+.prewrap_text_justified {
+    white-space: pre-wrap;
+    text-align: justify
+}
+
+.inputRequired {
+    color: red;
+}
+
+.block{
+    display: block;
+}
+
+//Ajustes datepicker
+.p-datepicker table {
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+    padding: 0.25rem;
+}
+
+.p-datepicker table>tbody>tr>td {  
+  padding: 0;
+}
+.p-datepicker table>thead>tr>th {
+  padding: 0;
+}
+.p-datepicker .p-datepicker-group .p-datepicker-header {
+    padding: 0;
+}
+
+.spinner-label {
+    width: auto;
+    height: auto;
+    padding: 1rem;
+}
+
+.p-autocomplete {
+    width: 100%;
+}
